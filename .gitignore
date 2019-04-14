@@ -1,0 +1,8 @@
+node_modules/
+.fable/
+bin/
+obj/
+packages/
+.idea/
+.paket/load/
+paket-files/

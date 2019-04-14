@@ -1,0 +1,28 @@
+{
+  "name": "fable-reactstrap",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "css-loader": "^2.1.1",
+    "fable-compiler": "^2.2.3",
+    "fable-loader": "^2.1.6",
+    "file-loader": "^3.0.1",
+    "node-sass": "^4.11.0",
+    "sass": "^1.18.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.3.1"
+  },
+  "scripts": {
+    "start": "webpack-dev-server",
+    "postinstall": "paket restore && paket generate-load-scripts -f netstandard2.0 -t fsx"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "reactstrap": "^8.0.0"
+  }
+}
