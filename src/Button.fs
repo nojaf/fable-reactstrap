@@ -18,7 +18,7 @@ module Button =
         | [<CompiledName("block")>] Block of bool
         | [<CompiledName("disabled")>] Disabled of bool
         | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("innerRef")>] InnerRef of IRefHook<Element option>
+        | [<CompiledName("innerRef")>] InnerRef of (Element -> unit)
         | [<CompiledName("onClick")>] OnClick of (MouseEvent -> unit)
         | [<CompiledName("size")>] Size of Common.Size
         | [<CompiledName("className")>] ClassName of string
