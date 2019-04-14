@@ -9,6 +9,7 @@
 #load "../src/Badge.fs"
 #load "../src/Breadcrumb.fs"
 #load "../src/BreadcrumbItem.fs"
+#load "../src/Button.fs"
 
 open Fable.Core.JsInterop
 open Fable.React
@@ -53,13 +54,13 @@ let badgeSample =
 let breadcrumbsSample =
     exampleBox [
         Breadcrumb.breadcrumb [] [
-            BreadcrumbItem.breadcrumbItem [BreadcrumbItem.Active] [str "Home"]
+            BreadcrumbItem.breadcrumbItem [BreadcrumbItem.Active true] [str "Home"]
         ]
         Breadcrumb.breadcrumb [] [
             BreadcrumbItem.breadcrumbItem [] [
                 a [Href "#"] [ str "Home"]
             ]
-            BreadcrumbItem.breadcrumbItem [BreadcrumbItem.Active] [
+            BreadcrumbItem.breadcrumbItem [BreadcrumbItem.Active true] [
                 str "Library"
             ]
         ]
@@ -70,7 +71,7 @@ let breadcrumbsSample =
             BreadcrumbItem.breadcrumbItem [] [
                 a [Href "#"] [ str "Library"]
             ]
-            BreadcrumbItem.breadcrumbItem [BreadcrumbItem.Active] [
+            BreadcrumbItem.breadcrumbItem [BreadcrumbItem.Active true] [
                 str "Data"
             ]
         ]
@@ -85,8 +86,54 @@ let breadcrumbsSample =
             BreadcrumbItem.breadcrumbItem [ BreadcrumbItem.Tag "a"; BreadcrumbItem.Href "#"] [
                 str "Data"
             ]
-            BreadcrumbItem.breadcrumbItem [ BreadcrumbItem.Tag "span"; BreadcrumbItem.Active] [
+            BreadcrumbItem.breadcrumbItem [ BreadcrumbItem.Tag "span"; BreadcrumbItem.Active true] [
                 str "Bootstrap"
+            ]
+        ]
+    ]
+    
+let buttonSample =
+    exampleBox [
+        div [] [
+            Button.button [Button.Color Primary; Button.ClassName "mr-1"] [str "primary"]
+            Button.button [Button.Color Secondary; Button.ClassName "mr-1"] [str "secondary"]
+            Button.button [Button.Color Success; Button.ClassName "mr-1"] [str "success"]
+            Button.button [Button.Color Info; Button.ClassName "mr-1"] [str "info"]
+            Button.button [Button.Color Warning; Button.ClassName "mr-1"] [str "warning"]
+            Button.button [Button.Color Danger; Button.ClassName "mr-1"] [str "danger"]
+            Button.button [Button.Color Link; Button.ClassName "mr-1"] [str "link"]
+        ]
+        div [ClassName "mt-2 mb-2"] [
+            h5 [] [str "Outline"]
+            Button.button [Button.Color Primary; Button.Outline true; Button.ClassName "mr-1"] [str "primary"]
+            Button.button [Button.Color Secondary; Button.Outline true; Button.ClassName "mr-1"] [str "secondary"]
+            Button.button [Button.Color Success; Button.Outline true; Button.ClassName "mr-1"] [str "success"]
+            Button.button [Button.Color Info; Button.Outline true; Button.ClassName "mr-1"] [str "info"]
+            Button.button [Button.Color Warning; Button.Outline true; Button.ClassName "mr-1"] [str "warning"]
+            Button.button [Button.Color Danger; Button.Outline true; Button.ClassName "mr-1"] [str "danger"]
+        ]
+        div [ClassName "mt-2 mb-2"] [
+            h5 [ ] [str "Sizes"]
+            Button.button [Button.Color Primary; Button.Size Lg; Button.ClassName "mr-1"] [str "Large button"]
+            Button.button [Button.Color Secondary; Button.Size Lg; Button.ClassName "mr-1"] [str "Large button"]
+            Button.button [Button.Color Primary; Button.Size Sm; Button.ClassName "mr-1"] [str "Small button"]
+            Button.button [Button.Color Secondary; Button.Size Sm; Button.ClassName "mr-1"] [str "Small button"]
+            Button.button [Button.Color Primary; Button.Block true; Button.ClassName "mt-2"] [str "Block level button"]
+        ]
+        div [ClassName "mt-2 mb-2"] [
+            h5 [] [str "Active & disabled"]
+            Button.button [Button.Color Primary; Button.ClassName "mr-1"; Button.Active true] [str "primary"]
+            Button.button [Button.Color Primary; Button.ClassName "mr-1"; Button.Disabled true] [str "primary"]
+        ]
+        div [ClassName "mt-2 mb-2"] [
+            h5 [] [str "Close icon"]
+            div [] [
+                span [] [str "Default close icon"]
+                Button.button [Button.Close true] []
+            ]
+            div [ ClassName "mt-2" ] [
+                span [] [str "Custom content"]
+                Button.button [Button.Close true] [ span [DangerouslySetInnerHTML { __html = "&dash;" }] [] ]
             ]
         ]
     ]
@@ -99,6 +146,8 @@ let combined =
         badgeSample
         exampleTitle "Breadcrumbs"
         breadcrumbsSample
+        exampleTitle "Buttons"
+        buttonSample
     ]
 
 Helpers.mountById "app" combined

@@ -10,7 +10,7 @@ module BreadcrumbItem =
     
     type BreadcrumbItemProps =
         | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("active")>] Active
+        | [<CompiledName("active")>] Active of bool
         | [<CompiledName("className")>] ClassName of string
         | [<CompiledName("cssModule")>] CSSModule of Common.CSSModule
         | [<CompiledName("href")>] Href of string

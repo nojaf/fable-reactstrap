@@ -14,6 +14,7 @@ module Common =
         | [<CompiledName("info")>] Info
         | [<CompiledName("light")>] Light
         | [<CompiledName("dark")>] Dark
+        | [<CompiledName("link")>] Link
         
     type CSSModule = exn
 
@@ -32,3 +33,9 @@ module Common =
         | [<CompiledName("onLeave")>] OnLeave of (unit -> unit)
         | [<CompiledName("onEnter")>] OnEnter of (unit -> unit)
         
+    [<StringEnum>]
+    type Size =
+        | [<CompiledName("lg")>] Lg
+        | [<CompiledName("sm")>] Sm
+        | [<CompiledName("md")>] Md
+        | [<CompiledName("xs")>] Xs

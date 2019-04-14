@@ -14,7 +14,7 @@ module Alert =
         | [<CompiledName("cssModule")>] CSSModule of Common.CSSModule
         | [<CompiledName("color")>] Color of Common.Color
         | [<CompiledName("transition")>] Transition of TransitionProps
-        | [<CompiledName("isOpen")>] IsOpen
+        | [<CompiledName("isOpen")>] IsOpen of bool
         | [<CompiledName("toggle")>] Toggle of (unit -> unit)
         
     
