@@ -16,7 +16,8 @@ module Common =
         | [<CompiledName("dark")>] Dark
         | [<CompiledName("link")>] Link
         
-    type CSSModule = exn
+    type [<AllowNullLiteral>] CSSModule =
+        [<Emit "$0[$1]{{=$2}}">] abstract Item: className: string -> string with get, set
 
     type TransitionProps =
         | [<CompiledName("in")>] In of bool
@@ -39,3 +40,10 @@ module Common =
         | [<CompiledName("sm")>] Sm
         | [<CompiledName("md")>] Md
         | [<CompiledName("xs")>] Xs
+
+    [<StringEnum>]
+    type Direction =
+        | [<CompiledName("up")>] Up
+        | [<CompiledName("down")>] Down
+        | [<CompiledName("left")>] Left
+        | [<CompiledName("right")>] Right

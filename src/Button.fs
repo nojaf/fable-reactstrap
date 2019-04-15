@@ -1,7 +1,5 @@
 namespace ReactStrap
 
-namespace ReactStrap
-
 open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop

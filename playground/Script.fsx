@@ -1,3 +1,5 @@
+open ReactStrap
+
 #load "../.paket/load/netstandard2.0/main.group.fsx"
 
 #if INTERACTIVE
@@ -10,6 +12,10 @@
 #load "../src/Breadcrumb.fs"
 #load "../src/BreadcrumbItem.fs"
 #load "../src/Button.fs"
+#load "../src/ButtonDropdown.fs"
+#load "../src/DropdownToggle.fs"
+#load "../src/DropdownMenu.fs"
+#load "../src/DropdownItem.fs"
 
 open Fable.Core.JsInterop
 open Fable.React
@@ -21,7 +27,6 @@ importSideEffects "./style.sass"
 let private exampleBox children = div [ClassName "example-box"] children
 let private exampleTitle title = h2 [] [str title]
     
-
 let alertSample =
     exampleBox [
         Alert.alert [Alert.Color Primary] [ str "This is a primary alert — check it out!" ]
@@ -137,6 +142,22 @@ let buttonSample =
             ]
         ]
     ]
+    
+let buttonGroupSample _ =
+    let isOpenState = Hooks.useState(false)
+    
+    exampleBox [
+        ButtonDropdown.buttonDropdown [ButtonDropdown.IsOpen isOpenState.current; ButtonDropdown.Toggle (fun () -> isOpenState.update(not isOpenState.current))] [
+            DropdownToggle.dropdownToggle [DropdownToggle.Caret true] [str "Button Dropdown"]
+            DropdownMenu.dropdownMenu [] [
+                DropdownItem.dropdownItem [DropdownItem.Header true] [str "Header"]
+                DropdownItem.dropdownItem [DropdownItem.Disabled true] [str "Action"]
+                DropdownItem.dropdownItem [] [str "Another Action"]
+                DropdownItem.dropdownItem [DropdownItem.Divider true] []
+                DropdownItem.dropdownItem [] [str "Another Action"]
+            ]
+        ]
+    ]
 
 let combined =
     fragment [] [
@@ -148,6 +169,8 @@ let combined =
         breadcrumbsSample
         exampleTitle "Buttons"
         buttonSample
+        exampleTitle "ButtonGroup"
+        ofFunction buttonGroupSample () []
     ]
 
 Helpers.mountById "app" combined

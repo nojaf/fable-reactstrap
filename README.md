@@ -1,5 +1,5 @@
 https://reactstrap.github.io/components/badge/
-https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/reactstrap/lib/Alert.d.ts
+https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/reactstrap/lib/
 
 https://fulma.github.io/Fulma/#fulma/elements/notification
 https://github.com/Fulma/Fulma/blob/master/src/Fulma/Common.fs
