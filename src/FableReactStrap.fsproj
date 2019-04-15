@@ -4,6 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    
+    <Compile Include="ButtonToolbar.fs" />
+    
     <Compile Include="Common.fs" />
     <Compile Include="Alert.fs" />
     <Compile Include="Badge.fs" />
@@ -11,6 +14,7 @@
     <Compile Include="BreadcrumbItem.fs" />
     <Compile Include="Button.fs" />
     <Compile Include="ButtonDropdown.fs" />
+    <Compile Include="ButtonGroup.fs" />
     <Compile Include="DropdownItem.fs" />
     <Compile Include="DropdownMenu.fs" />
     <Compile Include="DropdownToggle.fs" />
