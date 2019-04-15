@@ -16,6 +16,7 @@ module DropdownToggle =
         | [<CompiledName("onClick")>] OnClick of (MouseEvent -> unit)
         | [<CompiledName("data-toggle")>] DataToggle of string
         | [<CompiledName("aria-haspopup")>] AriaHasPopup of bool
+        | [<CompiledName("size")>] Size of Common.Size
         
     let dropdownToggle (props: DropdownToggleProps seq) (elems: ReactElement seq) : ReactElement =
         ofImport "DropdownToggle" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
