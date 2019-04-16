@@ -1,23 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
-  <ItemGroup>
-    
-    <Compile Include="ButtonToolbar.fs" />
-    
-    <Compile Include="Common.fs" />
-    <Compile Include="Alert.fs" />
-    <Compile Include="Badge.fs" />
-    <Compile Include="Breadcrumb.fs" />
-    <Compile Include="BreadcrumbItem.fs" />
-    <Compile Include="Button.fs" />
-    <Compile Include="ButtonDropdown.fs" />
-    <Compile Include="ButtonGroup.fs" />
-    <Compile Include="DropdownItem.fs" />
-    <Compile Include="DropdownMenu.fs" />
-    <Compile Include="DropdownToggle.fs" />
-  </ItemGroup>
-  <Import Project="..\.paket\Paket.Restore.targets" />
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Include="Common.fs" />
+        <Compile Include="ButtonToolbar.fs" />
+        <Compile Include="Alert.fs" />
+        <Compile Include="Badge.fs" />
+        <Compile Include="Breadcrumb.fs" />
+        <Compile Include="BreadcrumbItem.fs" />
+        <Compile Include="Button.fs" />
+        <Compile Include="ButtonDropdown.fs" />
+        <Compile Include="ButtonGroup.fs" />
+        <Compile Include="DropdownItem.fs" />
+        <Compile Include="DropdownMenu.fs" />
+        <Compile Include="DropdownToggle.fs" />
+        <Compile Include="Card.fs" />
+        <Compile Include="CardBody.fs" />
+        <Compile Include="CardColumns.fs" />
+        <Compile Include="CardDeck.fs" />
+        <Compile Include="CardFooter.fs" />
+        <Compile Include="CardGroup.fs" />
+        <Compile Include="CardHeader.fs" />
+        <Compile Include="CardImg.fs" />
+        <Compile Include="CardImgOverlay.fs" />
+        <Compile Include="CardLink.fs" />
+        <Compile Include="CardSubtitle.fs" />
+        <Compile Include="CardText.fs" />
+        <Compile Include="CardTitle.fs" />
+    </ItemGroup>
+    <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
