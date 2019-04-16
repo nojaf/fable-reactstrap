@@ -268,6 +268,29 @@ let buttonGroupSample _ =
             ]
         ]
     ]
+    
+let cardSample =
+    exampleBox [
+        Card.card [Card.ClassName "w-50"] [
+            CardImg.cardImg [CardImg.Top true; CardImg.Src "http://lorempixel.com/400/200/"] []
+            CardBody.cardBody [] [
+                CardTitle.cardTitle [CardTitle.Tag "h5"] [str "Card title"]
+                CardSubtitle.cardSubtitle [CardSubtitle.Tag "h6"; CardSubtitle.ClassName "mb-1"] [str "Card subtitle"]
+                CardText.cardText [] [str "Some quick example text to build on the card title and make up the bulk of the card's content."]
+                Button.button [Button.Color Primary] [str "Button"]
+            ]
+        ]
+        h5 [ClassName "mt-2"] [str "Header and Footer"]
+        Card.card [] [
+            CardHeader.cardHeader [] [str "Header"]
+            CardBody.cardBody [] [
+                CardTitle.cardTitle [] [str "Special Title Treatment"]
+                CardText.cardText [] [str "With supporting text below as a natural lead-in to additional content."]
+                Button.button [] [str "Go somewhere"]
+            ]
+            CardFooter.cardFooter [] [str "Footer"]
+        ]
+    ]
 
 let combined =
     fragment [] [
@@ -283,6 +306,8 @@ let combined =
         FunctionComponent.Of buttonDropdown ()
         exampleTitle "Button Group"
         FunctionComponent.Of buttonGroupSample ()
+        exampleTitle "Card"
+        cardSample
     ]
 
 Helpers.mountById "app" combined
