@@ -16,6 +16,19 @@
 #load "../src/DropdownItem.fs"
 #load "../src/ButtonGroup.fs"
 #load "../src/ButtonToolbar.fs"
+#load "../src/Card.fs"
+#load "../src/CardBody.fs"
+#load "../src/CardColumns.fs"
+#load "../src/CardDeck.fs"
+#load "../src/CardFooter.fs"
+#load "../src/CardGroup.fs"
+#load "../src/CardHeader.fs"
+#load "../src/CardImg.fs"
+#load "../src/CardImgOverlay.fs"
+#load "../src/CardLink.fs"
+#load "../src/CardSubtitle.fs"
+#load "../src/CardText.fs"
+#load "../src/CardTitle.fs"
 
 open Fable.Core.JsInterop
 open Fable.React
@@ -267,9 +280,9 @@ let combined =
         exampleTitle "Buttons"
         buttonSample
         exampleTitle "Button Dropdown"
-        ofFunction buttonDropdown () []
+        FunctionComponent.Of buttonDropdown ()
         exampleTitle "Button Group"
-        ofFunction buttonGroupSample () []
+        FunctionComponent.Of buttonGroupSample ()
     ]
 
 Helpers.mountById "app" combined
