@@ -14,6 +14,7 @@ module CardImg =
         | [<CompiledName("bottom")>] Bottom of bool
         | [<CompiledName("src")>] Src of string
         | [<CompiledName("alt")>] Alt of string
+        | [<CompiledName("width")>] Width of string
         
     let cardImg (props: CardImgProps seq) (elems: ReactElement seq) : ReactElement =
         ofImport "CardImg" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems

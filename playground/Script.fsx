@@ -349,6 +349,109 @@ let cardSample =
             CardText.cardText [] [str "With supporting text below as a natural lead-in to additional content."]
             Button.button [] [str "Button"]
         ]
+        h5 [ClassName "mt-2"] [str "Groups"]
+        CardGroup.cardGroup [] [
+            Card.card [] [
+                CardImg.cardImg [CardImg.Top true; CardImg.Width "100%"; CardImg.Src "http://lorempixel.com/400/200/"] []
+                CardBody.cardBody [] [
+                    CardTitle.cardTitle [] [str "Card title"]
+                    CardSubtitle.cardSubtitle [] [str "Card subtitle"]
+                    CardText.cardText [] [str "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."]
+                    Button.button [] [str "Button"]
+                ]
+            ]
+            Card.card [] [
+                CardImg.cardImg [CardImg.Top true; CardImg.Width "100%"; CardImg.Src "http://lorempixel.com/400/200/"] []
+                CardBody.cardBody [] [
+                    CardTitle.cardTitle [] [str "Card title"]
+                    CardSubtitle.cardSubtitle [] [str "Card subtitle"]
+                    CardText.cardText [] [str "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."]
+                    Button.button [] [str "Button"]
+                ]
+            ]
+            Card.card [] [
+                CardImg.cardImg [CardImg.Top true; CardImg.Width "100%"; CardImg.Src "http://lorempixel.com/400/200/"] []
+                CardBody.cardBody [] [
+                    CardTitle.cardTitle [] [str "Card title"]
+                    CardSubtitle.cardSubtitle [] [str "Card subtitle"]
+                    CardText.cardText [] [str "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."]
+                    Button.button [] [str "Button"]
+                ]
+            ]
+        ]
+        h5 [ClassName "mt-2"] [str "Decks"]
+        CardDeck.cardDeck [] [
+            Card.card [] [
+                CardImg.cardImg [CardImg.Top true; CardImg.Width "100%"; CardImg.Src "http://lorempixel.com/400/200/"] []
+                CardBody.cardBody [] [
+                    CardTitle.cardTitle [] [str "Card title"]
+                    CardSubtitle.cardSubtitle [] [str "Card subtitle"]
+                    CardText.cardText [] [str "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."]
+                    Button.button [] [str "Button"]
+                ]
+            ]
+            Card.card [] [
+                CardImg.cardImg [CardImg.Top true; CardImg.Width "100%"; CardImg.Src "http://lorempixel.com/400/200/"] []
+                CardBody.cardBody [] [
+                    CardTitle.cardTitle [] [str "Card title"]
+                    CardSubtitle.cardSubtitle [] [str "Card subtitle"]
+                    CardText.cardText [] [str "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."]
+                    Button.button [] [str "Button"]
+                ]
+            ]
+            Card.card [] [
+                CardImg.cardImg [CardImg.Top true; CardImg.Width "100%"; CardImg.Src "http://lorempixel.com/400/200/"] []
+                CardBody.cardBody [] [
+                    CardTitle.cardTitle [] [str "Card title"]
+                    CardSubtitle.cardSubtitle [] [str "Card subtitle"]
+                    CardText.cardText [] [str "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."]
+                    Button.button [] [str "Button"]
+                ]
+            ]
+        ]
+        h5 [ClassName "mt-2"] [str "Columns"]
+        CardColumns.cardColumns [] [
+            Card.card [] [
+                CardImg.cardImg [CardImg.Top true; CardImg.Width "100%"; CardImg.Src "http://lorempixel.com/400/200/"] []
+                CardBody.cardBody [] [
+                    CardTitle.cardTitle [] [str "Card title"]
+                    CardSubtitle.cardSubtitle [] [str "Card subtitle"]
+                    CardText.cardText [] [str "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."]
+                    Button.button [] [str "Button"]
+                ]
+            ]
+            Card.card [] [
+                CardImg.cardImg [CardImg.Top true; CardImg.Width "100%"; CardImg.Src "http://lorempixel.com/400/200/"] []
+            ]
+            Card.card [] [
+                CardImg.cardImg [CardImg.Top true; CardImg.Width "100%"; CardImg.Src "http://lorempixel.com/400/200/"] []
+                CardBody.cardBody [] [
+                    CardTitle.cardTitle [] [str "Card title"]
+                    CardSubtitle.cardSubtitle [] [str "Card subtitle"]
+                    CardText.cardText [] [str "This card has supporting text below as a natural lead-in to additional content."]
+                    Button.button [] [str "Button"]
+                ]
+            ]
+            Card.card [Card.Body true; Card.Inverse true; Card.Style [BackgroundColor "#333"; BorderColor "#333"]] [
+                CardTitle.cardTitle [] [str "Special Title Treatment"]
+                CardText.cardText [] [str "With supporting text below as a natural lead-in to additional content."]
+                Button.button [] [str "Button"]
+            ]
+            Card.card [] [
+                CardImg.cardImg [CardImg.Top true; CardImg.Width "100%"; CardImg.Src "http://lorempixel.com/400/200/"] []
+                CardBody.cardBody [] [
+                    CardTitle.cardTitle [] [str "Card title"]
+                    CardSubtitle.cardSubtitle [] [str "Card subtitle"]
+                    CardText.cardText [] [str "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."]
+                    Button.button [] [str "Button"]
+                ]
+            ]
+            Card.card [Card.Body true; Card.Inverse true; Card.Color Primary] [
+                CardTitle.cardTitle [] [str "Special Title Treatment"]
+                CardText.cardText [] [str "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer."]
+                Button.button [] [str "Button"]
+            ]
+        ]
     ]
 
 let combined =
