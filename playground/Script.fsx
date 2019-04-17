@@ -1,3 +1,5 @@
+open Fable.React.Props
+
 #load "../.paket/load/netstandard2.0/main.group.fsx"
 
 #if INTERACTIVE
@@ -289,6 +291,63 @@ let cardSample =
                 Button.button [] [str "Go somewhere"]
             ]
             CardFooter.cardFooter [] [str "Footer"]
+        ]
+        h5 [ClassName "mt-2"] [str "Background variants"]
+        Card.card [Card.Body true; Card.Inverse true; Card.ClassName "w-50"; Card.Style [BackgroundColor "#333"; BorderColor "#333"]] [
+            CardTitle.cardTitle [] [str "Special Title Treatment"]
+            CardText.cardText [] [str "With supporting text below as a natural lead-in to additional content."]
+            Button.button [] [str "Button"]
+        ]
+        Card.card [Card.Body true; Card.Inverse true; Card.Color Primary; Card.ClassName "w-50"] [
+            CardTitle.cardTitle [] [str "Special Title Treatment"]
+            CardText.cardText [] [str "With supporting text below as a natural lead-in to additional content."]
+            Button.button [] [str "Button"]
+        ]
+        Card.card [Card.Body true; Card.Inverse true; Card.Color Success; Card.ClassName "w-50"] [
+            CardTitle.cardTitle [] [str "Special Title Treatment"]
+            CardText.cardText [] [str "With supporting text below as a natural lead-in to additional content."]
+            Button.button [] [str "Button"]
+        ]
+        Card.card [Card.Body true; Card.Inverse true; Card.Color Info; Card.ClassName "w-50"] [
+            CardTitle.cardTitle [] [str "Special Title Treatment"]
+            CardText.cardText [] [str "With supporting text below as a natural lead-in to additional content."]
+            Button.button [] [str "Button"]
+        ]
+        Card.card [Card.Body true; Card.Inverse true; Card.Color Warning; Card.ClassName "w-50"] [
+            CardTitle.cardTitle [] [str "Special Title Treatment"]
+            CardText.cardText [] [str "With supporting text below as a natural lead-in to additional content."]
+            Button.button [] [str "Button"]
+        ]
+        Card.card [Card.Body true; Card.Inverse true; Card.Color Danger; Card.ClassName "w-50"] [
+            CardTitle.cardTitle [] [str "Special Title Treatment"]
+            CardText.cardText [] [str "With supporting text below as a natural lead-in to additional content."]
+            Button.button [] [str "Button"]
+        ]
+        h5 [ClassName "mt-2"] [str "Outline variants"]
+        Card.card [Card.Body true; Card.Color Primary; Card.ClassName "w-50"; Card.Outline true] [
+            CardTitle.cardTitle [] [str "Special Title Treatment"]
+            CardText.cardText [] [str "With supporting text below as a natural lead-in to additional content."]
+            Button.button [] [str "Button"]
+        ]
+        Card.card [Card.Body true; Card.Color Success; Card.ClassName "w-50"; Card.Outline true] [
+            CardTitle.cardTitle [] [str "Special Title Treatment"]
+            CardText.cardText [] [str "With supporting text below as a natural lead-in to additional content."]
+            Button.button [] [str "Button"]
+        ]
+        Card.card [Card.Body true; Card.Color Info; Card.ClassName "w-50"; Card.Outline true] [
+            CardTitle.cardTitle [] [str "Special Title Treatment"]
+            CardText.cardText [] [str "With supporting text below as a natural lead-in to additional content."]
+            Button.button [] [str "Button"]
+        ]
+        Card.card [Card.Body true; Card.Color Warning; Card.ClassName "w-50"; Card.Outline true] [
+            CardTitle.cardTitle [] [str "Special Title Treatment"]
+            CardText.cardText [] [str "With supporting text below as a natural lead-in to additional content."]
+            Button.button [] [str "Button"]
+        ]
+        Card.card [Card.Body true; Card.Color Danger; Card.ClassName "w-50"; Card.Outline true] [
+            CardTitle.cardTitle [] [str "Special Title Treatment"]
+            CardText.cardText [] [str "With supporting text below as a natural lead-in to additional content."]
+            Button.button [] [str "Button"]
         ]
     ]
 
