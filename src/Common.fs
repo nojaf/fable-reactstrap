@@ -1,6 +1,7 @@
 ﻿namespace ReactStrap
 
 open Fable.Core
+open Fable.Core
 
 [<AutoOpen>]
 module Common =
@@ -47,3 +48,28 @@ module Common =
         | [<CompiledName("down")>] Down
         | [<CompiledName("left")>] Left
         | [<CompiledName("right")>] Right
+        
+    [<StringEnum>]
+    type AddonType =
+        | [<CompiledName("prepend")>] Prepend
+        | [<CompiledName("append")>] Append
+        
+    [<StringEnum>]
+    type Placement =
+        | [<CompiledName("auto")>] Auto
+        | [<CompiledName("auto-start")>] AutoStart
+        | [<CompiledName("auto-end")>] AutoEnd
+        | [<CompiledName("top")>] Top
+        | [<CompiledName("top-start")>] TopStart
+        | [<CompiledName("top-end")>] TopEnd
+        | [<CompiledName("right")>] Right
+        | [<CompiledName("right-start")>] RightStart
+        | [<CompiledName("right-end")>] RightEnd
+        | [<CompiledName("bottom")>] Bottom
+        | [<CompiledName("bottom-start")>] BottomStart
+        | [<CompiledName("bottom-end")>] BottomEnd
+        | [<CompiledName("left")>] Left
+        | [<CompiledName("left-start")>] LeftStart
+        | [<CompiledName("left-end")>] LeftEnd
+        
+    type Delay = U2<int, {|show:int; hide:int|}>

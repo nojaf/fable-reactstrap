@@ -8,7 +8,15 @@ https://github.com/fable-compiler/fable-react/blob/master/docs/using-third-party
 
 https://getbootstrap.com/docs/4.3/content/code/
 
-| [<CompiledName("tag")>] Tag of string
 | [<CompiledName("color")>] Color of Common.Color
 | [<CompiledName("className")>] ClassName of string
+| [<CompiledName("tag")>] Tag of string
+| [<CompiledName("cssModule")>] CssModule of CSSModule
 | [<CompiledName("innerRef")>] InnerRef of (Element -> unit)
+| [<CompiledName("activeIndex")>] ActiveIndex of int
+| [<CompiledName("onClickHandler")>] OnClickHandler of (MouseEvent -> unit)
+| [<CompiledName("isOpen")>] IsOpen of bool
+| [<CompiledName("onClick")>] OnClick of (MouseEvent -> unit)
+
+| [<CompiledName("active")>] Active of bool
+| [<CompiledName("disabled")>] Disabled of bool
