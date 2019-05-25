@@ -2,9 +2,29 @@ $primary: purple
 
 @import "../node_modules/bootstrap/scss/bootstrap"
 
-.example-box
-  background-color: whitesmoke
-  padding: 1rem
+.docs-example
+  position: relative
+  padding: 3em 1em 1em
+  border: 1px solid #d8d8d8
+  margin: 1.5rem 0 0
+  
+  &::before
+    position: absolute
+    left: 0
+    top: 0
+    padding: 1em
+    color: #aaa
+    font-size: smaller
+    font-weight: 500
+    content: 'EXAMPLE'
 
 h2
   padding: 1rem 0
+  
+.docs-sidebar
+  .nav-item
+    padding: .2rem 0 .2rem 0
+  .nav-link
+    padding: .3rem .5rem .3rem 1rem
+  .nav-link.active
+    border-left: 2px solid #d9534f

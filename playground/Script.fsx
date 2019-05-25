@@ -1,6 +1,5 @@
-open Fable.React.Props
-
 #load "../.paket/load/netstandard2.0/main.group.fsx"
+#load "./HookRouter.fsx"
 
 #if INTERACTIVE
 #r "netstandard"
@@ -86,15 +85,18 @@ open Fable.React.Props
 #load "../src/ToastHeader.fs"
 #load "../src/Tooltip.fs"
 
+open System
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
 open Fable.React.Props
+open HookRouter
+open Browser
 
 importSideEffects "./style.sass"
 
-let private exampleBox children = div [ClassName "example-box"] children
-let private exampleTitle title = h2 [] [str title]
+let private exampleBox children = div [ClassName "docs-example"] children
+let private exampleTitle title = h2 [ClassName "h3"] [str title]
     
 let alertSample =
     exampleBox [
@@ -510,20 +512,76 @@ let cardSample =
 
 let combined =
     fragment [] [
-        exampleTitle "Alert"
-        alertSample
-        exampleTitle "Badges"
-        badgeSample
-        exampleTitle "Breadcrumbs"
-        breadcrumbsSample
-        exampleTitle "Buttons"
-        buttonSample
-        exampleTitle "Button Dropdown"
-        FunctionComponent.Of buttonDropdown ()
-        exampleTitle "Button Group"
-        FunctionComponent.Of buttonGroupSample ()
-        exampleTitle "Card"
-        cardSample
-    ]
 
-Helpers.mountById "app" combined
+    ]
+    
+let routes =
+    createObj [
+        "/components/alerts" ==> fun _ -> alertSample
+        "/components/badge" ==> fun _ -> badgeSample
+    ]
+    
+let routeUrls = Fable.Core.JS.Object.keys(routes)
+
+let NotFoundPage =
+    div [ ]
+        [ section [ ClassName "jumbotron text-center mb-3" ]
+            [ div [ ClassName "container" ]
+                [ div [ ClassName "row" ]
+                    [ div [ ClassName "col" ]
+                        [ p [ ClassName "lead" ]
+                            [ img [ Src "/assets/logo.png"
+                                    Alt ""
+                                    HTMLAttr.Width "150px" ] ]
+                          h1 [ ClassName "jumbotron-heading display-4" ]
+                            [ str "404 - Not Found" ]
+                          p [ ClassName "lead" ]
+                            [ str "Can't find what you're looking for?"
+                              br []
+                              a [ Href "https://github.com/nojaf/fablereactstrap/issues/new" ] [ str "Open up an issue." ]
+                            ]
+                           ] ] ] ] ]
+
+let App =
+    FunctionComponent.Of (fun _ ->
+        useRedirect "/" "/components/alerts" None (Some false)
+        useRedirect "/components" "/components/alerts" None (Some false)
+        let routeResults = useRoutes routes
+        let path = usePath()
+        
+        let menuItems =
+            routeUrls
+            |> Seq.map (fun url ->
+                let className = if url = path then "nav-link active" else "nav-link"
+                let text =
+                    url.Replace("/components/", "").Split('-')
+                    |> Array.map (fun word -> String.Concat(System.Char.ToUpper(word.[0]), word.Substring(1)))
+                    |> String.concat " "
+                
+                li [ClassName "nav-item"] [
+                    A [ AProps.ClassName className; AProps.Href url] [str text]
+                ]
+            )
+
+        match routeResults with
+        | Some r ->
+            div [ ClassName "container content" ] [
+                div [ClassName "row"] [
+                    main [ClassName "col-md-3 order-md-2"] [
+                        div [ClassName "mb-3 docs-sidebar"] [
+                            h1 [ClassName "h5"] [str "Components"]
+                            ul [ClassName "flex-column nav"] menuItems
+                        ]
+                    ]
+                    aside [ClassName "col-md-9 order-md-1"] [
+                        r
+                    ]
+                ]
+            ]
+        | None -> NotFoundPage
+
+    , "App")
+
+
+let app = document.getElementById "app"
+ReactDom.render(App(), app)
