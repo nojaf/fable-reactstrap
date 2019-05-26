@@ -1,12 +1,6 @@
+module HookRouter
+
 open Fable.Core
-
-// ts2fable 0.6.2
-#load "../.paket/load/netstandard2.0/main.group.fsx"
-
-#if INTERACTIVE
-#r "netstandard"
-#endif
-
 open Fable.Core.JsInterop
 open Fable.React
 open System.Text.RegularExpressions

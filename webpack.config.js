@@ -6,7 +6,7 @@ var path = require("path");
 
 module.exports = {
     mode: "development",
-    entry: "./playground/Script.fsx",
+    entry: "./playground/Playground.fsproj",
     output: {
         path: path.join(__dirname, "./playground"),
         filename: "bundle.js"
@@ -22,7 +22,7 @@ module.exports = {
             use: "fable-loader"
         },
             {
-                test: /\.sass$/,
+                test: /\.(sass|css)$/,
                 use: [
                     "style-loader", // creates style nodes from JS strings
                     "css-loader", // translates CSS into CommonJS
