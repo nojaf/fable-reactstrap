@@ -18,6 +18,7 @@ let routes =
     createObj [
         "/components/alerts" ==> fun _ -> AlertSample.alertSample
         "/components/badge" ==> fun _ -> BadgeSample.badgeSample
+        "/components/breadcrumbs" ==> fun _ -> BreadcrumbsSample.breadcrumbsSample
     ]
     
 let routeUrls = Fable.Core.JS.Object.keys(routes)

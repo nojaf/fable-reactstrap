@@ -166,6 +166,9 @@ let breadcrumbsSample =
                 str "Bootstrap"
             ]
         ]
+        prismCode """
+
+"""
     ]
     
 let buttonSample =
