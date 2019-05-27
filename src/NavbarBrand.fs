@@ -10,8 +10,9 @@ open ReactStrap
 module NavbarBrand =
 
     type NavbarBrandProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("tag")>] Tag of string
+        | ClassName of string
+        | Tag of string
+        | To of string
 
     let navbarBrand (props: NavbarBrandProps seq) (elems: ReactElement seq) : ReactElement =
         ofImport "NavbarBrand" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems

@@ -13,15 +13,25 @@ module Col =
         order: U2<string, int>
         offset: U2<string, int>
     }
+    
+    let mkCol size =
+        { size = size; order = !^0; offset = !^ 0 }
+        
+    let withOffset offset col =
+        { col with offset = offset }
+        
+    let withOrder order col =
+        { col with order = order }
 
     type ColProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("xs")>] Xs of ColumnProps
-        | [<CompiledName("sm")>] Sm of ColumnProps
-        | [<CompiledName("md")>] Md of ColumnProps
-        | [<CompiledName("lg")>] Lg of ColumnProps
-        | [<CompiledName("xl")>] Xl of ColumnProps
-        | [<CompiledName("widths")>] Widths of obj array
+        | ClassName of string
+        | Tag of string
+        | Xs of ColumnProps
+        | Sm of ColumnProps
+        | Md of ColumnProps
+        | Lg of ColumnProps
+        | Xl of ColumnProps
+        | Widths of obj array
 
     let col (props: ColProps seq) (elems: ReactElement seq) : ReactElement =
         ofImport "Col" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems

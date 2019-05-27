@@ -20,6 +20,7 @@ module Common =
     type [<AllowNullLiteral>] CSSModule =
         [<Emit "$0[$1]{{=$2}}">] abstract Item: className: string -> string with get, set
 
+    [<RequireQualifiedAccess>]
     type TransitionProps =
         | [<CompiledName("in")>] In of bool
         | [<CompiledName("baseClass")>] BaseClass of string
