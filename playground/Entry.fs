@@ -8,6 +8,7 @@ open System
 open ReactStrap
 open Browser
 open Fable.Core
+open ReactPrism
 
 importSideEffects "./style.sass"
 importSideEffects "prismjs"
@@ -20,23 +21,21 @@ let AlertSample : obj = rl(fun() -> importDynamic "./Components/AlertSample.fsx"
 let BadgeSample : obj = rl(fun() -> importDynamic "./Components/BadgeSample.fsx")
 let BreadcrumbsSample : obj = rl(fun() -> importDynamic "./Components/BreadcrumbsSample.fsx")
 let ButtonDropdownSample : obj = rl(fun() -> importDynamic "./Components/ButtonDropdownSample.fsx")
+let ButtonGroupSample : obj = rl(fun() -> importDynamic "./Components/ButtonGroupSample.fsx")
 
-type SuspenseProp =
-    | Fallback of ReactElement
-    
-let suspense props children =
-    ofImport "Suspense" "react" (keyValueList CaseRules.LowerFirst props) children
-    
-let rce = ReactBindings.React.createElement
+let showComponent comp sourceCode =
+    fragment [] [
+        ReactBindings.React.createElement(comp, null, [])
+        prismCode sourceCode
+    ]
 
 let routes =
     createObj [
-        "/components/alerts" ==> fun _ -> rce(AlertSample, null, [])
-        "/components/badge" ==> fun _ -> rce(BadgeSample, null, [])
-        "/components/breadcrumbs" ==> fun _ -> rce(BreadcrumbsSample, null, [])
-        "/components/button-dropdown" ==> fun _ -> rce(ButtonDropdownSample, null, [])
-        //"/components/breadcrumbs" ==> fun _ -> BreadcrumbsSample.breadcrumbsSample
-        //"/components/button-dropdown" ==> fun _ -> ButtonDropdownSample.buttonDropdownSample ()
+        "/components/alerts" ==> fun _ -> showComponent AlertSample (importDefault "!!raw-loader!./Components/AlertSample.fsx")
+        "/components/badge" ==> fun _ -> showComponent BadgeSample (importDefault"!!raw-loader!./Components/BadgeSample.fsx")
+        "/components/breadcrumbs" ==> fun _ -> showComponent BreadcrumbsSample (importDefault"!!raw-loader!./Components/BreadcrumbsSample.fsx")
+        "/components/button-dropdown" ==> fun _ -> showComponent ButtonDropdownSample (importDefault"!!raw-loader!./Components/ButtonDropdownSample.fsx")
+        "/components/button-group" ==> fun _ -> showComponent ButtonGroupSample (importDefault "!!raw-loader!./Components/ButtonGroupSample.fsx")
     ]
 
 let routeUrls = Fable.Core.JS.Object.keys(routes)
@@ -100,7 +99,7 @@ let layout path body =
                 ]
                 Col.col [Col.Md (Col.mkCol !^9 |> Col.withOrder !^ 1); Col.Tag "aside"] [
                     h2 [ClassName "h3"] [str activePageName]
-                    div [ClassName "docs-example"] [body; importDefault "!!raw-loader!./Script.fsx" |> str]
+                    div [ClassName "docs-example"] [body]
                 ]
             ]
         ]
@@ -110,6 +109,12 @@ let Loading =
     div [ Id "preloader"] [
         div [Id "loader"] []
     ]
+    
+type SuspenseProp =
+    | Fallback of ReactElement
+    
+let suspense props children =
+    ofImport "Suspense" "react" (keyValueList CaseRules.LowerFirst props) children
 
 let App =
     FunctionComponent.Of (fun _ ->
@@ -123,7 +128,6 @@ let App =
         | None -> NotFoundPage
 
     , "App")
-
 
 let app = document.getElementById "app"
 ReactDom.render(App(), app)
