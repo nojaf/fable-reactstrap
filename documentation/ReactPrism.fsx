@@ -1,4 +1,4 @@
-module ReactPrism
+#load "../.paket/load/netstandard2.0/main.group.fsx"
 
 open Fable.React
 open Fable.Core.JsInterop

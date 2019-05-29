@@ -1,4 +1,13 @@
-﻿module Entry
+﻿#load "../.paket/load/netstandard2.0/main.group.fsx"
+#load "./HookRouter.fsx"
+#load "./ReactPrism.fsx"
+#load "../src/Common.fs"
+#load "../src/Container.fs"
+#load "../src/Row.fs"
+#load "../src/Col.fs"
+#load "../src/Nav.fs"
+#load "../src/Navbar.fs"
+#load "../src/NavItem.fs"
 
 open Fable.Core.JsInterop
 open Fable.React

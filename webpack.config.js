@@ -11,7 +11,7 @@ const babel = {
 
 module.exports = {
   mode: "development",
-  entry: "./playground/Playground.fsproj",
+  entry: "./documentation/Entry.fsx",
   output: {
     path: path.join(__dirname, "./docs"),
     filename: "[name].bundle.js",
@@ -19,7 +19,7 @@ module.exports = {
     publicPath: "/"
   },
   devServer: {
-    contentBase: "./playground",
+    contentBase: "./documentation",
     port: 8080,
     historyApiFallback: true
   },
@@ -56,7 +56,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: "./playground/index.html"
+      template: "./documentation/index.html"
     })
   ]
 };

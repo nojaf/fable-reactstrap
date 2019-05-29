@@ -1,4 +1,4 @@
-module HookRouter
+#load "../.paket/load/netstandard2.0/main.group.fsx"
 
 open Fable.Core
 open Fable.Core.JsInterop
