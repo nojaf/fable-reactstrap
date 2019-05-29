@@ -7,21 +7,38 @@ open HookRouter
 open System
 open ReactStrap
 open Browser
-open Playground.Components
+open Fable.Core
 
 importSideEffects "./style.sass"
 importSideEffects "prismjs"
 importSideEffects "prismjs/components/prism-fsharp"
 importSideEffects "./prism-monokai.css"
 
+let rl = ReactBindings.React.``lazy``
+
+let AlertSample : obj = rl(fun() -> importDynamic "./Components/AlertSample.fsx")
+let BadgeSample : obj = rl(fun() -> importDynamic "./Components/BadgeSample.fsx")
+let BreadcrumbsSample : obj = rl(fun() -> importDynamic "./Components/BreadcrumbsSample.fsx")
+let ButtonDropdownSample : obj = rl(fun() -> importDynamic "./Components/ButtonDropdownSample.fsx")
+
+type SuspenseProp =
+    | Fallback of ReactElement
+    
+let suspense props children =
+    ofImport "Suspense" "react" (keyValueList CaseRules.LowerFirst props) children
+    
+let rce = ReactBindings.React.createElement
 
 let routes =
     createObj [
-        "/components/alerts" ==> fun _ -> AlertSample.alertSample
-        "/components/badge" ==> fun _ -> BadgeSample.badgeSample
-        "/components/breadcrumbs" ==> fun _ -> BreadcrumbsSample.breadcrumbsSample
+        "/components/alerts" ==> fun _ -> rce(AlertSample, null, [])
+        "/components/badge" ==> fun _ -> rce(BadgeSample, null, [])
+        "/components/breadcrumbs" ==> fun _ -> rce(BreadcrumbsSample, null, [])
+        "/components/button-dropdown" ==> fun _ -> rce(ButtonDropdownSample, null, [])
+        //"/components/breadcrumbs" ==> fun _ -> BreadcrumbsSample.breadcrumbsSample
+        //"/components/button-dropdown" ==> fun _ -> ButtonDropdownSample.buttonDropdownSample ()
     ]
-    
+
 let routeUrls = Fable.Core.JS.Object.keys(routes)
 
 let NotFoundPage =
@@ -60,7 +77,7 @@ let layout path body =
             ]
         )
 
-    let activePageName = urlToName path    
+    let activePageName = urlToName path
     
     fragment [] [
         Nav.nav [Nav.Navbar true; Nav.ClassName "navbar navbar-expand-md navbar-light header"] [
@@ -83,10 +100,15 @@ let layout path body =
                 ]
                 Col.col [Col.Md (Col.mkCol !^9 |> Col.withOrder !^ 1); Col.Tag "aside"] [
                     h2 [ClassName "h3"] [str activePageName]
-                    div [ClassName "docs-example"] [body]
+                    div [ClassName "docs-example"] [body; importDefault "!!raw-loader!./Script.fsx" |> str]
                 ]
             ]
         ]
+    ]
+    
+let Loading =
+    div [ Id "preloader"] [
+        div [Id "loader"] []
     ]
 
 let App =
@@ -97,8 +119,7 @@ let App =
         let path = usePath()
 
         match routeResults with
-        | Some r -> layout path r
-
+        | Some r -> suspense [Fallback Loading] [ layout path r ]
         | None -> NotFoundPage
 
     , "App")

@@ -6,9 +6,8 @@
 
   <ItemGroup>
     <Compile Include="ReactPrism.fs" />
-    <Compile Include="Components\AlertSample.fs" />
-    <Compile Include="Components\BadgeSample.fs" />
-    <Compile Include="Components\BreadcrumbsSample.fs" />
+    <None Include="Components\BreadcrumbsSample.fsx" />
+    <None Include="Components\ButtonDropdownSample.fsx" />
     <Compile Include="HookRouter.fs" />
     <Compile Include="Entry.fs" />
   </ItemGroup>
