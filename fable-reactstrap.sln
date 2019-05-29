@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FableReactStrap", "src\FableReactStrap.fsproj", "{D2A9CA49-A71C-4ABD-BF54-262300B814FB}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Playground", "playground\Playground.fsproj", "{DAE8AECF-CF24-473B-90DF-EE1140757D6E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,17 +30,5 @@ Global
 		{D2A9CA49-A71C-4ABD-BF54-262300B814FB}.Release|x64.Build.0 = Release|Any CPU
 		{D2A9CA49-A71C-4ABD-BF54-262300B814FB}.Release|x86.ActiveCfg = Release|Any CPU
 		{D2A9CA49-A71C-4ABD-BF54-262300B814FB}.Release|x86.Build.0 = Release|Any CPU
-		{DAE8AECF-CF24-473B-90DF-EE1140757D6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DAE8AECF-CF24-473B-90DF-EE1140757D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DAE8AECF-CF24-473B-90DF-EE1140757D6E}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{DAE8AECF-CF24-473B-90DF-EE1140757D6E}.Debug|x64.Build.0 = Debug|Any CPU
-		{DAE8AECF-CF24-473B-90DF-EE1140757D6E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{DAE8AECF-CF24-473B-90DF-EE1140757D6E}.Debug|x86.Build.0 = Debug|Any CPU
-		{DAE8AECF-CF24-473B-90DF-EE1140757D6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DAE8AECF-CF24-473B-90DF-EE1140757D6E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DAE8AECF-CF24-473B-90DF-EE1140757D6E}.Release|x64.ActiveCfg = Release|Any CPU
-		{DAE8AECF-CF24-473B-90DF-EE1140757D6E}.Release|x64.Build.0 = Release|Any CPU
-		{DAE8AECF-CF24-473B-90DF-EE1140757D6E}.Release|x86.ActiveCfg = Release|Any CPU
-		{DAE8AECF-CF24-473B-90DF-EE1140757D6E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
