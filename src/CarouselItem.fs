@@ -1,30 +1,44 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
+open Fable.React.Props
 open ReactStrap
 
 [<RequireQualifiedAccess>]
 module CarouselItem =
-
     type CarouselItemProps =
-        | [<CompiledName("in")>] In of bool
-        | [<CompiledName("baseClass")>] BaseClass of string
-        | [<CompiledName("baseClassIn")>] BaseClassIn of string
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("cssModule")>] CssModule of CSSModule
-        | [<CompiledName("transitionAppearTimeout")>] TransitionAppearTimeout of int
-        | [<CompiledName("transitionEnterTimeout")>] TransitionEnterTimeout of int
-        | [<CompiledName("transitionLeaveTimeout")>] TransitionLeaveTimeout of int
-        | [<CompiledName("transitionAppear")>] TransitionAppear of bool
-        | [<CompiledName("transitionEnter")>] TransitionEnter of bool
-        | [<CompiledName("transitionLeave")>] TransitionLeave of bool
-        | [<CompiledName("onLeave")>] OnLeave of (unit -> unit)
-        | [<CompiledName("onEnter")>] OnEnter of (unit -> unit)
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("slide")>] Slide of bool
+        | In of bool
+        | BaseClass of string
+        | BaseClassIn of string
+        | CssModule of CSSModule
+        | TransitionAppearTimeout of int
+        | TransitionEnterTimeout of int
+        | TransitionLeaveTimeout of int
+        | TransitionAppear of bool
+        | TransitionEnter of bool
+        | TransitionLeave of bool
+        | OnLeave of (unit -> unit)
+        | OnEnter of (unit -> unit)
+        | Slide of bool
+        | Tag of U2<string, obj>
+        | Custom of HTMLAttr list
 
-    let carouselItem (props: CarouselItemProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "CarouselItem" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+    let carouselItem (props: CarouselItemProps seq) (elems: ReactElement seq): ReactElement =
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "CarouselItem" "reactstrap" props elems

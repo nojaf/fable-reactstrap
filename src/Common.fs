@@ -1,7 +1,6 @@
 ﻿namespace ReactStrap
 
 open Fable.Core
-open Fable.Core
 
 [<AutoOpen>]
 module Common =
@@ -25,7 +24,6 @@ module Common =
         | [<CompiledName("in")>] In of bool
         | [<CompiledName("baseClass")>] BaseClass of string
         | [<CompiledName("baseClassIn")>] BaseClassIn of string
-        | [<CompiledName("className")>] ClassName of string
         | [<CompiledName("cssModule")>] CssModule of CSSModule
         | [<CompiledName("transitionAppearTimeout")>] TransitionAppearTimeout of int
         | [<CompiledName("transitionEnterTimeout")>] TransitionEnterTimeout of int

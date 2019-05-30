@@ -1,16 +1,14 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
-open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Form =
+    type FormProps = Custom of HTMLAttr list
 
-    type FormProps =
-        | [<CompiledName("className")>] ClassName of string
-
-    let form (props: FormProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "Form" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+    let form (props: FormProps seq) (elems: ReactElement seq): ReactElement =
+        let props = keyValueList CaseRules.LowerFirst props
+        ofImport "Form" "reactstrap" props elems

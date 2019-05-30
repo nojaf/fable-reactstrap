@@ -1,25 +1,40 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Progress =
 
     type ProgressProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("multi")>] Multi of bool
-        | [<CompiledName("bar")>] Bar of bool
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("value")>] Value of U2<string,int>
-        | [<CompiledName("max")>] Max of U2<string,int>
-        | [<CompiledName("animated")>] Animated of bool
-        | [<CompiledName("striped")>] Striped of bool
-        | [<CompiledName("color")>] Color of Common.Color
-        | [<CompiledName("barClassName")>] BarClassName of string
+        | Tag of U2<string, obj>
+        | Bar of bool
+        | Value of U2<string,int>
+        | Max of U2<string,int>
+        | Animated of bool
+        | Multi of bool
+        | Striped of bool
+        | Color of Common.Color
+        | BarClassName of string
+        | Custom of HTMLAttr list
 
     let progress (props: ProgressProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "Progress" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "Progress" "reactstrap" props elems

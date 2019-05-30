@@ -1,22 +1,37 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module FormGroup =
 
     type FormGroupProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("row")>] Row of bool
-        | [<CompiledName("check")>] Check of bool
-        | [<CompiledName("inline")>] Inline of bool
-        | [<CompiledName("disabled")>] Disabled of bool
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("cssModule")>] CssModule of CSSModule
+        | Row of bool
+        | Check of bool
+        | Inline of bool
+        | Disabled of bool
+        | CssModule of CSSModule
+        | Tag of U2<string, obj>
+        | Custom of HTMLAttr list
 
     let formGroup (props: FormGroupProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "FormGroup" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "FormGroup" "reactstrap" props elems

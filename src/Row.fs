@@ -1,18 +1,32 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
-open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Row =
 
     type RowProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("noGutters")>] NoGutters of bool
-        | [<CompiledName("form")>] Form of bool
+        | NoGutters of bool
+        | Form of bool
+        | Custom of HTMLAttr list
 
     let row (props: RowProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "Row" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "Row" "reactstrap" props elems

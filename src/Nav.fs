@@ -1,25 +1,40 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
-open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Nav =
 
     type NavProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("tabs")>] Tabs of bool
-        | [<CompiledName("pills")>] Pills of bool
-        | [<CompiledName("card")>] Card of bool
-        | [<CompiledName("justified")>] Justified of bool
-        | [<CompiledName("fill")>] Fill of bool
-        | [<CompiledName("vertical")>] Vertical of U2<bool,string>
-        | [<CompiledName("horizontal")>] Horizontal of string
-        | [<CompiledName("navbar")>] Navbar of bool
-        | [<CompiledName("tag")>] Tag of string
+        | Tabs of bool
+        | Pills of bool
+        | Card of bool
+        | Justified of bool
+        | Fill of bool
+        | Vertical of U2<bool,string>
+        | Horizontal of string
+        | Navbar of bool
+        | Tag of U2<string, obj>
+        | Custom of HTMLAttr list
 
     let nav (props: NavProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "Nav" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        
+        ofImport "Nav" "reactstrap" props elems

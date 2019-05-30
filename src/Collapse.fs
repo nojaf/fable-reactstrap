@@ -4,33 +4,48 @@ open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
+open Fable.React.Props
 open ReactStrap
 
 [<RequireQualifiedAccess>]
 module Collapse =
-
     type CollapseProps =
-        | [<CompiledName("in")>] In of bool
-        | [<CompiledName("baseClass")>] BaseClass of string
-        | [<CompiledName("baseClassIn")>] BaseClassIn of string
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("cssModule")>] CssModule of CSSModule
-        | [<CompiledName("transitionAppearTimeout")>] TransitionAppearTimeout of int
-        | [<CompiledName("transitionEnterTimeout")>] TransitionEnterTimeout of int
-        | [<CompiledName("transitionLeaveTimeout")>] TransitionLeaveTimeout of int
-        | [<CompiledName("transitionAppear")>] TransitionAppear of bool
-        | [<CompiledName("transitionEnter")>] TransitionEnter of bool
-        | [<CompiledName("transitionLeave")>] TransitionLeave of bool
-        | [<CompiledName("onLeave")>] OnLeave of (unit -> unit)
-        | [<CompiledName("onEnter")>] OnEnter of (unit -> unit)
-        | [<CompiledName("isOpen")>] IsOpen of bool
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("innerRef")>] InnerRef of (Element -> unit)
-        | [<CompiledName("navbar")>] Navbar of bool
-        | [<CompiledName("onEntering")>] OnEntering of (unit -> unit)
-        | [<CompiledName("onEntered")>] OnEntered of (unit -> unit)
-        | [<CompiledName("onExiting")>] OnExiting of (unit -> unit)
-        | [<CompiledName("onExited")>] OnExited of (unit -> unit)
+        | In of bool
+        | BaseClass of string
+        | BaseClassIn of string
+        | CssModule of CSSModule
+        | TransitionAppearTimeout of int
+        | TransitionEnterTimeout of int
+        | TransitionLeaveTimeout of int
+        | TransitionAppear of bool
+        | TransitionEnter of bool
+        | TransitionLeave of bool
+        | OnLeave of (unit -> unit)
+        | OnEnter of (unit -> unit)
+        | IsOpen of bool
+        | InnerRef of (Element -> unit)
+        | Navbar of bool
+        | OnEntering of (unit -> unit)
+        | OnEntered of (unit -> unit)
+        | OnExiting of (unit -> unit)
+        | OnExited of (unit -> unit)
+        | Tag of U2<string, obj>
+        | Custom of HTMLAttr list
 
-    let collapse (props: CollapseProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "Collapse" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+    let collapse (props: CollapseProps seq) (elems: ReactElement seq): ReactElement =
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "Collapse" "reactstrap" props elems

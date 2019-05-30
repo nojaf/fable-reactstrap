@@ -4,18 +4,33 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module ButtonToolbar =
     
     type ButtonToolbarProps =
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("aria-label")>] AriaLabel of string
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("role")>] Role of string
-        | [<CompiledName("cssModule")>] CSSModule of Common.CSSModule
+        | Tag of U2<string, obj>
+        | CSSModule of Common.CSSModule
+        | Custom of HTMLAttr list
         
     let buttonToolbar (props: ButtonToolbarProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "ButtonToolbar" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        
+        ofImport "ButtonToolbar" "reactstrap" props elems
 
 

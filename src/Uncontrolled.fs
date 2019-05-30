@@ -10,7 +10,7 @@ open ReactStrap
 module Uncontrolled =
 
     type UncontrolledProps =
-        | [<CompiledName("className")>] ClassName of string
+        | Custom of HTMLAttr list
 
     let uncontrolled (props: UncontrolledProps seq) (elems: ReactElement seq) : ReactElement =
         ofImport "Uncontrolled" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems

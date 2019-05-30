@@ -1,25 +1,40 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
-open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module ToastHeader =
 
     type ToastHeaderProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("cssModule")>] CssModule of CSSModule
-        | [<CompiledName("wrapTag")>] WrapTag of string
-        | [<CompiledName("toggle")>] Toggle of (unit -> unit)
-        | [<CompiledName("icon")>] Icon of U2<string, ReactElement>
-        | [<CompiledName("close")>] Close of ReactElement
-        | [<CompiledName("charCode")>] CharCode of U2<string, int>
-        | [<CompiledName("closeAriaLabel")>] CloseAriaLabel of string
+        | Tag of U2<string, obj>
+        | CssModule of CSSModule
+        | WrapTag of string
+        | Toggle of (unit -> unit)
+        | Icon of U2<string, ReactElement>
+        | Close of ReactElement
+        | CharCode of U2<string, int>
+        | CloseAriaLabel of string
+        | Custom of HTMLAttr list
 
     let toastHeader (props: ToastHeaderProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "ToastHeader" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        
+        ofImport "ToastHeader" "reactstrap" props elems

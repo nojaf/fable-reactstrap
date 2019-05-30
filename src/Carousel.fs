@@ -5,23 +5,39 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Carousel =
 
     type CarouselProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("activeIndex")>] ActiveIndex of int
-        | [<CompiledName("next")>] Next of (unit -> unit)
-        | [<CompiledName("previous")>] Previous of (unit -> unit)
-        | [<CompiledName("keyboard")>] Keyboard of bool
-        | [<CompiledName("pause")>] Pause of U2<string, bool>
-        | [<CompiledName("ride")>] Ride of string
-        | [<CompiledName("interval")>] Interval of U3<int,string,bool>
-        | [<CompiledName("mouseEnter")>] MouseEnter of (MouseEvent -> unit)
-        | [<CompiledName("mouseLeave")>] MouseLeave of (MouseEvent -> unit)
-        | [<CompiledName("slide")>] Slide of bool
-        | [<CompiledName("cssModule")>] CssModule of CSSModule
+        | ActiveIndex of int
+        | Next of (unit -> unit)
+        | Previous of (unit -> unit)
+        | Keyboard of bool
+        | Pause of U2<string, bool>
+        | Ride of string
+        | Interval of U3<int,string,bool>
+        | MouseEnter of (MouseEvent -> unit)
+        | MouseLeave of (MouseEvent -> unit)
+        | Slide of bool
+        | CssModule of CSSModule
+        | Custom of HTMLAttr list
 
     let carousel (props: CarouselProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "Carousel" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "Carousel" "reactstrap" props elems

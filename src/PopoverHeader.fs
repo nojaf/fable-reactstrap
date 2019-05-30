@@ -1,16 +1,16 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
-open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module PopoverHeader =
 
     type PopoverHeaderProps =
-        | [<CompiledName("className")>] ClassName of string
+        | Custom of HTMLAttr list
 
     let popoverHeader (props: PopoverHeaderProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "PopoverHeader" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let props = keyValueList CaseRules.LowerFirst props
+        ofImport "PopoverHeader" "reactstrap" props elems

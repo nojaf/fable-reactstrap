@@ -4,30 +4,45 @@ open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
+open Fable.React.Props
 open ReactStrap
 
 [<RequireQualifiedAccess>]
 module Tooltip =
-
     type TooltipProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("trigger")>] Trigger of string
-        | [<CompiledName("boundariesElement")>] BoundariesElement of U2<string,Element>
-        | [<CompiledName("isOpen")>] IsOpen of bool
-        | [<CompiledName("hideArrow")>] HideArrow of bool
-        | [<CompiledName("toggle")>] Toggle of (unit -> unit)
-        | [<CompiledName("target")>] Target of U2<string, Element>
-        | [<CompiledName("container")>] Container of U2<string,Element>
-        | [<CompiledName("delay")>] Delay of Common.Delay
-        | [<CompiledName("innerClassName")>] InnerClassName of string
-        | [<CompiledName("arrowClassName")>] ArrowClassName of string
-        | [<CompiledName("autohide")>] Autohide of bool
-        | [<CompiledName("placement")>] Placement of Common.Placement
-        | [<CompiledName("modifiers")>] Modifiers of obj
-        | [<CompiledName("offset")>] Offset of U2<string,int>
-        | [<CompiledName("innerRef")>] InnerRef of (Element -> unit)
-        | [<CompiledName("fade")>] Fade of bool
-        | [<CompiledName("flip")>] Flip of bool
+        | Trigger of string
+        | BoundariesElement of U2<string, Element>
+        | IsOpen of bool
+        | HideArrow of bool
+        | Toggle of (unit -> unit)
+        | Target of U2<string, Element>
+        | Container of U2<string, Element>
+        | Delay of Common.Delay
+        | InnerClassName of string
+        | ArrowClassName of string
+        | Autohide of bool
+        | Placement of Common.Placement
+        | Modifiers of obj
+        | Offset of U2<string, int>
+        | InnerRef of (Element -> unit)
+        | Fade of bool
+        | Flip of bool
+        | Custom of HTMLAttr list
 
-    let tooltip (props: TooltipProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "Tooltip" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+    let tooltip (props: TooltipProps seq) (elems: ReactElement seq): ReactElement =
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "Tooltip" "reactstrap" props elems

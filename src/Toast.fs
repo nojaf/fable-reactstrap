@@ -1,20 +1,20 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Toast =
 
     type ToastProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("color")>] Color of Common.Color
-        | [<CompiledName("isOpen")>] IsOpen of bool
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("transition")>] Transition of Fade.FadeProps seq
+        | Color of Common.Color
+        | IsOpen of bool
+        | Tag of U2<string, obj>
+        | Transition of Fade.FadeProps seq
+        | Custom of HTMLAttr list
 
     let toast (props: ToastProps seq) (elems: ReactElement seq) : ReactElement =
         let toastProps =
@@ -26,6 +26,8 @@ module Toast =
                     match prop with
                     | Transition fade ->
                         createObj [ "transition" ==> keyValueList CaseRules.LowerFirst fade]
+                    | Custom customProps ->
+                        keyValueList CaseRules.LowerFirst customProps
                     | prop ->
                         keyValueList CaseRules.LowerFirst (Seq.singleton prop)
                 )

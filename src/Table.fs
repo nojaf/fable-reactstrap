@@ -5,21 +5,37 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Table =
 
     type TableProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("size")>] Size of Common.Size
-        | [<CompiledName("bordered")>] Bordered of bool
-        | [<CompiledName("borderless")>] Borderless of bool
-        | [<CompiledName("striped")>] Striped of bool
-        | [<CompiledName("dark")>] Dark of bool
-        | [<CompiledName("hover")>] Hover of bool
-        | [<CompiledName("responsive")>] Responsive of bool
-        | [<CompiledName("innerRef")>] InnerRef of (Element -> unit)
+        | Tag of U2<string, obj>
+        | Bordered of bool
+        | Borderless of bool
+        | Size of Common.Size
+        | Striped of bool
+        | Dark of bool
+        | Hover of bool
+        | Responsive of bool
+        | InnerRef of (Element -> unit)
+        | Custom of HTMLAttr list
 
     let table (props: TableProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "Table" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "Table" "reactstrap" props elems

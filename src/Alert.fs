@@ -3,20 +3,34 @@ namespace ReactStrap
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
+open Fable.React.Props
 open ReactStrap
 
 [<RequireQualifiedAccess>]
 module Alert =
-    
     type AlertProps =
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("cssModule")>] CSSModule of Common.CSSModule
-        | [<CompiledName("color")>] Color of Common.Color
-        | [<CompiledName("transition")>] Transition of TransitionProps
-        | [<CompiledName("isOpen")>] IsOpen of bool
-        | [<CompiledName("toggle")>] Toggle of (unit -> unit)
-        
-    
-    let alert (props: AlertProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "Alert" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        | Tag of U2<string, obj>
+        | CSSModule of Common.CSSModule
+        | Color of Common.Color
+        | Transition of TransitionProps
+        | IsOpen of bool
+        | Toggle of (unit -> unit)
+        | Custom of HTMLAttr list
+
+    let alert (props: AlertProps seq) (elems: ReactElement seq): ReactElement =
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "Alert" "reactstrap" props elems

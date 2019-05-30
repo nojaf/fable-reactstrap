@@ -1,26 +1,40 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
-open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Media =
 
     type MediaProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("body")>] Body of bool
-        | [<CompiledName("bottom")>] Bottom of bool
-        | [<CompiledName("heading")>] Heading of bool
-        | [<CompiledName("left")>] Left of bool
-        | [<CompiledName("list")>] List of bool
-        | [<CompiledName("middle")>] Middle of bool
-        | [<CompiledName("object")>] Object of bool
-        | [<CompiledName("right")>] Right of bool
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("top")>] Top of bool
+        | Body of bool
+        | Bottom of bool
+        | Heading of bool
+        | Left of bool
+        | List of bool
+        | Middle of bool
+        | Object of bool
+        | Right of bool
+        | Top of bool
+        | Tag of U2<string, obj>
+        | Custom of HTMLAttr list
 
     let media (props: MediaProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "Media" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "Media" "reactstrap" props elems

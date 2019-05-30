@@ -1,21 +1,34 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module PaginationItem =
 
     type PaginationItemProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("key")>] Key of obj
-        | [<CompiledName("active")>] Active of bool
-        | [<CompiledName("cssModule")>] CssModule of CSSModule
-        | [<CompiledName("disabled")>] Disabled of bool
-        | [<CompiledName("tag")>] Tag of string
+        | Active of bool
+        | CssModule of CSSModule
+        | Tag of U2<string, obj>
+        | Custom of HTMLAttr list
 
     let paginationItem (props: PaginationItemProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "PaginationItem" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "PaginationItem" "reactstrap" props elems

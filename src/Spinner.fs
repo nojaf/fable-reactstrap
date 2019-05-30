@@ -1,20 +1,35 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Spinner =
 
     type SpinnerProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("type")>] Type of string
-        | [<CompiledName("size")>] Size of Common.Size
-        | [<CompiledName("color")>] Color of Common.Color
-        | [<CompiledName("cssModule")>] CssModule of CSSModule
+        | Type of string
+        | Size of Common.Size
+        | Color of Common.Color
+        | CssModule of CSSModule
+        | Custom of HTMLAttr list
 
     let spinner (props: SpinnerProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "Spinner" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "Spinner" "reactstrap" props elems

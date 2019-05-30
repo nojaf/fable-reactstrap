@@ -1,18 +1,32 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
-open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Jumbotron =
 
     type JumbotronProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("fluid")>] Fluid of bool
-        | [<CompiledName("tag")>] Tag of string
+        | Fluid of bool
+        | Tag of U2<string, obj>
+        | Custom of HTMLAttr list
 
     let jumbotron (props: JumbotronProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "Jumbotron" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "Jumbotron" "reactstrap" props elems

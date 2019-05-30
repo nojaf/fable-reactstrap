@@ -1,20 +1,35 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module FormText =
 
     type FormTextProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("inline")>] Inline of bool
-        | [<CompiledName("color")>] Color of Common.Color
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("cssModule")>] CssModule of CSSModule
+        | Inline of bool
+        | Color of Common.Color
+        | CssModule of CSSModule
+        | Tag of U2<string, obj>
+        | Custom of HTMLAttr list
 
     let formText (props: FormTextProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "FormText" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "FormText" "reactstrap" props elems

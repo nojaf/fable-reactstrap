@@ -1,19 +1,34 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module ListGroup =
 
     type ListGroupProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("flush")>] Flush of bool
-        | [<CompiledName("cssModule")>] CssModule of CSSModule
+        | Tag of U2<string, obj>
+        | CssModule of CSSModule
+        | Flush of bool
+        | Custom of HTMLAttr list
 
     let listGroup (props: ListGroupProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "ListGroup" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "ListGroup" "reactstrap" props elems

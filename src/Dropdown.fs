@@ -1,25 +1,40 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Dropdown =
 
     type DropdownProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("disabled")>] Disabled of bool
-        | [<CompiledName("direction")>] Direction of Common.Direction
-        | [<CompiledName("group")>] Group of bool
-        | [<CompiledName("isOpen")>] IsOpen of bool
-        | [<CompiledName("nav")>] Nav of bool
-        | [<CompiledName("active")>] Active of bool
-        | [<CompiledName("inNavbar")>] InNavbar of bool
-        | [<CompiledName("toggle")>] Toggle of (unit -> unit)
-        | [<CompiledName("setActiveFromChild")>] SetActiveFromChild of bool
+        | Disabled of bool
+        | Direction of Common.Direction
+        | Group of bool
+        | IsOpen of bool
+        | Nav of bool
+        | Active of bool
+        | InNavbar of bool
+        | Toggle of (unit -> unit)
+        | SetActiveFromChild of bool
+        | Custom of HTMLAttr list
 
     let dropdown (props: DropdownProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "Dropdown" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "Dropdown" "reactstrap" props elems

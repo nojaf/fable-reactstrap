@@ -1,20 +1,35 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Tag =
 
     type TagProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("cssModule")>] CssModule of CSSModule
-        | [<CompiledName("color")>] Color of Common.Color
-        | [<CompiledName("pill")>] Pill of bool
+        | Tag of U2<string, obj>
+        | CssModule of CSSModule
+        | Color of Common.Color
+        | Pill of bool
+        | Custom of HTMLAttr list
 
     let tag (props: TagProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "Tag" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "Tag" "reactstrap" props elems

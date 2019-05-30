@@ -4,17 +4,32 @@ open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
-open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module NavLink =
 
     type NavLinkProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("disabled")>] Disabled of bool
-        | [<CompiledName("active")>] Active of bool
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("innerRef")>] InnerRef of (Element -> unit)
+        | Active of bool
+        | InnerRef of (Element -> unit)
+        | Tag of U2<string, obj>
+        | Custom of HTMLAttr list
+        
 
     let navLink (props: NavLinkProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "NavLink" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "NavLink" "reactstrap" props elems

@@ -4,15 +4,31 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module CarouselCaption =
 
     type CarouselCaptionProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("captionHeader")>] CaptionHeader of string
-        | [<CompiledName("captionText")>] CaptionText of string
-        | [<CompiledName("cssModule")>] CssModule of CSSModule
+        | CaptionHeader of string
+        | CaptionText of string
+        | CssModule of CSSModule
+        | Custom of HTMLAttr list
 
     let carouselCaption (props: CarouselCaptionProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "CarouselCaption" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "CarouselCaption" "reactstrap" props elems

@@ -3,21 +3,34 @@ namespace ReactStrap
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module CardImg =
     
     type CardImgProps =
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("top")>] Top of bool
-        | [<CompiledName("bottom")>] Bottom of bool
-        | [<CompiledName("src")>] Src of string
-        | [<CompiledName("alt")>] Alt of string
-        | [<CompiledName("width")>] Width of string
+        | Tag of U2<string, obj>
+        | Top of bool
+        | Bottom of bool
+        | Custom of HTMLAttr list
         
     let cardImg (props: CardImgProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "CardImg" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "CardImg" "reactstrap" props elems
 
 
 

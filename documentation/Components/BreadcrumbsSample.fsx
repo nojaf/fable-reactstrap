@@ -27,19 +27,19 @@ let private breadcrumbsSample =
                       [ str "Data" ] ]
             p [] [ str "No list" ]
             Breadcrumb.breadcrumb
-                [ Breadcrumb.Tag "nav"
-                  Breadcrumb.ListTag "div" ]
+                [ Breadcrumb.Tag !^ "nav"
+                  Breadcrumb.ListTag !^ "div" ]
                 [ BreadcrumbItem.breadcrumbItem
-                    [ BreadcrumbItem.Tag "a"
-                      BreadcrumbItem.Href "#" ] [ str "Home" ]
+                    [ BreadcrumbItem.Tag !^ "a"
+                      BreadcrumbItem.Custom [Href "#"] ] [ str "Home" ]
                   BreadcrumbItem.breadcrumbItem
-                      [ BreadcrumbItem.Tag "a"
-                        BreadcrumbItem.Href "#" ] [ str "Library" ]
+                      [ BreadcrumbItem.Tag !^ "a"
+                        BreadcrumbItem.Custom [Href "#"] ] [ str "Library" ]
                   BreadcrumbItem.breadcrumbItem
-                      [ BreadcrumbItem.Tag "a"
-                        BreadcrumbItem.Href "#" ] [ str "Data" ]
+                      [ BreadcrumbItem.Tag !^ "a"
+                        BreadcrumbItem.Custom [Href "#"] ] [ str "Data" ]
                   BreadcrumbItem.breadcrumbItem
-                      [ BreadcrumbItem.Tag "span"
+                      [ BreadcrumbItem.Tag !^ "span"
                         BreadcrumbItem.Active true ] [ str "Bootstrap" ] ]
         ]
     )

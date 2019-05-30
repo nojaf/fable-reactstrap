@@ -3,16 +3,33 @@ namespace ReactStrap
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module CardSubtitle =
     
     type CardSubtitleProps =
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("className")>] ClassName of string
+        | Tag of U2<string, obj>
+        | Custom of HTMLAttr list
+        
         
     let cardSubtitle (props: CardSubtitleProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "CardSubtitle" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "CardSubtitle" "reactstrap" props elems
 
 
 

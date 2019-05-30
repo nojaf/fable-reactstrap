@@ -1,20 +1,32 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
-open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module ModalHeader =
 
     type ModalHeaderProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("cssModule")>] CssModule of CSSModule
-        | [<CompiledName("wrapTag")>] WrapTag of string
-        | [<CompiledName("toggle")>] Toggle of string
+        | WrapTag of U2<string, obj>
+        | Toggle of string
+        | Custom of HTMLAttr list
 
     let modalHeader (props: ModalHeaderProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "ModalHeader" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "ModalHeader" "reactstrap" props elems

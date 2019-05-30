@@ -4,17 +4,35 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module ButtonDropdown =
     
     type ButtonDropdownProps =
-        | [<CompiledName("disabled")>] Disabled of bool
-        | [<CompiledName("direction")>] Direction of Common.Direction
-        | [<CompiledName("group")>] Group of bool
-        | [<CompiledName("isOpen")>] IsOpen of bool
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("toggle")>] Toggle of (unit -> unit)
+        | Tag of U2<string, obj>
+        | Disabled of bool
+        | Direction of Common.Direction
+        | Group of bool
+        | IsOpen of bool
+        | Toggle of (unit -> unit)
+        | Custom of HTMLAttr list
 
     let buttonDropdown (props: ButtonDropdownProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "ButtonDropdown" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        
+        ofImport "ButtonDropdown" "reactstrap" props elems

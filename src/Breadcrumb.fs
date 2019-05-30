@@ -4,15 +4,32 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Breadcrumb =
     type BreadcrumbProps =
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("listTag")>] ListTag of string
-        | [<CompiledName("listClassName")>] ListClassName of string
-        | [<CompiledName("cssModule")>] CSSModule of Common.CSSModule
+        | Tag of U2<string, obj>
+        | ListTag of U2<string, obj>
+        | ListClassName of string
+        | CSSModule of Common.CSSModule
+        | Custom of HTMLAttr list
         
     let breadcrumb (props: BreadcrumbProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "Breadcrumb" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        
+        ofImport "Breadcrumb" "reactstrap" props elems

@@ -1,23 +1,40 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Navbar =
 
     type NavbarProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("light")>] Light of bool
-        | [<CompiledName("dark")>] Dark of bool
-        | [<CompiledName("fixed")>] Fixed of string
-        | [<CompiledName("color")>] Color of Common.Color
-        | [<CompiledName("role")>] Role of string
-        | [<CompiledName("expand")>] Expand of U2<bool,string>
+        
+        | Tag of U2<string, obj>
+        | Light of bool
+        | Dark of bool
+        | Fixed of string
+        | Color of Common.Color
+        | Role of string
+        | Expand of U2<bool,string>
+        | Custom of HTMLAttr list
 
     let navbar (props: NavbarProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "Navbar" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        
+        ofImport "Navbar" "reactstrap" props elems

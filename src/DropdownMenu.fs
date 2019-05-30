@@ -4,18 +4,34 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module DropdownMenu =
 
     type DropdownMenuProps =
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("right")>] Right of bool
-        | [<CompiledName("flip")>] Flip of bool
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("cssModule")>] CssModule of Common.CSSModule
-        | [<CompiledName("modifiers")>] Modifiers of obj
-        | [<CompiledName("persist")>] Persist of bool
+        | Tag of U2<string, obj>
+        | Right of bool
+        | Flip of bool
+        | CssModule of Common.CSSModule
+        | Modifiers of obj
+        | Persist of bool
+        | Custom of HTMLAttr list
         
     let dropdownMenu (props: DropdownMenuProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "DropdownMenu" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "DropdownMenu" "reactstrap" props elems

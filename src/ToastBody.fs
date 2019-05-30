@@ -5,15 +5,31 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module ToastBody =
 
     type ToastBodyProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("cssModule")>] CssModule of CSSModule
-        | [<CompiledName("innerRef")>] InnerRef of (Element -> unit)
+        | Tag of U2<string, obj>
+        | CssModule of CSSModule
+        | InnerRef of (Element -> unit)
+        | Custom of HTMLAttr list
 
     let toastBody (props: ToastBodyProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "ToastBody" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "ToastBody" "reactstrap" props elems

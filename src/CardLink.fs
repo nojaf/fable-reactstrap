@@ -4,17 +4,33 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open Browser.Types
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module CardLink =
     
     type CardLinkProps =
-        | [<CompiledName("tag")>] Tag of string
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("innerRef")>] InnerRef of (Element -> unit)
+        | Tag of U2<string, obj>
+        | Custom of HTMLAttr list
+        | InnerRef of (Element -> unit)
         
     let cardLink (props: CardLinkProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "CardLink" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "CardLink" "reactstrap" props elems
 
 
 

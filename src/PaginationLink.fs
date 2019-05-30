@@ -1,24 +1,38 @@
 namespace ReactStrap
 
-open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module PaginationLink =
 
     type PaginationLinkProps =
-        | [<CompiledName("className")>] ClassName of string
-        | [<CompiledName("key")>] Key of obj
-        | [<CompiledName("cssModule")>] CssModule of CSSModule
-        | [<CompiledName("next")>] Next of bool
-        | [<CompiledName("previous")>] Previous of bool
-        | [<CompiledName("first")>] First of bool
-        | [<CompiledName("last")>] Last of bool
-        | [<CompiledName("tag")>] Tag of string
+        | CssModule of CSSModule
+        | Next of bool
+        | Previous of bool
+        | First of bool
+        | Last of bool
+        | Tag of U2<string, obj>
         | [<CompiledName("aria-label")>] AriaLabel of string
+        | Custom of HTMLAttr list
 
     let paginationLink (props: PaginationLinkProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "PaginationLink" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems
+        let customProps =
+            props
+            |> Seq.collect (function
+                | Custom props -> props
+                | _ -> List.empty)
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> Seq.choose (function
+                | Custom _ -> None
+                | prop -> Some prop)
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        ofImport "PaginationLink" "reactstrap" props elems

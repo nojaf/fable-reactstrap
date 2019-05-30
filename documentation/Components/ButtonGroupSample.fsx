@@ -48,13 +48,13 @@ let private buttonGroupSample =
                 Button.button [] [str "Right"]
             ]
             br []
-            ButtonGroup.buttonGroup [ButtonGroup.ClassName "mt-2"] [
+            ButtonGroup.buttonGroup [ButtonGroup.Custom ([ClassName "mt-2"]) ] [
                 Button.button [] [str "Left"]
                 Button.button [] [str "Middle"]
                 Button.button [] [str "Right"]
             ]
             br []
-            ButtonGroup.buttonGroup [ButtonGroup.Size Sm; ButtonGroup.ClassName "mt-2"] [
+            ButtonGroup.buttonGroup [ButtonGroup.Size Sm; ButtonGroup.Custom([ClassName "mt-2"]) ] [
                 Button.button [] [str "Left"]
                 Button.button [] [str "Middle"]
                 Button.button [] [str "Right"]

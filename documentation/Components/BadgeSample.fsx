@@ -4,6 +4,7 @@
 
 open Fable.Core.JsInterop
 open Fable.React
+open Fable.React.Props
 open ReactStrap
 
 let private badgeSample =
@@ -15,8 +16,8 @@ let private badgeSample =
             Badge.badge [ Badge.Color Warning ] [ str "oh my" ]
             Badge.badge
                 [ Badge.Color Dark
-                  Badge.ClassName "ml-1" ] [ str "dark" ]
-            Badge.badge [ Badge.ClassName "ml-1" ] [ str "badges" ]
+                  Badge.Custom([ClassName "ml-1"]) ] [ str "dark" ]
+            Badge.badge [ Badge.Custom([ClassName "ml-1"]) ] [ str "badges" ]
             div []
                 [ Badge.badge
                     [ Badge.Color Info
@@ -24,7 +25,7 @@ let private badgeSample =
             div []
                 [ Badge.badge
                     [ Badge.Color Danger
-                      Badge.Href "https://nojaf.com" ] [ str "with link" ] ]
+                      Badge.Custom([Href "https://nojaf.com"; Target "_blank"]) ] [ str "with link" ] ]
         ]
     , "BadgeSample")
 
