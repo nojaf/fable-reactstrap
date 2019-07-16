@@ -1,1 +1,1 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[26],{113:function(n,e,t){"use strict";t.r(e);var a=t(3),c=t(26);const o=Object(c.a)(function(n){return a.createElement(a.Fragment,{})},"PaginationSample");e.default=o}}]);
+(window.webpackJsonp=window.webpackJsonp||[]).push([[26],{114:function(e,n,t){"use strict";t.r(n);var o=t(4),a=t(27);const c=Object(a.a)(function(e){return o.createElement(o.Fragment,{})},"PopoversSample");n.default=c}}]);

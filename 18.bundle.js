@@ -1,1 +1,1 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[18],{105:function(n,e,t){"use strict";t.r(e);var a=t(3),c=t(26);const o=Object(c.a)(function(n){return a.createElement(a.Fragment,{})},"InputGroupSample");e.default=o}}]);
+(window.webpackJsonp=window.webpackJsonp||[]).push([[18],{106:function(n,e,t){"use strict";t.r(e);var o=t(4),a=t(27);const c=Object(a.a)(function(n){return o.createElement(o.Fragment,{})},"JumbotronSample");e.default=c}}]);
