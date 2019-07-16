@@ -21,7 +21,8 @@ module.exports = {
   output: {
     path: path.join(__dirname, "./docs"),
     filename: "[name].bundle.js",
-    chunkFilename: "[name].bundle.js"
+    chunkFilename: "[name].bundle.js",
+    publicPath: isProduction ? "/fable-reactstrap/" : "/"
   },
   devServer: {
     contentBase: "./documentation",

@@ -41,7 +41,7 @@ let private carouselSample =
 
         let prev _ =
             if not animating then
-                activeIndex.update((activeIndex.current - 1) % itemLength)
+                activeIndex.update((activeIndex.current + itemLength - 1) % itemLength)
 
         let gotoIndex (newIndex:int) =
             if not animating then

@@ -62,6 +62,7 @@ let showComponent comp sourceCode =
         prismCode sourceCode
     ]
 
+let homeRoute = "/"
 
 let routes =
     createObj [
@@ -104,10 +105,7 @@ let NotFoundPage =
             [ div [ ClassName "container" ]
                 [ div [ ClassName "row" ]
                     [ div [ ClassName "col" ]
-                        [ p [ ClassName "lead" ]
-                            [ img [ Src "/assets/logo.png"
-                                    Alt ""
-                                    HTMLAttr.Width "150px" ] ]
+                        [
                           h1 [ ClassName "jumbotron-heading display-4" ]
                             [ str "404 - Not Found" ]
                           p [ ClassName "lead" ]
@@ -118,14 +116,14 @@ let NotFoundPage =
                            ] ] ] ] ]
         
 let urlToName (url:string) =
-    url.Replace("/components/", "").Split('-')
+    url.Replace("/fable-reactstrap/components/", "").Replace("/components/", "").Split('-')
     |> Array.map (fun word -> String.Concat(System.Char.ToUpper(word.[0]), word.Substring(1)))
     |> String.concat " "
     
 let layout path body =
     let menuItems =
         routeUrls
-        |> Seq.filter (fun p -> p <> "/")
+        |> Seq.filter (fun p -> p <> homeRoute)
         |> Seq.map (fun url ->
             let className = if url = path then "nav-link active" else "nav-link"
             let text = urlToName url
@@ -136,7 +134,7 @@ let layout path body =
         )
 
     let activePageName, example =
-        if path <> "/" then
+        if path <> homeRoute then
             urlToName path, div [ClassName "docs-example"] [body]
         else
             "Fable Reactstrap", body
@@ -144,7 +142,7 @@ let layout path body =
     fragment [] [
         Nav.nav [Nav.Navbar true; Nav.Custom([ClassName "navbar navbar-expand-md navbar-light header"])] [
             Container.container [] [
-                A [AProps.Href "/"; AProps.ClassName "mr-auto navbrand-bar"] [str "Fable Reactstrap"]
+                A [AProps.Href homeRoute; AProps.ClassName "mr-auto navbrand-bar"] [str "Fable Reactstrap"]
                 div [ClassName "collapse navbar-collapse"] [
                     Navbar.navbar [Navbar.Custom([ClassName "ml-sm-auto"])] [
                         NavItem.navItem [] [ a [Href "https://github.com/nojaf/fable-reactstrap"; Target "_blank"] [str "Github"] ]
@@ -167,7 +165,7 @@ let layout path body =
             ]
         ]
     ]
-    
+
 let Loading =
     div [ Id "preloader"] [
         div [Id "loader"] []
@@ -178,6 +176,10 @@ type SuspenseProp =
     
 let suspense props children =
     ofImport "Suspense" "react" (keyValueList CaseRules.LowerFirst props) children
+
+#if !DEBUG
+setBasepath "/fable-reactstrap"
+#endif
 
 let App =
     FunctionComponent.Of (fun _ ->
