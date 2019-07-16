@@ -1,1 +1,1 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[29],{117:function(e,n,t){"use strict";t.r(n);var a=t(4),c=t(27);const o=Object(c.a)(function(e){return a.createElement(a.Fragment,{})},"TablesSample");n.default=o}}]);
+(window.webpackJsonp=window.webpackJsonp||[]).push([[29],{116:function(n,e,t){"use strict";t.r(e);var a=t(4),c=t(26);const r=Object(c.a)(function(n){return a.createElement(a.Fragment,{})},"SpinnersSample");e.default=r}}]);
