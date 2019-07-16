@@ -4,10 +4,16 @@
 
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const babel = {
   plugins: ["@babel/plugin-syntax-dynamic-import"]
 };
+
+const isProduction = process.argv.indexOf("-p") >= 0;
+console.log(
+    "Bundling for " + (isProduction ? "production" : "development") + "..."
+);
 
 module.exports = {
   mode: "development",
@@ -15,8 +21,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "./docs"),
     filename: "[name].bundle.js",
-    chunkFilename: "[name].bundle.js",
-    publicPath: "/"
+    chunkFilename: "[name].bundle.js"
   },
   devServer: {
     contentBase: "./documentation",
@@ -37,9 +42,9 @@ module.exports = {
       {
         test: /\.(sass|css)$/,
         use: [
-          "style-loader", // creates style nodes from JS strings
-          "css-loader", // translates CSS into CommonJS
-          "sass-loader" // compiles Sass to CSS, using Node Sass by default
+          isProduction ? MiniCssExtractPlugin.loader : "style-loader",
+          "css-loader",
+          "sass-loader"
         ]
       }
     ]
@@ -53,7 +58,13 @@ module.exports = {
       chunks: "all"
     }
   },
-  plugins: [
+  plugins: isProduction?  [
+    new MiniCssExtractPlugin({ filename: "style.css" }),
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: "./documentation/index.html"
+    })
+  ] : [
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: "./documentation/index.html"

@@ -1,6 +1,4 @@
-﻿open Fable.React
-
-#load "../.paket/load/netstandard2.0/main.group.fsx"
+﻿#load "../.paket/load/netstandard2.0/main.group.fsx"
 #load "./HookRouter.fsx"
 #load "./ReactPrism.fsx"
 #load "../src/Common.fs"
@@ -20,7 +18,6 @@ open ReactStrap
 open Browser
 open Fable.Core
 open ReactPrism
-open Fable.Core.JsInterop
 
 importSideEffects "./style.sass"
 importSideEffects "prismjs"

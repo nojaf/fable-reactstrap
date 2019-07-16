@@ -72,5 +72,6 @@ module Common =
         | [<CompiledName("left")>] Left
         | [<CompiledName("left-start")>] LeftStart
         | [<CompiledName("left-end")>] LeftEnd
-        
-    type Delay = U2<int, {|show:int; hide:int|}>
+
+    type DelayEx = { show:int; hide:int }
+    type Delay = U2<int, DelayEx>
