@@ -10,7 +10,7 @@ module CardHeader =
     
     type CardHeaderProps =
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
         
         
     let cardHeader (props: CardHeaderProps seq) (elems: ReactElement seq) : ReactElement =

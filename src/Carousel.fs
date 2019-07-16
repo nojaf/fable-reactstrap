@@ -22,7 +22,7 @@ module Carousel =
         | MouseLeave of (MouseEvent -> unit)
         | Slide of bool
         | CssModule of CSSModule
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let carousel (props: CarouselProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

@@ -14,7 +14,7 @@ module InputGroupButtonDropdown =
         | GroupClassName of string
         | GroupAttributes of obj
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let inputGroupButtonDropdown (props: InputGroupButtonDropdownProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

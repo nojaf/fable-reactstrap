@@ -13,7 +13,7 @@ module NavLink =
         | Active of bool
         | InnerRef of (Element -> unit)
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
         
 
     let navLink (props: NavLinkProps seq) (elems: ReactElement seq) : ReactElement =

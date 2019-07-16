@@ -84,5 +84,14 @@
         <Compile Include="ToastHeader.fs" />
         <Compile Include="Tooltip.fs" />
     </ItemGroup>
+    <PropertyGroup>
+        <NpmDependencies>
+            <NpmPackage Name="reactstrap" Version=">= 8.0.1" />
+        </NpmDependencies>
+    </PropertyGroup>
+    <!-- Add source files to "fable" folder in Nuget package -->
+    <ItemGroup>
+        <Content Include="*.fsproj; **\*.fs" PackagePath="fable\" />
+    </ItemGroup>
     <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

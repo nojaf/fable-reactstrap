@@ -19,7 +19,7 @@ module Progress =
         | Striped of bool
         | Color of Common.Color
         | BarClassName of string
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let progress (props: ProgressProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

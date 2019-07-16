@@ -16,7 +16,7 @@ module ButtonDropdown =
         | Group of bool
         | IsOpen of bool
         | Toggle of (unit -> unit)
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let buttonDropdown (props: ButtonDropdownProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

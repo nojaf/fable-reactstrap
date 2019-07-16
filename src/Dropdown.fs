@@ -19,7 +19,7 @@ module Dropdown =
         | InNavbar of bool
         | Toggle of (unit -> unit)
         | SetActiveFromChild of bool
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let dropdown (props: DropdownProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

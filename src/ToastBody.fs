@@ -14,7 +14,7 @@ module ToastBody =
         | Tag of U2<string, obj>
         | CssModule of CSSModule
         | InnerRef of (Element -> unit)
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let toastBody (props: ToastBodyProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

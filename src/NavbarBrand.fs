@@ -11,7 +11,7 @@ module NavbarBrand =
     type NavbarBrandProps =
         | Tag of U2<string, obj>
         | To of string
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let navbarBrand (props: NavbarBrandProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

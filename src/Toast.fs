@@ -14,7 +14,7 @@ module Toast =
         | IsOpen of bool
         | Tag of U2<string, obj>
         | Transition of Fade.FadeProps seq
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let toast (props: ToastProps seq) (elems: ReactElement seq) : ReactElement =
         let toastProps =

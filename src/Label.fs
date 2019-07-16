@@ -9,7 +9,7 @@ open Fable.React.Props
 module Label =
 
     type LabelProps =
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let label (props: LabelProps seq) (elems: ReactElement seq) : ReactElement =
         let props = keyValueList CaseRules.LowerFirst props

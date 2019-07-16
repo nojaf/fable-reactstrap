@@ -18,7 +18,7 @@ module Nav =
         | Horizontal of string
         | Navbar of bool
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let nav (props: NavProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

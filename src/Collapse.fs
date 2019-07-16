@@ -30,7 +30,7 @@ module Collapse =
         | OnExiting of (unit -> unit)
         | OnExited of (unit -> unit)
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let collapse (props: CollapseProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =

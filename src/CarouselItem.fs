@@ -13,17 +13,15 @@ module CarouselItem =
         | BaseClass of string
         | BaseClassIn of string
         | CssModule of CSSModule
-        | TransitionAppearTimeout of int
-        | TransitionEnterTimeout of int
-        | TransitionLeaveTimeout of int
-        | TransitionAppear of bool
-        | TransitionEnter of bool
-        | TransitionLeave of bool
-        | OnLeave of (unit -> unit)
         | OnEnter of (unit -> unit)
+        | OnEntering of (unit -> unit)
+        | OnEntered of (unit -> unit)
+        | OnExit of (unit -> unit)
+        | OnExiting of (unit -> unit)
+        | OnExited of (unit -> unit)
         | Slide of bool
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let carouselItem (props: CarouselItemProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =

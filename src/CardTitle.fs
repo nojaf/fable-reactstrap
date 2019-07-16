@@ -10,7 +10,7 @@ module CardTitle =
     
     type CardTitleProps =
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
         
         
     let cardTitle (props: CardTitleProps seq) (elems: ReactElement seq) : ReactElement =

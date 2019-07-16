@@ -11,7 +11,7 @@ module Row =
     type RowProps =
         | NoGutters of bool
         | Form of bool
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let row (props: RowProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

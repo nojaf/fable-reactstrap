@@ -16,6 +16,8 @@ type AProps =
 let inline A (props: AProps list) (elems: ReactElement seq) : ReactElement =
     ofImport "A" "hookrouter" (keyValueList CaseRules.LowerFirst props) elems
 
+let AType : ReactElementType = import "A" "hookrouter"
+
 let setLinkProps: props: AProps -> AProps = import "setLinkProps" "hookrouter"
 let confirmNavigation: unit -> unit = import "confirmNavigation" "hookrouter"
 let resetPath: unit -> unit = import "resetPath" "hookrouter"

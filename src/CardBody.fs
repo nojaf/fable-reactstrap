@@ -10,7 +10,7 @@ module CardBody =
     
     type CardBodyProps =
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
         
         
     let cardBody (props: CardBodyProps seq) (elems: ReactElement seq) : ReactElement =

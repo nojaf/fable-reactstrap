@@ -18,7 +18,7 @@ module ToastHeader =
         | Close of ReactElement
         | CharCode of U2<string, int>
         | CloseAriaLabel of string
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let toastHeader (props: ToastHeaderProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

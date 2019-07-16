@@ -10,7 +10,7 @@ module Container =
     type ContainerProps =
         | Fluid of bool
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let container (props: ContainerProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =

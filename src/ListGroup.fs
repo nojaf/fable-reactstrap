@@ -13,7 +13,7 @@ module ListGroup =
         | Tag of U2<string, obj>
         | CssModule of CSSModule
         | Flush of bool
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let listGroup (props: ListGroupProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

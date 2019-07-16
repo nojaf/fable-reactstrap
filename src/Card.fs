@@ -13,7 +13,7 @@ module Card =
         | Outline of bool
         | Color of Common.Color
         | Body of bool
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let card (props: CardProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =

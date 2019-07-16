@@ -18,7 +18,7 @@ module Navbar =
         | Color of Common.Color
         | Role of string
         | Expand of U2<bool,string>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let navbar (props: NavbarProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

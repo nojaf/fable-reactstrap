@@ -36,7 +36,7 @@ module Modal =
         | ModalTransition of Fade.FadeProps seq
         | InnerRef of (Element -> unit)
         | UnmountOnClose of bool
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let modal (props: ModalProps seq) (elems: ReactElement seq) : ReactElement =
         let modalProps =

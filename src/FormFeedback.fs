@@ -14,7 +14,7 @@ module FormFeedback =
         | Tooltip of bool
         | CssModule of CSSModule
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let formFeedback (props: FormFeedbackProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

@@ -10,7 +10,7 @@ module CardGroup =
     
     type CardGroupProps =
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
         
         
     let cardGroup (props: CardGroupProps seq) (elems: ReactElement seq) : ReactElement =

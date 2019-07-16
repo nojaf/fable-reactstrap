@@ -10,7 +10,7 @@ module CardDeck =
     
     type CardDeckProps =
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
         
         
     let cardDeck (props: CardDeckProps seq) (elems: ReactElement seq) : ReactElement =

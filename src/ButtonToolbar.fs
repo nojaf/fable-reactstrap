@@ -12,7 +12,7 @@ module ButtonToolbar =
     type ButtonToolbarProps =
         | Tag of U2<string, obj>
         | CSSModule of Common.CSSModule
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
         
     let buttonToolbar (props: ButtonToolbarProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

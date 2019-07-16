@@ -11,7 +11,7 @@ module CardLink =
     
     type CardLinkProps =
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
         | InnerRef of (Element -> unit)
         
     let cardLink (props: CardLinkProps seq) (elems: ReactElement seq) : ReactElement =

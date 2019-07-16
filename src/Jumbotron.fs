@@ -11,7 +11,7 @@ module Jumbotron =
     type JumbotronProps =
         | Fluid of bool
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let jumbotron (props: JumbotronProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

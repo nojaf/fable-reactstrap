@@ -13,7 +13,7 @@ module ButtonGroup =
         | Role of string
         | Size of Common.Size
         | Vertical of bool
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
         
     let buttonGroup (props: ButtonGroupProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

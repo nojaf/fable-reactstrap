@@ -20,7 +20,7 @@ NUGET
       FSharp.Core (>= 4.5.2)
     Fable.Core (3.0)
       FSharp.Core (>= 4.5.2)
-    Fable.React (5.2.3)
+    Fable.React (5.2.6)
       Fable.Browser.Dom (>= 1.0)
       Fable.Core (>= 3.0)
       FSharp.Core (>= 4.6.2)

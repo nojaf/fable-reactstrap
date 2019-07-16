@@ -20,7 +20,7 @@ module Button =
         | Size of Common.Size
         | CSSModule of Common.CSSModule
         | Close of bool
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let button (props: ButtonProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

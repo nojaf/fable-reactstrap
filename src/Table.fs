@@ -20,7 +20,7 @@ module Table =
         | Hover of bool
         | Responsive of bool
         | InnerRef of (Element -> unit)
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let table (props: TableProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

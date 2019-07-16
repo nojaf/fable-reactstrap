@@ -13,7 +13,7 @@ module BreadcrumbItem =
         | Tag of U2<string, obj>
         | Active of bool
         | CSSModule of Common.CSSModule
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
         
         
     let breadcrumbItem (props: BreadcrumbItemProps seq) (elems: ReactElement seq) : ReactElement =

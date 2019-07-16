@@ -7,15 +7,20 @@ open Fable.React
 open ReactStrap
 open Fable.React.Props
 
+type Item =
+    { Src: string
+      AltText: string
+      Caption: string }
+
 [<RequireQualifiedAccess>]
 module CarouselIndicators =
 
     type CarouselIndicatorsProps =
-        | Items of obj array
+        | Items of Item seq
         | ActiveIndex of int
         | CssModule of CSSModule
-        | OnClickHandler of (MouseEvent -> unit)
-        | Custom of HTMLAttr list
+        | OnClickHandler of (int -> unit)
+        | Custom of IHTMLProp list
 
     let carouselIndicators (props: CarouselIndicatorsProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

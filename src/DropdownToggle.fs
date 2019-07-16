@@ -15,7 +15,7 @@ module DropdownToggle =
         | [<CompiledName("data-toggle")>] DataToggle of string
         | [<CompiledName("aria-haspopup")>] AriaHasPopup of bool
         | Size of Common.Size
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
         
     let dropdownToggle (props: DropdownToggleProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

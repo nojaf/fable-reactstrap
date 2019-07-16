@@ -19,7 +19,7 @@ module Media =
         | Right of bool
         | Top of bool
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let media (props: MediaProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

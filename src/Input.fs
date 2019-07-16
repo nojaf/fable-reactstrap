@@ -20,7 +20,7 @@ module Input =
         | InnerRef of (Element -> unit)
         | CssModule of CSSModule
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let input (props: InputProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

@@ -9,7 +9,7 @@ open Fable.React.Props
 module InputGroupText =
 
     type InputGroupTextProps =
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let inputGroupText (props: InputGroupTextProps seq) (elems: ReactElement seq) : ReactElement =
         let props = keyValueList CaseRules.LowerFirst props

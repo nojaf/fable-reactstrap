@@ -10,7 +10,7 @@ module CardColumns =
     
     type CardColumnsProps =
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
         
         
     let cardColumns (props: CardColumnsProps seq) (elems: ReactElement seq) : ReactElement =

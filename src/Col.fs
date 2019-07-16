@@ -30,7 +30,7 @@ module Col =
         | Lg of ColumnProps
         | Xl of ColumnProps
         | Widths of obj array
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let col (props: ColProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

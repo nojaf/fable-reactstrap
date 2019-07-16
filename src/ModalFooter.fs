@@ -12,7 +12,7 @@ module ModalFooter =
     type ModalFooterProps =
         | Tag of U2<string, obj>
         | CssModule of CSSModule
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let modalFooter (props: ModalFooterProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

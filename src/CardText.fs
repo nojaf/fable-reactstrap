@@ -10,7 +10,7 @@ module CardText =
     
     type CardTextProps =
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
         
         
     let cardText (props: CardTextProps seq) (elems: ReactElement seq) : ReactElement =

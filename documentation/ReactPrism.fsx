@@ -12,3 +12,13 @@ let prismCode sourceCode =
         
     let elems = Seq.singleton (str sourceCode)
     ofImport "PrismCode" "react-prism" props elems
+
+let prismCli commando =
+    let props =
+        createObj [
+            "component" ==> "pre"
+            //"className" ==> "language-fsharp"
+        ]
+
+    let elems = Seq.singleton (str commando)
+    ofImport "PrismCode" "react-prism" props elems

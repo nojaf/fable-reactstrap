@@ -13,7 +13,7 @@ module TabPane =
         | Tag of U2<string, obj>
         | TabId of U2<string,int>
         | CssModule of CSSModule
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let tabPane (props: TabPaneProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

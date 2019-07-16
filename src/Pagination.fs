@@ -16,7 +16,7 @@ module Pagination =
         | ListTag of string
         | [<CompiledName("aria-label")>] AriaLabel of string
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let pagination (props: PaginationProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

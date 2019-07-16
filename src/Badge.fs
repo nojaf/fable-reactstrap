@@ -14,7 +14,7 @@ module Badge =
         | Pill
         | CSSModule of Common.CSSModule
         | Transition of TransitionProps
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let badge (props: BadgeProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =

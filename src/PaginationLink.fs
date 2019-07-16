@@ -17,7 +17,7 @@ module PaginationLink =
         | Last of bool
         | Tag of U2<string, obj>
         | [<CompiledName("aria-label")>] AriaLabel of string
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let paginationLink (props: PaginationLinkProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

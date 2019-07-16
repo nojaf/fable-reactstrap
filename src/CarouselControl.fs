@@ -9,13 +9,17 @@ open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module CarouselControl =
+    [<StringEnum>]
+    type CarouselDirection =
+        | [<CompiledName("prev")>] Prev
+        | [<CompiledName("next")>] Next
 
     type CarouselControlProps =
-        | Direction of Common.Direction
+        | Direction of CarouselDirection
         | OnClickHandler of (MouseEvent -> unit)
         | DirectionText of string
         | CssModule of CSSModule
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let carouselControl (props: CarouselControlProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

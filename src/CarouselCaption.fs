@@ -13,7 +13,7 @@ module CarouselCaption =
         | CaptionHeader of string
         | CaptionText of string
         | CssModule of CSSModule
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let carouselCaption (props: CarouselCaptionProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

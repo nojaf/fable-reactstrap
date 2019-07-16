@@ -14,7 +14,7 @@ module Tag =
         | CssModule of CSSModule
         | Color of Common.Color
         | Pill of bool
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let tag (props: TagProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

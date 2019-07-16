@@ -13,7 +13,7 @@ module Breadcrumb =
         | ListTag of U2<string, obj>
         | ListClassName of string
         | CSSModule of Common.CSSModule
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
         
     let breadcrumb (props: BreadcrumbProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

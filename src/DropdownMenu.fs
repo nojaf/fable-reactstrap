@@ -16,7 +16,7 @@ module DropdownMenu =
         | CssModule of Common.CSSModule
         | Modifiers of obj
         | Persist of bool
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
         
     let dropdownMenu (props: DropdownMenuProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

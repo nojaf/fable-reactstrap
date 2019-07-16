@@ -11,7 +11,7 @@ module InputGroupAddon =
 
     type InputGroupAddonProps =
         | AddonType of Common.AddonType
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
         | Tag of U2<string, obj>
 
     let inputGroupAddon (props: InputGroupAddonProps seq) (elems: ReactElement seq) : ReactElement =

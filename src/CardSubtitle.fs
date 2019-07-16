@@ -10,7 +10,7 @@ module CardSubtitle =
     
     type CardSubtitleProps =
         | Tag of U2<string, obj>
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
         
         
     let cardSubtitle (props: CardSubtitleProps seq) (elems: ReactElement seq) : ReactElement =

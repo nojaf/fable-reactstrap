@@ -9,7 +9,7 @@ open Fable.React.Props
 module PopoverBody =
 
     type PopoverBodyProps =
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let popoverBody (props: PopoverBodyProps seq) (elems: ReactElement seq) : ReactElement =
         let props = keyValueList CaseRules.LowerFirst props

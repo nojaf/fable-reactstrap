@@ -1,4 +1,6 @@
-﻿#load "../.paket/load/netstandard2.0/main.group.fsx"
+﻿open Fable.React
+
+#load "../.paket/load/netstandard2.0/main.group.fsx"
 #load "./HookRouter.fsx"
 #load "./ReactPrism.fsx"
 #load "../src/Common.fs"
@@ -27,6 +29,7 @@ importSideEffects "./prism-monokai.css"
 
 let rl = ReactBindings.React.``lazy``
 
+let HomePage : obj = rl(fun() -> importDynamic "./Home.fsx")
 let AlertSample : obj = rl(fun() -> importDynamic "./Components/AlertSample.fsx")
 let BadgeSample : obj = rl(fun() -> importDynamic "./Components/BadgeSample.fsx")
 let BreadcrumbsSample : obj = rl(fun() -> importDynamic "./Components/BreadcrumbsSample.fsx")
@@ -62,8 +65,10 @@ let showComponent comp sourceCode =
         prismCode sourceCode
     ]
 
+
 let routes =
     createObj [
+        "/" ==> fun _ -> ReactBindings.React.createElement(HomePage, null, [])
         "/components/alerts" ==> fun _ -> showComponent AlertSample (importDefault "!!raw-loader!./Components/AlertSample.fsx")
         "/components/badge" ==> fun _ -> showComponent BadgeSample (importDefault"!!raw-loader!./Components/BadgeSample.fsx")
         "/components/breadcrumbs" ==> fun _ -> showComponent BreadcrumbsSample (importDefault"!!raw-loader!./Components/BreadcrumbsSample.fsx")
@@ -76,7 +81,7 @@ let routes =
         "/components/dropdowns" ==> fun _ -> showComponent DropdownsSample (importDefault "!!raw-loader!./Components/DropdownsSample.fsx")
         "/components/fade" ==> fun _ -> showComponent FadeSample (importDefault "!!raw-loader!./Components/FadeSample.fsx")
         "/components/form" ==> fun _ -> showComponent FormSample (importDefault "!!raw-loader!./Components/FormSample.fsx")
-        "/components/inputgroup/" ==> fun _ -> showComponent InputGroupSample (importDefault "!!raw-loader!./Components/InputGroupSample.fsx")
+        "/components/inputgroup" ==> fun _ -> showComponent InputGroupSample (importDefault "!!raw-loader!./Components/InputGroupSample.fsx")
         "/components/jumbotron" ==> fun _ -> showComponent JumbotronSample (importDefault "!!raw-loader!./Components/JumbotronSample.fsx")
         "/components/layout" ==> fun _ -> showComponent LayoutSample (importDefault "!!raw-loader!./Components/LayoutSample.fsx")
         "/components/listgroup" ==> fun _ -> showComponent ListGroupSample (importDefault "!!raw-loader!./Components/ListGroupSample.fsx")
@@ -123,6 +128,7 @@ let urlToName (url:string) =
 let layout path body =
     let menuItems =
         routeUrls
+        |> Seq.filter (fun p -> p <> "/")
         |> Seq.map (fun url ->
             let className = if url = path then "nav-link active" else "nav-link"
             let text = urlToName url
@@ -132,7 +138,11 @@ let layout path body =
             ]
         )
 
-    let activePageName = urlToName path
+    let activePageName, example =
+        if path <> "/" then
+            urlToName path, div [ClassName "docs-example"] [body]
+        else
+            "Fable Reactstrap", body
     
     fragment [] [
         Nav.nav [Nav.Navbar true; Nav.Custom([ClassName "navbar navbar-expand-md navbar-light header"])] [
@@ -155,7 +165,7 @@ let layout path body =
                 ]
                 Col.col [Col.Md (Col.mkCol !^9 |> Col.withOrder !^ 1); Col.Tag !^ "aside"] [
                     h2 [ClassName "h3"] [str activePageName]
-                    div [ClassName "docs-example"] [body]
+                    example
                 ]
             ]
         ]
@@ -174,7 +184,6 @@ let suspense props children =
 
 let App =
     FunctionComponent.Of (fun _ ->
-        useRedirect "/" "/components/alerts" None (Some false)
         useRedirect "/components" "/components/alerts" None (Some false)
         let routeResults = useRoutes routes
         let path = usePath()

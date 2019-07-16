@@ -27,7 +27,7 @@ module Tooltip =
         | InnerRef of (Element -> unit)
         | Fade of bool
         | Flip of bool
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let tooltip (props: TooltipProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =

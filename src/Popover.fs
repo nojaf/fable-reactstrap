@@ -27,7 +27,7 @@ module Popover =
         | Offset of U2<string, int>
         | Fade of bool
         | Flip of bool
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let popover (props: PopoverProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

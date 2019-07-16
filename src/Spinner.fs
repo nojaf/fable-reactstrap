@@ -14,7 +14,7 @@ module Spinner =
         | Size of Common.Size
         | Color of Common.Color
         | CssModule of CSSModule
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let spinner (props: SpinnerProps seq) (elems: ReactElement seq) : ReactElement =
         let customProps =

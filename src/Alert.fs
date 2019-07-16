@@ -15,7 +15,7 @@ module Alert =
         | Transition of TransitionProps
         | IsOpen of bool
         | Toggle of (unit -> unit)
-        | Custom of HTMLAttr list
+        | Custom of IHTMLProp list
 
     let alert (props: AlertProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
