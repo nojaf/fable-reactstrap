@@ -21,7 +21,7 @@ module Dropdown =
         | SetActiveFromChild of bool
         | Custom of IHTMLProp list
 
-    let dropdown (props: DropdownProps seq) (elems: ReactElement seq) : ReactElement =
+    let dropdown (props: DropdownProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

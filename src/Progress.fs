@@ -12,8 +12,8 @@ module Progress =
     type ProgressProps =
         | Tag of U2<string, obj>
         | Bar of bool
-        | Value of U2<string,int>
-        | Max of U2<string,int>
+        | Value of U2<string, int>
+        | Max of U2<string, int>
         | Animated of bool
         | Multi of bool
         | Striped of bool
@@ -21,7 +21,7 @@ module Progress =
         | BarClassName of string
         | Custom of IHTMLProp list
 
-    let progress (props: ProgressProps seq) (elems: ReactElement seq) : ReactElement =
+    let progress (props: ProgressProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

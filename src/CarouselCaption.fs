@@ -15,7 +15,7 @@ module CarouselCaption =
         | CssModule of CSSModule
         | Custom of IHTMLProp list
 
-    let carouselCaption (props: CarouselCaptionProps seq) (elems: ReactElement seq) : ReactElement =
+    let carouselCaption (props: CarouselCaptionProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

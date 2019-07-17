@@ -6,10 +6,6 @@ open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
 
-let private dropdownsSample =
-    FunctionComponent.Of<obj> (fun _ ->
-        fragment [] [
-        ]
-    , "DropdownsSample")
-    
+let private dropdownsSample = FunctionComponent.Of<obj>((fun _ -> fragment [] []), "DropdownsSample")
+
 exportDefault dropdownsSample

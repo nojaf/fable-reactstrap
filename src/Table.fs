@@ -22,7 +22,7 @@ module Table =
         | InnerRef of (Element -> unit)
         | Custom of IHTMLProp list
 
-    let table (props: TableProps seq) (elems: ReactElement seq) : ReactElement =
+    let table (props: TableProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

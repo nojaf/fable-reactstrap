@@ -6,10 +6,6 @@ open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
 
-let private listGroupSample =
-    FunctionComponent.Of<obj> (fun _ ->
-        fragment [] [
-        ]
-    , "ListGroupSample")
-    
+let private listGroupSample = FunctionComponent.Of<obj>((fun _ -> fragment [] []), "ListGroupSample")
+
 exportDefault listGroupSample

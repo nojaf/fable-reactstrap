@@ -8,7 +8,7 @@ open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module ButtonDropdown =
-    
+
     type ButtonDropdownProps =
         | Tag of U2<string, obj>
         | Disabled of bool
@@ -18,7 +18,7 @@ module ButtonDropdown =
         | Toggle of (unit -> unit)
         | Custom of IHTMLProp list
 
-    let buttonDropdown (props: ButtonDropdownProps seq) (elems: ReactElement seq) : ReactElement =
+    let buttonDropdown (props: ButtonDropdownProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function
@@ -34,5 +34,5 @@ module ButtonDropdown =
             |> keyValueList CaseRules.LowerFirst
 
         let props = JS.Object.assign (createEmpty, customProps, typeProps)
-        
+
         ofImport "ButtonDropdown" "reactstrap" props elems

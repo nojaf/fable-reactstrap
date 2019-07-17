@@ -7,13 +7,13 @@ open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module CardTitle =
-    
+
     type CardTitleProps =
         | Tag of U2<string, obj>
         | Custom of IHTMLProp list
-        
-        
-    let cardTitle (props: CardTitleProps seq) (elems: ReactElement seq) : ReactElement =
+
+
+    let cardTitle (props: CardTitleProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

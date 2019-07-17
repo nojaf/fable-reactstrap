@@ -17,9 +17,9 @@ module ListGroupItem =
         | CssModule of CSSModule
         | Tag of U2<string, obj>
         | Custom of IHTMLProp list
-        
 
-    let listGroupItem (props: ListGroupItemProps seq) (elems: ReactElement seq) : ReactElement =
+
+    let listGroupItem (props: ListGroupItemProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

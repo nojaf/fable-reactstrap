@@ -14,8 +14,8 @@ module Breadcrumb =
         | ListClassName of string
         | CSSModule of Common.CSSModule
         | Custom of IHTMLProp list
-        
-    let breadcrumb (props: BreadcrumbProps seq) (elems: ReactElement seq) : ReactElement =
+
+    let breadcrumb (props: BreadcrumbProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function
@@ -31,5 +31,5 @@ module Breadcrumb =
             |> keyValueList CaseRules.LowerFirst
 
         let props = JS.Object.assign (createEmpty, customProps, typeProps)
-        
+
         ofImport "Breadcrumb" "reactstrap" props elems

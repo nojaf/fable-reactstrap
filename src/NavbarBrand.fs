@@ -13,7 +13,7 @@ module NavbarBrand =
         | To of string
         | Custom of IHTMLProp list
 
-    let navbarBrand (props: NavbarBrandProps seq) (elems: ReactElement seq) : ReactElement =
+    let navbarBrand (props: NavbarBrandProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

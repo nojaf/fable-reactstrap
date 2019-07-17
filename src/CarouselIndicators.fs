@@ -21,7 +21,7 @@ module CarouselIndicators =
         | OnClickHandler of (int -> unit)
         | Custom of IHTMLProp list
 
-    let carouselIndicators (props: CarouselIndicatorsProps seq) (elems: ReactElement seq) : ReactElement =
+    let carouselIndicators (props: CarouselIndicatorsProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

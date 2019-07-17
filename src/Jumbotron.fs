@@ -13,7 +13,7 @@ module Jumbotron =
         | Tag of U2<string, obj>
         | Custom of IHTMLProp list
 
-    let jumbotron (props: JumbotronProps seq) (elems: ReactElement seq) : ReactElement =
+    let jumbotron (props: JumbotronProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

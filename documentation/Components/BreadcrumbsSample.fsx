@@ -10,38 +10,32 @@ open ReactStrap
 
 let private breadcrumbsSample =
     FunctionComponent.Of(fun () ->
-        fragment [] [
-            Breadcrumb.breadcrumb []
-                [ BreadcrumbItem.breadcrumbItem [ BreadcrumbItem.Active true ]
-                      [ str "Home" ] ]
-            Breadcrumb.breadcrumb []
-                [ BreadcrumbItem.breadcrumbItem [] [ a [ Href "#" ] [ str "Home" ] ]
-            
-                  BreadcrumbItem.breadcrumbItem [ BreadcrumbItem.Active true ]
-                      [ str "Library" ] ]
-            Breadcrumb.breadcrumb []
-                [ BreadcrumbItem.breadcrumbItem [] [ a [ Href "#" ] [ str "Home" ] ]
-                  BreadcrumbItem.breadcrumbItem [] [ a [ Href "#" ] [ str "Library" ] ]
-            
-                  BreadcrumbItem.breadcrumbItem [ BreadcrumbItem.Active true ]
-                      [ str "Data" ] ]
-            p [] [ str "No list" ]
-            Breadcrumb.breadcrumb
-                [ Breadcrumb.Tag !^ "nav"
-                  Breadcrumb.ListTag !^ "div" ]
-                [ BreadcrumbItem.breadcrumbItem
-                    [ BreadcrumbItem.Tag !^ "a"
-                      BreadcrumbItem.Custom [Href "#"] ] [ str "Home" ]
-                  BreadcrumbItem.breadcrumbItem
-                      [ BreadcrumbItem.Tag !^ "a"
-                        BreadcrumbItem.Custom [Href "#"] ] [ str "Library" ]
-                  BreadcrumbItem.breadcrumbItem
-                      [ BreadcrumbItem.Tag !^ "a"
-                        BreadcrumbItem.Custom [Href "#"] ] [ str "Data" ]
-                  BreadcrumbItem.breadcrumbItem
-                      [ BreadcrumbItem.Tag !^ "span"
-                        BreadcrumbItem.Active true ] [ str "Bootstrap" ] ]
-        ]
-    )
+        fragment []
+            [ Breadcrumb.breadcrumb [] [ BreadcrumbItem.breadcrumbItem [ BreadcrumbItem.Active true ] [ str "Home" ] ]
+              Breadcrumb.breadcrumb []
+                  [ BreadcrumbItem.breadcrumbItem [] [ a [ Href "#" ] [ str "Home" ] ]
+
+                    BreadcrumbItem.breadcrumbItem [ BreadcrumbItem.Active true ] [ str "Library" ] ]
+              Breadcrumb.breadcrumb []
+                  [ BreadcrumbItem.breadcrumbItem [] [ a [ Href "#" ] [ str "Home" ] ]
+                    BreadcrumbItem.breadcrumbItem [] [ a [ Href "#" ] [ str "Library" ] ]
+
+                    BreadcrumbItem.breadcrumbItem [ BreadcrumbItem.Active true ] [ str "Data" ] ]
+              p [] [ str "No list" ]
+              Breadcrumb.breadcrumb
+                  [ Breadcrumb.Tag !^"nav"
+                    Breadcrumb.ListTag !^"div" ]
+                  [ BreadcrumbItem.breadcrumbItem
+                      [ BreadcrumbItem.Tag !^"a"
+                        BreadcrumbItem.Custom [ Href "#" ] ] [ str "Home" ]
+                    BreadcrumbItem.breadcrumbItem
+                        [ BreadcrumbItem.Tag !^"a"
+                          BreadcrumbItem.Custom [ Href "#" ] ] [ str "Library" ]
+                    BreadcrumbItem.breadcrumbItem
+                        [ BreadcrumbItem.Tag !^"a"
+                          BreadcrumbItem.Custom [ Href "#" ] ] [ str "Data" ]
+                    BreadcrumbItem.breadcrumbItem
+                        [ BreadcrumbItem.Tag !^"span"
+                          BreadcrumbItem.Active true ] [ str "Bootstrap" ] ] ])
 
 exportDefault breadcrumbsSample

@@ -14,7 +14,7 @@ module ListGroupItemText =
         | CssModule of CSSModule
         | Custom of IHTMLProp list
 
-    let listGroupItemText (props: ListGroupItemTextProps seq) (elems: ReactElement seq) : ReactElement =
+    let listGroupItemText (props: ListGroupItemTextProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

@@ -18,7 +18,7 @@ module Pagination =
         | Tag of U2<string, obj>
         | Custom of IHTMLProp list
 
-    let pagination (props: PaginationProps seq) (elems: ReactElement seq) : ReactElement =
+    let pagination (props: PaginationProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

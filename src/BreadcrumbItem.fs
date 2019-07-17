@@ -8,15 +8,15 @@ open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module BreadcrumbItem =
-    
+
     type BreadcrumbItemProps =
         | Tag of U2<string, obj>
         | Active of bool
         | CSSModule of Common.CSSModule
         | Custom of IHTMLProp list
-        
-        
-    let breadcrumbItem (props: BreadcrumbItemProps seq) (elems: ReactElement seq) : ReactElement =
+
+
+    let breadcrumbItem (props: BreadcrumbItemProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function
@@ -32,6 +32,5 @@ module BreadcrumbItem =
             |> keyValueList CaseRules.LowerFirst
 
         let props = JS.Object.assign (createEmpty, customProps, typeProps)
-        
-        ofImport "BreadcrumbItem" "reactstrap" props elems
 
+        ofImport "BreadcrumbItem" "reactstrap" props elems

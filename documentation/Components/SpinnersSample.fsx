@@ -6,10 +6,6 @@ open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
 
-let private spinnersSample =
-    FunctionComponent.Of<obj> (fun _ ->
-        fragment [] [
-        ]
-    , "SpinnersSample")
-    
+let private spinnersSample = FunctionComponent.Of<obj>((fun _ -> fragment [] []), "SpinnersSample")
+
 exportDefault spinnersSample

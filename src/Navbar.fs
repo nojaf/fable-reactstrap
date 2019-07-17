@@ -10,17 +10,17 @@ open Fable.React.Props
 module Navbar =
 
     type NavbarProps =
-        
+
         | Tag of U2<string, obj>
         | Light of bool
         | Dark of bool
         | Fixed of string
         | Color of Common.Color
         | Role of string
-        | Expand of U2<bool,string>
+        | Expand of U2<bool, string>
         | Custom of IHTMLProp list
 
-    let navbar (props: NavbarProps seq) (elems: ReactElement seq) : ReactElement =
+    let navbar (props: NavbarProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function
@@ -36,5 +36,5 @@ module Navbar =
             |> keyValueList CaseRules.LowerFirst
 
         let props = JS.Object.assign (createEmpty, customProps, typeProps)
-        
+
         ofImport "Navbar" "reactstrap" props elems

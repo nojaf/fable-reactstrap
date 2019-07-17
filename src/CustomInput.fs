@@ -17,7 +17,7 @@ module CustomInput =
         | Tag of U2<string, obj>
         | Custom of IHTMLProp list
 
-    let customInput (props: CustomInputProps seq) (elems: ReactElement seq) : ReactElement =
+    let customInput (props: CustomInputProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

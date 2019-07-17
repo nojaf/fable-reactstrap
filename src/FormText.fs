@@ -16,7 +16,7 @@ module FormText =
         | Tag of U2<string, obj>
         | Custom of IHTMLProp list
 
-    let formText (props: FormTextProps seq) (elems: ReactElement seq) : ReactElement =
+    let formText (props: FormTextProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

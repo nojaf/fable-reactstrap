@@ -1,4 +1,4 @@
-﻿namespace ReactStrap
+namespace ReactStrap
 
 open Fable.Core
 
@@ -15,9 +15,11 @@ module Common =
         | [<CompiledName("light")>] Light
         | [<CompiledName("dark")>] Dark
         | [<CompiledName("link")>] Link
-        
-    type [<AllowNullLiteral>] CSSModule =
-        [<Emit "$0[$1]{{=$2}}">] abstract Item: className: string -> string with get, set
+
+    [<AllowNullLiteral>]
+    type CSSModule =
+        [<Emit"$0[$1]{{=$2}}">]
+        abstract Item: className:string -> string with get, set
 
     [<RequireQualifiedAccess>]
     type TransitionProps =
@@ -33,7 +35,7 @@ module Common =
         | [<CompiledName("transitionLeave")>] TransitionLeave of bool
         | [<CompiledName("onLeave")>] OnLeave of (unit -> unit)
         | [<CompiledName("onEnter")>] OnEnter of (unit -> unit)
-        
+
     [<StringEnum>]
     type Size =
         | [<CompiledName("lg")>] Lg
@@ -54,7 +56,7 @@ module Common =
     type AddonType =
         | [<CompiledName("prepend")>] Prepend
         | [<CompiledName("append")>] Append
-        
+
     [<StringEnum>]
     type Placement =
         | [<CompiledName("auto")>] Auto
@@ -73,5 +75,8 @@ module Common =
         | [<CompiledName("left-start")>] LeftStart
         | [<CompiledName("left-end")>] LeftEnd
 
-    type DelayEx = { show:int; hide:int }
+    type DelayEx =
+        { show: int
+          hide: int }
+
     type Delay = U2<int, DelayEx>

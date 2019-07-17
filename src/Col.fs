@@ -7,20 +7,19 @@ open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Col =
-    type ColumnProps = {
-        size: U3<bool, int, string>
-        order: U2<string, int>
-        offset: U2<string, int>
-    }
-    
+    type ColumnProps =
+        { size: U3<bool, int, string>
+          order: U2<string, int>
+          offset: U2<string, int> }
+
     let mkCol size =
-        { size = size; order = !^0; offset = !^ 0 }
-        
-    let withOffset offset col =
-        { col with offset = offset }
-        
-    let withOrder order col =
-        { col with order = order }
+        { size = size
+          order = !^0
+          offset = !^0 }
+
+    let withOffset offset col = { col with offset = offset }
+
+    let withOrder order col = { col with order = order }
 
     type ColProps =
         | Tag of U2<string, obj>
@@ -32,7 +31,7 @@ module Col =
         | Widths of obj array
         | Custom of IHTMLProp list
 
-    let col (props: ColProps seq) (elems: ReactElement seq) : ReactElement =
+    let col (props: ColProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

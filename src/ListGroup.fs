@@ -15,7 +15,7 @@ module ListGroup =
         | Flush of bool
         | Custom of IHTMLProp list
 
-    let listGroup (props: ListGroupProps seq) (elems: ReactElement seq) : ReactElement =
+    let listGroup (props: ListGroupProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

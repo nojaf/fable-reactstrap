@@ -15,8 +15,8 @@ module Popover =
         | IsOpen of bool
         | Toggle of (unit -> unit)
         | BoundariesElement of U2<string, Element>
-        | Target of U2<string,Element>
-        | Container of U2<string,Element>
+        | Target of U2<string, Element>
+        | Container of U2<string, Element>
         | InnerClassName of string
         | Disabled of bool
         | HideArrow of bool
@@ -29,7 +29,7 @@ module Popover =
         | Flip of bool
         | Custom of IHTMLProp list
 
-    let popover (props: PopoverProps seq) (elems: ReactElement seq) : ReactElement =
+    let popover (props: PopoverProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

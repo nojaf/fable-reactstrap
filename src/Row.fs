@@ -13,7 +13,7 @@ module Row =
         | Form of bool
         | Custom of IHTMLProp list
 
-    let row (props: RowProps seq) (elems: ReactElement seq) : ReactElement =
+    let row (props: RowProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

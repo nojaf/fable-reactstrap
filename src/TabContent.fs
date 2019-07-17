@@ -11,11 +11,11 @@ module TabContent =
 
     type TabContentProps =
         | Tag of U2<string, obj>
-        | ActiveTab of U2<string,int>
+        | ActiveTab of U2<string, int>
         | CssModule of CSSModule
         | Custom of IHTMLProp list
 
-    let tabContent (props: TabContentProps seq) (elems: ReactElement seq) : ReactElement =
+    let tabContent (props: TabContentProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

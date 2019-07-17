@@ -21,7 +21,7 @@ module Media =
         | Tag of U2<string, obj>
         | Custom of IHTMLProp list
 
-    let media (props: MediaProps seq) (elems: ReactElement seq) : ReactElement =
+    let media (props: MediaProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

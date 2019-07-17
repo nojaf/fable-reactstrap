@@ -7,13 +7,13 @@ open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module CardBody =
-    
+
     type CardBodyProps =
         | Tag of U2<string, obj>
         | Custom of IHTMLProp list
-        
-        
-    let cardBody (props: CardBodyProps seq) (elems: ReactElement seq) : ReactElement =
+
+
+    let cardBody (props: CardBodyProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function
@@ -30,4 +30,3 @@ module CardBody =
 
         let props = JS.Object.assign (createEmpty, customProps, typeProps)
         ofImport "CardBody" "reactstrap" props elems
-

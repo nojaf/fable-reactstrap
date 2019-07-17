@@ -6,10 +6,6 @@ open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
 
-let private tooltipsSample =
-    FunctionComponent.Of<obj> (fun _ ->
-        fragment [] [
-        ]
-    , "TooltipsSample")
-    
+let private tooltipsSample = FunctionComponent.Of<obj>((fun _ -> fragment [] []), "TooltipsSample")
+
 exportDefault tooltipsSample

@@ -9,8 +9,7 @@ open ReactStrap
 [<RequireQualifiedAccess>]
 module Uncontrolled =
 
-    type UncontrolledProps =
-        | Custom of IHTMLProp list
+    type UncontrolledProps = Custom of IHTMLProp list
 
-    let uncontrolled (props: UncontrolledProps seq) (elems: ReactElement seq) : ReactElement =
+    let uncontrolled (props: UncontrolledProps seq) (elems: ReactElement seq): ReactElement =
         ofImport "Uncontrolled" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems

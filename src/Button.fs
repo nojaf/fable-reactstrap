@@ -9,7 +9,7 @@ open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Button =
-    
+
     type ButtonProps =
         | Tag of U2<string, obj>
         | Color of Common.Color
@@ -22,7 +22,7 @@ module Button =
         | Close of bool
         | Custom of IHTMLProp list
 
-    let button (props: ButtonProps seq) (elems: ReactElement seq) : ReactElement =
+    let button (props: ButtonProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function
@@ -38,5 +38,5 @@ module Button =
             |> keyValueList CaseRules.LowerFirst
 
         let props = JS.Object.assign (createEmpty, customProps, typeProps)
-        
+
         ofImport "Button" "reactstrap" props elems

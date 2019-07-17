@@ -14,13 +14,13 @@ module Nav =
         | Card of bool
         | Justified of bool
         | Fill of bool
-        | Vertical of U2<bool,string>
+        | Vertical of U2<bool, string>
         | Horizontal of string
         | Navbar of bool
         | Tag of U2<string, obj>
         | Custom of IHTMLProp list
 
-    let nav (props: NavProps seq) (elems: ReactElement seq) : ReactElement =
+    let nav (props: NavProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function
@@ -36,5 +36,5 @@ module Nav =
             |> keyValueList CaseRules.LowerFirst
 
         let props = JS.Object.assign (createEmpty, customProps, typeProps)
-        
+
         ofImport "Nav" "reactstrap" props elems

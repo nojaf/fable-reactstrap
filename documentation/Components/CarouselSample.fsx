@@ -28,46 +28,57 @@ let private items =
 let private itemLength = Array.length items
 
 let private carouselSample =
-    FunctionComponent.Of<obj>(fun _ ->
-        let activeIndex = Hooks.useState(0)
-        let mutable animating = false // I'm following the example on https://reactstrap.github.io/components/carousel/#app
+    FunctionComponent.Of<obj>
+        ((fun _ ->
+            let activeIndex = Hooks.useState (0)
+            let mutable animating =
+                false // I'm following the example on https://reactstrap.github.io/components/carousel/#app
+            let onExiting _ = animating <- true
+            let onExited _ = animating <- false
 
-        let onExiting _ = animating <- true
-        let onExited _ = animating <- false
+            let next _ =
+                if not animating then activeIndex.update ((activeIndex.current + 1) % itemLength)
 
-        let next _ =
-            if not animating then
-                activeIndex.update((activeIndex.current + 1) % itemLength)
 
-        let prev _ =
-            if not animating then
-                activeIndex.update((activeIndex.current + itemLength - 1) % itemLength)
+            let prev _ =
+                if not animating then activeIndex.update ((activeIndex.current + itemLength - 1) % itemLength)
 
-        let gotoIndex (newIndex:int) =
-            if not animating then
-                activeIndex.update(newIndex)
 
-        let slides =
-            items
-            |> Array.map (fun item ->
-                CarouselItem.carouselItem [CarouselItem.OnExiting onExiting; CarouselItem.OnExited onExited; CarouselItem.Custom [Key item.Src]] [
-                    img [Src item.Src; Alt item.AltText]
-                    CarouselCaption.carouselCaption [CarouselCaption.CaptionText item.Caption; CarouselCaption.CaptionHeader item.Caption] []
-                ])
+            let gotoIndex (newIndex: int) =
+                if not animating then activeIndex.update (newIndex)
 
-        Carousel.carousel [Carousel.ActiveIndex activeIndex.current; Carousel.Next next; Carousel.Previous prev] [
-            CarouselIndicators.carouselIndicators [
-                CarouselIndicators.Items items; CarouselIndicators.OnClickHandler gotoIndex
-                CarouselIndicators.ActiveIndex activeIndex.current
-            ] []
-            ofArray slides
-            CarouselControl.carouselControl [CarouselControl.Direction CarouselControl.CarouselDirection.Prev
-                                             CarouselControl.DirectionText "Previous"
-                                             CarouselControl.OnClickHandler prev] []
-            CarouselControl.carouselControl [CarouselControl.Direction CarouselControl.CarouselDirection.Next
-                                             CarouselControl.DirectionText "Next"
-                                             CarouselControl.OnClickHandler next] []
-        ]
-    ,"CarouselSample")
+
+            let slides =
+                items
+                |> Array.map (fun item ->
+                    CarouselItem.carouselItem
+                        [ CarouselItem.OnExiting onExiting
+                          CarouselItem.OnExited onExited
+                          CarouselItem.Custom [ Key item.Src ] ]
+                        [ img
+                            [ Src item.Src
+                              Alt item.AltText ]
+                          CarouselCaption.carouselCaption
+                              [ CarouselCaption.CaptionText item.Caption
+                                CarouselCaption.CaptionHeader item.Caption ] [] ])
+
+
+            Carousel.carousel
+                [ Carousel.ActiveIndex activeIndex.current
+                  Carousel.Next next
+                  Carousel.Previous prev ]
+                [ CarouselIndicators.carouselIndicators
+                    [ CarouselIndicators.Items items
+                      CarouselIndicators.OnClickHandler gotoIndex
+                      CarouselIndicators.ActiveIndex activeIndex.current ] []
+                  ofArray slides
+                  CarouselControl.carouselControl
+                      [ CarouselControl.Direction CarouselControl.CarouselDirection.Prev
+                        CarouselControl.DirectionText "Previous"
+                        CarouselControl.OnClickHandler prev ] []
+                  CarouselControl.carouselControl
+                      [ CarouselControl.Direction CarouselControl.CarouselDirection.Next
+                        CarouselControl.DirectionText "Next"
+                        CarouselControl.OnClickHandler next ] [] ]), "CarouselSample")
 
 exportDefault carouselSample

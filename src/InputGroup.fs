@@ -14,7 +14,7 @@ module InputGroup =
         | Tag of U2<string, obj>
         | Custom of IHTMLProp list
 
-    let inputGroup (props: InputGroupProps seq) (elems: ReactElement seq) : ReactElement =
+    let inputGroup (props: InputGroupProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

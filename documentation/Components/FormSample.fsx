@@ -6,10 +6,6 @@ open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
 
-let private formSample =
-    FunctionComponent.Of<obj> (fun _ ->
-        fragment [] [
-        ]
-    , "FormSample")
-    
+let private formSample = FunctionComponent.Of<obj>((fun _ -> fragment [] []), "FormSample")
+
 exportDefault formSample

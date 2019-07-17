@@ -20,7 +20,7 @@ module ToastHeader =
         | CloseAriaLabel of string
         | Custom of IHTMLProp list
 
-    let toastHeader (props: ToastHeaderProps seq) (elems: ReactElement seq) : ReactElement =
+    let toastHeader (props: ToastHeaderProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function
@@ -36,5 +36,5 @@ module ToastHeader =
             |> keyValueList CaseRules.LowerFirst
 
         let props = JS.Object.assign (createEmpty, customProps, typeProps)
-        
+
         ofImport "ToastHeader" "reactstrap" props elems

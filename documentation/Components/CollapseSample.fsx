@@ -6,10 +6,6 @@ open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
 
-let private collapseSample =
-    FunctionComponent.Of<obj> (fun _ ->
-        fragment [] [
-        ]
-    , "CollapseSample")
-    
+let private collapseSample = FunctionComponent.Of<obj>((fun _ -> fragment [] []), "CollapseSample")
+
 exportDefault collapseSample

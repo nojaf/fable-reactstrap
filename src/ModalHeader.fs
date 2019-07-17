@@ -13,7 +13,7 @@ module ModalHeader =
         | Toggle of string
         | Custom of IHTMLProp list
 
-    let modalHeader (props: ModalHeaderProps seq) (elems: ReactElement seq) : ReactElement =
+    let modalHeader (props: ModalHeaderProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

@@ -13,7 +13,7 @@ module NavItem =
         | Tag of U2<string, obj>
         | Custom of IHTMLProp list
 
-    let navItem (props: NavItemProps seq) (elems: ReactElement seq) : ReactElement =
+    let navItem (props: NavItemProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

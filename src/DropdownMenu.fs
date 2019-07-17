@@ -17,8 +17,8 @@ module DropdownMenu =
         | Modifiers of obj
         | Persist of bool
         | Custom of IHTMLProp list
-        
-    let dropdownMenu (props: DropdownMenuProps seq) (elems: ReactElement seq) : ReactElement =
+
+    let dropdownMenu (props: DropdownMenuProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

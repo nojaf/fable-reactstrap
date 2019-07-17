@@ -8,9 +8,8 @@ open Fable.React.Props
 [<RequireQualifiedAccess>]
 module Label =
 
-    type LabelProps =
-        | Custom of IHTMLProp list
+    type LabelProps = Custom of IHTMLProp list
 
-    let label (props: LabelProps seq) (elems: ReactElement seq) : ReactElement =
+    let label (props: LabelProps seq) (elems: ReactElement seq): ReactElement =
         let props = keyValueList CaseRules.LowerFirst props
         ofImport "Label" "reactstrap" props elems

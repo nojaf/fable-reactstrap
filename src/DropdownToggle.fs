@@ -16,8 +16,8 @@ module DropdownToggle =
         | [<CompiledName("aria-haspopup")>] AriaHasPopup of bool
         | Size of Common.Size
         | Custom of IHTMLProp list
-        
-    let dropdownToggle (props: DropdownToggleProps seq) (elems: ReactElement seq) : ReactElement =
+
+    let dropdownToggle (props: DropdownToggleProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

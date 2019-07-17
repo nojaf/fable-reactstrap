@@ -7,13 +7,13 @@ open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module CardImgOverlay =
-    
+
     type CardImgOverlayProps =
         | Tag of U2<string, obj>
         | Custom of IHTMLProp list
-        
-        
-    let cardImgOverlay (props: CardImgOverlayProps seq) (elems: ReactElement seq) : ReactElement =
+
+
+    let cardImgOverlay (props: CardImgOverlayProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function
@@ -30,6 +30,3 @@ module CardImgOverlay =
 
         let props = JS.Object.assign (createEmpty, customProps, typeProps)
         ofImport "CardImgOverlay" "reactstrap" props elems
-
-
-

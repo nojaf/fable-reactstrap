@@ -6,10 +6,6 @@ open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
 
-let private mediaSample =
-    FunctionComponent.Of<obj> (fun _ ->
-        fragment [] [
-        ]
-    , "MediaSample")
-    
+let private mediaSample = FunctionComponent.Of<obj>((fun _ -> fragment [] []), "MediaSample")
+
 exportDefault mediaSample

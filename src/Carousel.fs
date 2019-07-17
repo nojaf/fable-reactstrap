@@ -17,14 +17,14 @@ module Carousel =
         | Keyboard of bool
         | Pause of U2<string, bool>
         | Ride of string
-        | Interval of U3<int,string,bool>
+        | Interval of U3<int, string, bool>
         | MouseEnter of (MouseEvent -> unit)
         | MouseLeave of (MouseEvent -> unit)
         | Slide of bool
         | CssModule of CSSModule
         | Custom of IHTMLProp list
 
-    let carousel (props: CarouselProps seq) (elems: ReactElement seq) : ReactElement =
+    let carousel (props: CarouselProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

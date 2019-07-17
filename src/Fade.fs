@@ -7,7 +7,9 @@ open Fable.React
 [<RequireQualifiedAccess>]
 module Fade =
 
-    type TimeoutEx = {enter:int;exit:int}
+    type TimeoutEx =
+        { enter: int
+          exit: int }
 
     type FadeProps =
         | In of bool
@@ -17,7 +19,7 @@ module Fade =
         | Enter of bool
         | Exit of bool
         | Timeout of U2<int, TimeoutEx>
-        | AddEndListener of (string -> (Event -> unit))
+        | AddEndListener of (string -> Event -> unit)
         | OnEnter of (unit -> unit)
         | OnEntering of (unit -> unit)
         | OnEntered of (unit -> unit)
@@ -26,5 +28,4 @@ module Fade =
         | OnExited of (unit -> unit)
         | BaseClass of string
 
-    let fade (props: FadeProps seq) (elems: ReactElement seq) : ReactElement =
-        ofImport "Fade" "reactstrap" props elems
+    let fade (props: FadeProps seq) (elems: ReactElement seq): ReactElement = ofImport "Fade" "reactstrap" props elems

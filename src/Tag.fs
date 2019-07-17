@@ -16,7 +16,7 @@ module Tag =
         | Pill of bool
         | Custom of IHTMLProp list
 
-    let tag (props: TagProps seq) (elems: ReactElement seq) : ReactElement =
+    let tag (props: TagProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

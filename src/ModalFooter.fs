@@ -14,7 +14,7 @@ module ModalFooter =
         | CssModule of CSSModule
         | Custom of IHTMLProp list
 
-    let modalFooter (props: ModalFooterProps seq) (elems: ReactElement seq) : ReactElement =
+    let modalFooter (props: ModalFooterProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

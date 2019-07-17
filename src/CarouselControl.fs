@@ -21,7 +21,7 @@ module CarouselControl =
         | CssModule of CSSModule
         | Custom of IHTMLProp list
 
-    let carouselControl (props: CarouselControlProps seq) (elems: ReactElement seq) : ReactElement =
+    let carouselControl (props: CarouselControlProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

@@ -14,7 +14,7 @@ module ModalBody =
         | CssModule of CSSModule
         | Custom of IHTMLProp list
 
-    let modalBody (props: ModalBodyProps seq) (elems: ReactElement seq) : ReactElement =
+    let modalBody (props: ModalBodyProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

@@ -11,11 +11,11 @@ module TabPane =
 
     type TabPaneProps =
         | Tag of U2<string, obj>
-        | TabId of U2<string,int>
+        | TabId of U2<string, int>
         | CssModule of CSSModule
         | Custom of IHTMLProp list
 
-    let tabPane (props: TabPaneProps seq) (elems: ReactElement seq) : ReactElement =
+    let tabPane (props: TabPaneProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

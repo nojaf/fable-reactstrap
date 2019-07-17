@@ -8,13 +8,13 @@ open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module CardLink =
-    
+
     type CardLinkProps =
         | Tag of U2<string, obj>
         | Custom of IHTMLProp list
         | InnerRef of (Element -> unit)
-        
-    let cardLink (props: CardLinkProps seq) (elems: ReactElement seq) : ReactElement =
+
+    let cardLink (props: CardLinkProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function
@@ -31,8 +31,3 @@ module CardLink =
 
         let props = JS.Object.assign (createEmpty, customProps, typeProps)
         ofImport "CardLink" "reactstrap" props elems
-
-
-
-
-

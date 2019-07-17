@@ -16,7 +16,7 @@ module Spinner =
         | CssModule of CSSModule
         | Custom of IHTMLProp list
 
-    let spinner (props: SpinnerProps seq) (elems: ReactElement seq) : ReactElement =
+    let spinner (props: SpinnerProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

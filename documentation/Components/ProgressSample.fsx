@@ -6,10 +6,6 @@ open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
 
-let private progressSample =
-    FunctionComponent.Of<obj> (fun _ ->
-        fragment [] [
-        ]
-    , "ProgressSample")
-    
+let private progressSample = FunctionComponent.Of<obj>((fun _ -> fragment [] []), "ProgressSample")
+
 exportDefault progressSample

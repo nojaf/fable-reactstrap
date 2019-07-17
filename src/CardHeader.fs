@@ -7,13 +7,13 @@ open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module CardHeader =
-    
+
     type CardHeaderProps =
         | Tag of U2<string, obj>
         | Custom of IHTMLProp list
-        
-        
-    let cardHeader (props: CardHeaderProps seq) (elems: ReactElement seq) : ReactElement =
+
+
+    let cardHeader (props: CardHeaderProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

@@ -16,7 +16,7 @@ module ToastBody =
         | InnerRef of (Element -> unit)
         | Custom of IHTMLProp list
 
-    let toastBody (props: ToastBodyProps seq) (elems: ReactElement seq) : ReactElement =
+    let toastBody (props: ToastBodyProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

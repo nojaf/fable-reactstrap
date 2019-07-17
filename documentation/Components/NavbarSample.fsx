@@ -6,10 +6,6 @@ open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
 
-let private navbarSample =
-    FunctionComponent.Of<obj> (fun _ ->
-        fragment [] [
-        ]
-    , "NavbarSample")
-    
+let private navbarSample = FunctionComponent.Of<obj>((fun _ -> fragment [] []), "NavbarSample")
+
 exportDefault navbarSample

@@ -6,10 +6,6 @@ open Fable.Core.JsInterop
 open Fable.React
 open ReactStrap
 
-let private layoutSample =
-    FunctionComponent.Of<obj> (fun _ ->
-        fragment [] [
-        ]
-    , "LayoutSample")
-    
+let private layoutSample = FunctionComponent.Of<obj>((fun _ -> fragment [] []), "LayoutSample")
+
 exportDefault layoutSample

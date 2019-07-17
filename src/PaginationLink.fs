@@ -19,7 +19,7 @@ module PaginationLink =
         | [<CompiledName("aria-label")>] AriaLabel of string
         | Custom of IHTMLProp list
 
-    let paginationLink (props: PaginationLinkProps seq) (elems: ReactElement seq) : ReactElement =
+    let paginationLink (props: PaginationLinkProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

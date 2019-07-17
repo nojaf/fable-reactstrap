@@ -8,13 +8,13 @@ open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module ButtonToolbar =
-    
+
     type ButtonToolbarProps =
         | Tag of U2<string, obj>
         | CSSModule of Common.CSSModule
         | Custom of IHTMLProp list
-        
-    let buttonToolbar (props: ButtonToolbarProps seq) (elems: ReactElement seq) : ReactElement =
+
+    let buttonToolbar (props: ButtonToolbarProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function
@@ -30,7 +30,5 @@ module ButtonToolbar =
             |> keyValueList CaseRules.LowerFirst
 
         let props = JS.Object.assign (createEmpty, customProps, typeProps)
-        
+
         ofImport "ButtonToolbar" "reactstrap" props elems
-
-

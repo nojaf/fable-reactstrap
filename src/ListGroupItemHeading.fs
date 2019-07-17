@@ -14,7 +14,7 @@ module ListGroupItemHeading =
         | CssModule of CSSModule
         | Custom of IHTMLProp list
 
-    let listGroupItemHeading (props: ListGroupItemHeadingProps seq) (elems: ReactElement seq) : ReactElement =
+    let listGroupItemHeading (props: ListGroupItemHeadingProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

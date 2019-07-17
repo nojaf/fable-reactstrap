@@ -14,9 +14,9 @@ module NavLink =
         | InnerRef of (Element -> unit)
         | Tag of U2<string, obj>
         | Custom of IHTMLProp list
-        
 
-    let navLink (props: NavLinkProps seq) (elems: ReactElement seq) : ReactElement =
+
+    let navLink (props: NavLinkProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function

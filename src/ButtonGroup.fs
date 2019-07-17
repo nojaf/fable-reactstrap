@@ -14,8 +14,8 @@ module ButtonGroup =
         | Size of Common.Size
         | Vertical of bool
         | Custom of IHTMLProp list
-        
-    let buttonGroup (props: ButtonGroupProps seq) (elems: ReactElement seq) : ReactElement =
+
+    let buttonGroup (props: ButtonGroupProps seq) (elems: ReactElement seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function
@@ -31,7 +31,5 @@ module ButtonGroup =
             |> keyValueList CaseRules.LowerFirst
 
         let props = JS.Object.assign (createEmpty, customProps, typeProps)
-        
+
         ofImport "ButtonGroup" "reactstrap" props elems
-
-

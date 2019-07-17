@@ -16,21 +16,16 @@ module Toast =
         | Transition of Fade.FadeProps seq
         | Custom of IHTMLProp list
 
-    let toast (props: ToastProps seq) (elems: ReactElement seq) : ReactElement =
+    let toast (props: ToastProps seq) (elems: ReactElement seq): ReactElement =
         let toastProps =
-            if Seq.isEmpty props then
-                createObj []
+            if Seq.isEmpty props then createObj []
             else
                 props
                 |> Seq.map (fun prop ->
                     match prop with
-                    | Transition fade ->
-                        createObj [ "transition" ==> keyValueList CaseRules.LowerFirst fade]
-                    | Custom customProps ->
-                        keyValueList CaseRules.LowerFirst customProps
-                    | prop ->
-                        keyValueList CaseRules.LowerFirst (Seq.singleton prop)
-                )
-                |> Seq.reduce (fun a b -> Fable.Core.JS.Object.assign(a,b))
-        
+                    | Transition fade -> createObj [ "transition" ==> keyValueList CaseRules.LowerFirst fade ]
+                    | Custom customProps -> keyValueList CaseRules.LowerFirst customProps
+                    | prop -> keyValueList CaseRules.LowerFirst (Seq.singleton prop))
+                |> Seq.reduce (fun a b -> Fable.Core.JS.Object.assign (a, b))
+
         ofImport "Modal" "reactstrap" toastProps elems
