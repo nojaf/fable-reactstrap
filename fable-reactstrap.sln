@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FableReactStrap", "src\FableReactStrap.fsproj", "{D2A9CA49-A71C-4ABD-BF54-262300B814FB}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fable.Reactstrap", "src\Fable.Reactstrap.fsproj", "{D2A9CA49-A71C-4ABD-BF54-262300B814FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
