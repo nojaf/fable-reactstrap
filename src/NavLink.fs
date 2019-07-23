@@ -1,4 +1,4 @@
-namespace ReactStrap
+namespace Reactstrap
 
 open Browser.Types
 open Fable.Core

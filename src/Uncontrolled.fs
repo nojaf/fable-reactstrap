@@ -1,10 +1,10 @@
-namespace ReactStrap
+namespace Reactstrap
 
 open Browser.Types
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
-open ReactStrap
+open Reactstrap
 
 [<RequireQualifiedAccess>]
 module Uncontrolled =

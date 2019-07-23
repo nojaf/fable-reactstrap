@@ -1,4 +1,4 @@
-namespace ReactStrap
+namespace Reactstrap
 
 open Fable.Core
 open Fable.Core.JsInterop

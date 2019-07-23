@@ -9,7 +9,7 @@
 open Fable.Core.JsInterop
 open Fable.React
 open Fable.React.Props
-open ReactStrap
+open Reactstrap
 
 let private items =
     [| { Src =

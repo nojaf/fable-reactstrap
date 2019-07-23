@@ -1,10 +1,10 @@
-namespace ReactStrap
+namespace Reactstrap
 
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
 open Fable.React.Props
-open ReactStrap
+open Reactstrap
 
 [<RequireQualifiedAccess>]
 module Alert =

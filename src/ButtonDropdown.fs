@@ -1,9 +1,9 @@
-namespace ReactStrap
+namespace Reactstrap
 
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
-open ReactStrap
+open Reactstrap
 open Fable.React.Props
 
 [<RequireQualifiedAccess>]

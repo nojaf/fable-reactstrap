@@ -8,10 +8,10 @@
 #load "../../src/DropdownMenu.fs"
 #load "../../src/DropdownItem.fs"
 
-open ReactStrap
 open Fable.Core.JsInterop
 open Fable.React
 open Fable.React.Props
+open Reactstrap
 
 let private buttonGroupSample =
     FunctionComponent.Of(fun () ->

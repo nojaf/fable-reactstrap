@@ -1,9 +1,9 @@
-namespace ReactStrap
+namespace Reactstrap
 
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.React
-open ReactStrap
+open Reactstrap
 open Fable.React.Props
 
 [<RequireQualifiedAccess>]
@@ -17,7 +17,7 @@ module Navbar =
         | Fixed of string
         | Color of Common.Color
         | Role of string
-        | Expand of U2<bool, string>
+        | Expand of U2<bool, Common.Size>
         | Custom of IHTMLProp list
 
     let navbar (props: NavbarProps seq) (elems: ReactElement seq): ReactElement =

@@ -4,7 +4,7 @@
 
 open Fable.Core.JsInterop
 open Fable.React
-open ReactStrap
+open Reactstrap
 
 let private formSample = FunctionComponent.Of<obj>((fun _ -> fragment [] []), "FormSample")
 

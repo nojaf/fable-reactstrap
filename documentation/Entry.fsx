@@ -14,7 +14,7 @@ open Fable.React
 open Fable.React.Props
 open HookRouter
 open System
-open ReactStrap
+open Reactstrap
 open Browser
 open Fable.Core
 open ReactPrism
@@ -181,7 +181,7 @@ let layout path body =
                                 [ NavItem.navItem []
                                       [ a
                                           [ Href "https://github.com/nojaf/fable-reactstrap"
-                                            Target "_blank" ] [ str "Github" ] ] ] ] ] ]
+                                            Target "_blank" ] [ str "GitHub" ] ] ] ] ] ]
           Container.container []
               [ Row.row []
                     [ Col.col
