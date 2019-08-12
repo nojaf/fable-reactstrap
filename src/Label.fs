@@ -8,7 +8,9 @@ open Fable.React.Props
 [<RequireQualifiedAccess>]
 module Label =
 
-    type LabelProps = Custom of IHTMLProp list
+    type LabelProps =
+        | Check of bool
+        | Custom of IHTMLProp list
 
     let label (props: LabelProps seq) (elems: ReactElement seq): ReactElement =
         let props = keyValueList CaseRules.LowerFirst props
