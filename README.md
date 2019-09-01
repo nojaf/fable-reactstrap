@@ -1,5 +1,7 @@
 # Fable Reactstrap
 
+[![Build Status](https://travis-ci.org/nojaf/fable-reactstrap.svg?branch=master)](https://travis-ci.org/nojaf/fable-reactstrap)
+
 ## Documentation
 
 https://nojaf.github.io/fable-reactstrap
