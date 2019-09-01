@@ -1,6 +1,6 @@
 # Fable Reactstrap
 
-[![Build Status](https://travis-ci.org/nojaf/fable-reactstrap.svg?branch=master)](https://travis-ci.org/nojaf/fable-reactstrap)
+[![Build Status](https://travis-ci.org/nojaf/fable-reactstrap.svg?branch=master)](https://travis-ci.org/nojaf/fable-reactstrap) [![Greenkeeper badge](https://badges.greenkeeper.io/nojaf/fable-reactstrap.svg)](https://greenkeeper.io/)
 
 ## Documentation
 
