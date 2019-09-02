@@ -10,7 +10,7 @@ module ModalHeader =
 
     type ModalHeaderProps =
         | WrapTag of U2<string, obj>
-        | Toggle of string
+        | Toggle of (unit -> unit)
         | Custom of IHTMLProp list
 
     let modalHeader (props: ModalHeaderProps seq) (elems: ReactElement seq): ReactElement =
