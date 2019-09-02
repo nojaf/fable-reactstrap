@@ -49,8 +49,8 @@ module Common =
         | [<CompiledName("down")>] Down
         | [<CompiledName("left")>] Left
         | [<CompiledName("right")>] Right
-        | [<CompiledName("right")>] Prev
-        | [<CompiledName("right")>] Next
+        | [<CompiledName("prev")>] Prev
+        | [<CompiledName("next")>] Next
 
     [<StringEnum>]
     type AddonType =
