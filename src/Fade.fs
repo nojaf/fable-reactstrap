@@ -1,7 +1,8 @@
 namespace Reactstrap
 
-open Browser.Types
 open Fable.Core
+open Fable.Core.JsInterop
+open Browser.Types
 open Fable.React
 
 [<RequireQualifiedAccess>]
@@ -28,4 +29,15 @@ module Fade =
         | OnExited of (unit -> unit)
         | BaseClass of string
 
-    let fade (props: FadeProps seq) (elems: ReactElement seq): ReactElement = ofImport "Fade" "reactstrap" props elems
+    let fade (props: FadeProps seq) (elems: ReactElement seq): ReactElement =
+        let customProps =
+            props
+            |> keyValueList CaseRules.LowerFirst
+
+        let typeProps =
+            props
+            |> keyValueList CaseRules.LowerFirst
+
+        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+
+        ofImport "Fade" "reactstrap" props elems
