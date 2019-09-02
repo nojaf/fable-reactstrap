@@ -45,7 +45,6 @@ module Input =
         | Valid of bool
         | Invalid of bool
         | Plaintext of string
-        | Placeholder of string
         | Addon of bool
         | Min of int
         | Max of int

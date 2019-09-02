@@ -19,8 +19,8 @@ let private inputGroupSample =
                         InputGroupAddon.inputGroupAddon [
                             InputGroupAddon.AddonType Prepend
                         ] [ str "@"]
-                        Input.input [ Input.Placeholder "username"]
-                      ]
+                        Input.input [ Input.Custom [ HTMLAttr.Placeholder "username" ] ]
+                        ]
                     br []
                     InputGroup.inputGroup [] [
                         InputGroupAddon.inputGroupAddon [
@@ -30,11 +30,11 @@ let private inputGroupSample =
                                 Input.input [ Input.Addon true; Input.Type Input.Checkbox ]
                             ]
                         ]
-                        Input.input [ Input.Placeholder "Check it out"]
+                        Input.input [ Input.Custom [ HTMLAttr.Placeholder "Check it out" ]]
                       ]
                     br []
                     InputGroup.inputGroup [] [
-                        Input.input [ Input.Placeholder "username"]
+                        Input.input [ Input.Custom [ HTMLAttr.Placeholder "username" ]]
                         InputGroupAddon.inputGroupAddon [
                             InputGroupAddon.AddonType Append
                         ] [
@@ -55,7 +55,7 @@ let private inputGroupSample =
                                 str "$"
                             ]
                         ]
-                        Input.input [ Input.Placeholder "Dolla dolla billz yo!"]
+                        Input.input [ Input.Custom [ HTMLAttr.Placeholder "Dolla dolla billz yo!" ]]
                         InputGroupAddon.inputGroupAddon [
                             InputGroupAddon.AddonType Append
                         ] [
