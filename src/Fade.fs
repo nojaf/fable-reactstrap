@@ -30,14 +30,8 @@ module Fade =
         | BaseClass of string
 
     let fade (props: FadeProps seq) (elems: ReactElement seq): ReactElement =
-        let customProps =
+        let fadeProps =
             props
             |> keyValueList CaseRules.LowerFirst
 
-        let typeProps =
-            props
-            |> keyValueList CaseRules.LowerFirst
-
-        let props = JS.Object.assign (createEmpty, customProps, typeProps)
-
-        ofImport "Fade" "reactstrap" props elems
+        ofImport "Fade" "reactstrap" fadeProps  elems
