@@ -7,3 +7,4 @@ packages/
 .paket/load/
 paket-files/
 docs/
+.ionide/symbolCache.db
