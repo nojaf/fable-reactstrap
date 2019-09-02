@@ -79,11 +79,8 @@ let private dropdownsSample =
                                     DropdownItem.dropdownItem [] [  str "Another Action" ]
                                 ]
                             ]
-                      ]
-                  ]
-
-
-
+                        ]
+                    ]
                   ]
         )
     , "DropdownsSample")
