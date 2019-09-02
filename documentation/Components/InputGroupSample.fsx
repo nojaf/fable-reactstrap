@@ -75,7 +75,7 @@ let private inputGroupSample =
                             str "$"
                         ]
                         Input.input [
-                            Input.Placeholder "Amount"
+                            Input.Custom [ HTMLAttr.Placeholder "Amount" ]
                             Input.Type Input.Number
                             Input.Min 0
                             Input.Max 100
