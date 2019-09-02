@@ -60,9 +60,7 @@ let private layoutSample =
                         [ str ".col-sm-6 .order-sm-2 .offset-sm-1"]
                      ]
                   Row.row [ ]
-                    [ Col.col [ Col.Custom [
-                                    HTMLAttr.Custom ("md", customLayout1)
-                                ]
+                    [ Col.col [ Col.Custom [ HTMLAttr.Custom ("md", customLayout1) ]
                                 Col.Sm (Col.mkCol !^12)
                               ]
                         [ str ".col-sm-12 .col-md-6 .offset-md-3" ]
