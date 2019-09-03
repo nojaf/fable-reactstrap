@@ -7,6 +7,10 @@
 #load "../../src/NavbarBrand.fs"
 #load "../../src/NavbarToggler.fs"
 #load "../../src/Collapse.fs"
+#load "../../src/UncontrolledDropdown.fs"
+#load "../../src/DropdownToggle.fs"
+#load "../../src/DropdownItem.fs"
+#load "../../src/DropdownMenu.fs"
 
 open Fable.Core.JsInterop
 open Fable.React
@@ -33,6 +37,29 @@ let private navbarSample =
                         ]
                     ]
                 ]
+
+                //
+                UncontrolledDropdown.uncontrolledDropdown [
+
+                    ]
+                    [ DropdownToggle.dropdownToggle [
+                          DropdownToggle.Caret true
+                        ]
+                        [ str "Options" ]
+                      DropdownMenu.dropdownMenu [
+                          DropdownMenu.Right true
+                        ]
+                        [ DropdownItem.dropdownItem [ ]
+                            [ str "Option 1" ]
+                          DropdownItem.dropdownItem [ ]
+                            [ str "Option 2" ]
+                          DropdownItem.dropdownItem [
+                              DropdownItem.Divider true
+                            ]
+                            [ ]
+                          DropdownItem.dropdownItem [ ]
+                            [ str "Reset" ] ] ]
+
         ]
 ]), "NavbarSample")
 
