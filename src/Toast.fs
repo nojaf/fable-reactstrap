@@ -28,4 +28,4 @@ module Toast =
                     | prop -> keyValueList CaseRules.LowerFirst (Seq.singleton prop))
                 |> Seq.reduce (fun a b -> Fable.Core.JS.Object.assign (a, b))
 
-        ofImport "Modal" "reactstrap" toastProps elems
+        ofImport "Toast" "reactstrap" toastProps elems
