@@ -10,7 +10,7 @@ open Reactstrap
 
 let private jumbotronSample =
     FunctionComponent.Of<obj>
-        ((fun _ -> fragment [] [
+        ((fun _ ->
             Jumbotron.jumbotron [] [
                 h1 [ ClassName "display-3 "] [ str "Hello, world!"]
                 p  [ ClassName "lead"] [ str "This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information."]
@@ -20,7 +20,7 @@ let private jumbotronSample =
                         Button.button [ Button.Color Primary] [ str "Learn More"]
                     ]
             ]
-        ])
+        )
         , "JumbotronSample")
 
 exportDefault jumbotronSample
