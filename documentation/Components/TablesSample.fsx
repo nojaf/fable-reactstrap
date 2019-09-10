@@ -10,8 +10,6 @@ open Reactstrap
 let private tablesSample =
     FunctionComponent.Of<obj>
         ((fun _ ->
-
-            fragment [] [
             Table.table [ ]
                 [ thead [ ]
                     [ tr [ ]
@@ -51,7 +49,6 @@ let private tablesSample =
                             [ str "the Bird" ]
                           td [ ]
                             [ str "@twitter" ] ] ] ]
-
-        ]), "TablesSample")
+        ), "TablesSample")
 
 exportDefault tablesSample

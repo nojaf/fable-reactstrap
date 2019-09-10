@@ -16,7 +16,7 @@ let private mediaSample =
         ((fun _ -> fragment [] [
             Media.media [ ]
                 [ Media.media [
-                        Media.Custom [ HTMLAttr.Custom ("left", true) ]
+                        Media.Left true
                         Media.Custom [ Href "#" ]
                       ]
                     [ Media.media [
@@ -26,16 +26,11 @@ let private mediaSample =
                         ]
                         [ ]
                     ]
-                  Media.media [
-                       Media.Custom [HTMLAttr.Custom ("body", true)]
-                      ]
-                    [ Media.media [
-                        Media.Custom [HTMLAttr.Custom ("heading", true)]
-                        ]
+                  Media.media [ Media.Body true ]
+                    [ Media.media [ Media.Heading true ]
                         [ str "Media heading" ]
                       str "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus."
                     ]
-
                 ]
         ]), "MediaSample")
 
