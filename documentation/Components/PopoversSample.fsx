@@ -3,6 +3,7 @@
 #load "../../src/Popover.fs"
 #load "../../src/PopoverHeader.fs"
 #load "../../src/PopoverBody.fs"
+#load "../../src/Button.fs"
 
 open Fable.Core.JsInterop
 open Fable.React
@@ -16,19 +17,13 @@ let private popoversSample =
         let toggleShowPopover = fun _ -> showPopover.update(not showPopover.current)
         fragment []
             [
-            button [ Id "Popover1"
-                     Type "button" ]
+            Button.button [ Button.Custom [Id "Popover1"; Type "button" ] ]
                 [ str "Launch Popover" ]
             Popover.popover
-                [
-                    Popover.Placement Bottom
-                    // HTMLAttr.Custom ("placement", "bottom")
-                    // HTMLAttr.Custom ("isopen", "{this.state.popoverOpen}")
-                    Popover.IsOpen showPopover.current
-                    Popover.Target !^ "Popover1"
-                    Popover.Toggle toggleShowPopover
-                        // HTMLAttr.Custom ("toggle", "{this.toggle}")
-                        ]
+                [ Popover.Placement Bottom
+                  Popover.IsOpen showPopover.current
+                  Popover.Target !^"Popover1"
+                  Popover.Toggle toggleShowPopover ]
                 [ PopoverHeader.popoverHeader [ ]
                     [ str "Popover Title" ]
                   PopoverBody.popoverBody [ ]

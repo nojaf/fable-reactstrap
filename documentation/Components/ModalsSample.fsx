@@ -18,7 +18,6 @@ let private modalsSample =
             let showModal = Hooks.useState(false)
             let toggle = fun _ -> showModal.update(not showModal.current)
 
-            fragment [] [
             div [ ]
                 [ Button.button [
                        Button.Color Danger
@@ -49,7 +48,6 @@ let private modalsSample =
                         ]
                     ]
                 ]
-
-        ]), "ModalsSample")
+        ), "ModalsSample")
 
 exportDefault modalsSample

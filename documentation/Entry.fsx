@@ -93,13 +93,13 @@ let routes =
           ==> fun _ -> showComponent FadeSample (importDefault "!!raw-loader!./Components/FadeSample.fsx")
           "/components/form"
           ==> fun _ -> showComponent FormSample (importDefault "!!raw-loader!./Components/FormSample.fsx")
-          "/components/inputgroup"
+          "/components/input-group"
           ==> fun _ -> showComponent InputGroupSample (importDefault "!!raw-loader!./Components/InputGroupSample.fsx")
           "/components/jumbotron"
           ==> fun _ -> showComponent JumbotronSample (importDefault "!!raw-loader!./Components/JumbotronSample.fsx")
           "/components/layout"
           ==> fun _ -> showComponent LayoutSample (importDefault "!!raw-loader!./Components/LayoutSample.fsx")
-          "/components/listgroup"
+          "/components/list-group"
           ==> fun _ -> showComponent ListGroupSample (importDefault "!!raw-loader!./Components/ListGroupSample.fsx")
           "/components/media"
           ==> fun _ -> showComponent MediaSample (importDefault "!!raw-loader!./Components/MediaSample.fsx")
