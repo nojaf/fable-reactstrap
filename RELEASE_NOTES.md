@@ -1,3 +1,8 @@
+### 0.4.0
+
+* Completed all remaining samples @DerekLiang
+* Minor API tweaks
+
 ### 0.3.0
 
 * Corrected props for `Form`
