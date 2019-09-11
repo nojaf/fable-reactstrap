@@ -46,6 +46,9 @@ module Input =
         | Invalid of bool
         | Plaintext of string
         | Addon of bool
+        | Min of int
+        | Max of int
+        | Step of int
         | InnerRef of (Element -> unit)
         | CssModule of CSSModule
         | Tag of U2<string, obj>
