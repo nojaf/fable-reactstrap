@@ -8,3 +8,4 @@ packages/
 paket-files/
 docs/
 .ionide/symbolCache.db
+/src/push-to-nuget.ps1
