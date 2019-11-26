@@ -30,7 +30,7 @@
     "deploy": "gh-pages -d docs"
   },
   "dependencies": {
-    "bootstrap": "4.3.1",
+    "bootstrap": "4.4.0",
     "hookrouter": "1.2.3",
     "prismjs": "1.17.1",
     "react-prism": "4.3.2",
