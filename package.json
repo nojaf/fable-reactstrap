@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "7.7.7",
-    "@babel/plugin-syntax-dynamic-import": "7.7.4",
+    "@babel/core": "7.8.0",
+    "@babel/plugin-syntax-dynamic-import": "7.8.0",
     "css-loader": "3.4.0",
     "fable-compiler": "2.4.12",
     "fable-loader": "2.1.8",
