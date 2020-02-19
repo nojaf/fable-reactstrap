@@ -1849,10 +1849,10 @@ fable-babel-plugins@^2.2.0:
   resolved "https://registry.yarnpkg.com/fable-babel-plugins/-/fable-babel-plugins-2.2.0.tgz#2c61be1bd1afb1f03da4e66ccaa1bfecf92063a3"
   integrity sha512-4g8CIyXCILk5LLiwNPtvtrPy3YuV5eJV18SYJCZxu3A1BSKNvPGHLSg5YcFJ2zt4qmBvSkBewlQ2bVQYG+TnrQ==
 
-fable-compiler@2.4.13:
-  version "2.4.13"
-  resolved "https://registry.yarnpkg.com/fable-compiler/-/fable-compiler-2.4.13.tgz#f993fda99f4cd34f5e0db9938a22da960e328641"
-  integrity sha512-pub2r4okYA4DmrioAJnlRE0Co097wzmYKLFgMLwTUMDO1ElFRoQaYwuserRYYGrzwRNHYGGnrKom3w3RxWWbkQ==
+fable-compiler@2.4.14:
+  version "2.4.14"
+  resolved "https://registry.yarnpkg.com/fable-compiler/-/fable-compiler-2.4.14.tgz#c42c1c71af3d6db3a690dfbd6d3d2c37603915a2"
+  integrity sha512-UU+qgDIJMDSmO1bxAi+G0IhACJOuikhDZjOXwxjuL9ZXX/9/U1zIA3Ii26hDjyXhQ6ErAn67iqYTk68/kTj+fQ==
 
 fable-loader@2.1.8:
   version "2.1.8"
