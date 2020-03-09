@@ -1921,22 +1921,22 @@ extsprintf@^1.2.0:
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
   integrity sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
 
-fable-babel-plugins@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/fable-babel-plugins/-/fable-babel-plugins-2.2.0.tgz#2c61be1bd1afb1f03da4e66ccaa1bfecf92063a3"
-  integrity sha512-4g8CIyXCILk5LLiwNPtvtrPy3YuV5eJV18SYJCZxu3A1BSKNvPGHLSg5YcFJ2zt4qmBvSkBewlQ2bVQYG+TnrQ==
+fable-babel-plugins@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/fable-babel-plugins/-/fable-babel-plugins-2.3.0.tgz#cb4f652bbe78bd8e4a34e17c851d940fa6f3fa44"
+  integrity sha512-alGBNw5HZJzTEznXKfypFEkD5aWsspbCcoVDu9j8Mqdi77dgp4BSjhYSg61mQEg9UluIAZxRM5lhGARYbU97DQ==
 
 fable-compiler@2.4.19:
   version "2.4.19"
   resolved "https://registry.yarnpkg.com/fable-compiler/-/fable-compiler-2.4.19.tgz#58ee88498d82430eac770732d9a235e1d419f29d"
   integrity sha512-HFwDJosJ7mMkYjn8+U/DL/nE+2Vq38agjd0EVXO5EbVvD8/NzR6ohlqbXzgjDcHgHoQ/X1SJdMHaK19v5upwNw==
 
-fable-loader@2.1.8:
-  version "2.1.8"
-  resolved "https://registry.yarnpkg.com/fable-loader/-/fable-loader-2.1.8.tgz#589ae79fa0d047e2d48f4cc82c64830d006840b3"
-  integrity sha512-3cw1BPnAT6AJI/VSMjGuWeAllLiqBSFQBW2AUXQhFwXfJ7XupekgfIb9lW3xv2GPlUQZCLrCDFfqbpFpppJVhA==
+fable-loader@2.1.9:
+  version "2.1.9"
+  resolved "https://registry.yarnpkg.com/fable-loader/-/fable-loader-2.1.9.tgz#ca54f57359e5ee416d15c0313ab2beb708560050"
+  integrity sha512-ffFfAx4+92yGRjV7iZQOCzqsjQF1he6Lei6hDqfaW1Qjbyx9bhVa8jCX53+I1mhWEw2JWIQpFzwHnYwz2eT4Hw==
   dependencies:
-    fable-babel-plugins "^2.2.0"
+    fable-babel-plugins "^2.3.0"
 
 fast-deep-equal@^2.0.1:
   version "2.0.1"
