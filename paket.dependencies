@@ -1,4 +1,5 @@
 source https://www.nuget.org/api/v2
 storage:none
 framework: netstandard2.0
-nuget Fable.React 5.2.6
+nuget Fable.React
+nuget FSharp.Core
