@@ -39,5 +39,5 @@ module Carousel =
                 | prop -> Some prop)
             |> keyValueList CaseRules.LowerFirst
 
-        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        let props = JS.Constructors.Object.assign (createEmpty, customProps, typeProps)
         ofImport "Carousel" "reactstrap" props elems

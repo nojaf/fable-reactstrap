@@ -26,6 +26,6 @@ module Toast =
                     | Transition fade -> createObj [ "transition" ==> keyValueList CaseRules.LowerFirst fade ]
                     | Custom customProps -> keyValueList CaseRules.LowerFirst customProps
                     | prop -> keyValueList CaseRules.LowerFirst (Seq.singleton prop))
-                |> Seq.reduce (fun a b -> Fable.Core.JS.Object.assign (a, b))
+                |> Seq.reduce (fun a b -> Fable.Core.JS.Constructors.Object.assign (a, b))
 
         ofImport "Toast" "reactstrap" toastProps elems

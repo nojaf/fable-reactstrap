@@ -30,5 +30,5 @@ module Card =
                 | prop -> Some prop)
             |> keyValueList CaseRules.LowerFirst
 
-        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        let props = JS.Constructors.Object.assign (createEmpty, customProps, typeProps)
         ofImport "Card" "reactstrap" props elems

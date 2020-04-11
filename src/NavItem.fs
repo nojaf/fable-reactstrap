@@ -28,5 +28,5 @@ module NavItem =
                 | prop -> Some prop)
             |> keyValueList CaseRules.LowerFirst
 
-        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        let props = JS.Constructors.Object.assign (createEmpty, customProps, typeProps)
         ofImport "NavItem" "reactstrap" props elems

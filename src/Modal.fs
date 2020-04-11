@@ -50,6 +50,6 @@ module Modal =
                     | ModalTransition fade ->
                         createObj [ "modalTransition" ==> keyValueList CaseRules.LowerFirst fade ]
                     | prop -> keyValueList CaseRules.LowerFirst (Seq.singleton prop))
-                |> Seq.reduce (fun a b -> Fable.Core.JS.Object.assign (a, b))
+                |> Seq.reduce (fun a b -> Fable.Core.JS.Constructors.Object.assign (a, b))
 
         ofImport "Modal" "reactstrap" modalProps elems

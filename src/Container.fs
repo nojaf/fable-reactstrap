@@ -27,5 +27,5 @@ module Container =
                 | prop -> Some prop)
             |> keyValueList CaseRules.LowerFirst
 
-        let props = JS.Object.assign (createEmpty, customProps, typeProps)
+        let props = JS.Constructors.Object.assign (createEmpty, customProps, typeProps)
         ofImport "Container" "reactstrap" props elems
