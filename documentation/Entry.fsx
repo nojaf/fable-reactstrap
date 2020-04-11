@@ -126,7 +126,7 @@ let routes =
           "/components/tooltips"
           ==> fun _ -> showComponent TooltipsSample (importDefault "!!raw-loader!./Components/TooltipsSample.fsx") ]
 
-let routeUrls = Fable.Core.JS.Object.keys (routes)
+let routeUrls = Fable.Core.JS.Constructors.Object.keys (routes)
 
 let NotFoundPage =
     div []
