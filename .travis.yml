@@ -6,9 +6,9 @@ services:
 sudo: required
 
 before_install:
-  - docker pull nojaf/fable:2.4
+  - docker pull nojaf/fable:2.5
 
 jobs:
   include:
     - stage: "CI"
-      script: docker run -v "${PWD}:/app" -w "/app" nojaf/fable:2.4 bash -c "yarn && yarn postinstall && yarn build"
+      script: docker run -v "${PWD}:/app" -w "/app" nojaf/fable:2.5 bash -c "yarn && yarn postinstall && yarn build"
