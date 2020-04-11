@@ -9,7 +9,7 @@
     "css-loader": "3.5.0",
     "fable-compiler": "2.4.23",
     "fable-loader": "2.1.9",
-    "file-loader": "5.1.0",
+    "file-loader": "6.0.0",
     "gh-pages": "^2.0.1",
     "html-webpack-plugin": "4.1.0",
     "mini-css-extract-plugin": "^0.9.0",
