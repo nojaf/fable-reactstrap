@@ -5,6 +5,11 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+
+function resolve(filePath) {
+  return path.join(__dirname, filePath);
+}
 
 const babel = {
   plugins: ["@babel/plugin-syntax-dynamic-import"]
@@ -25,7 +30,7 @@ module.exports = {
     publicPath: isProduction ? "/fable-reactstrap/" : "/"
   },
   devServer: {
-    contentBase: "./documentation",
+    contentBase: "./documentation/public",
     port: 8080,
     historyApiFallback: true
   },
@@ -60,15 +65,16 @@ module.exports = {
     }
   },
   plugins: isProduction?  [
+    new CopyWebpackPlugin([{ from: resolve("./documentation/public") }]),
     new MiniCssExtractPlugin({ filename: "style.css" }),
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: "./documentation/index.html"
+      template: "./documentation/public/index.html"
     })
   ] : [
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: "./documentation/index.html"
+      template: "./documentation/public/index.html"
     })
   ]
 };
