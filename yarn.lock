@@ -1283,12 +1283,13 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
-copy-webpack-plugin@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/copy-webpack-plugin/-/copy-webpack-plugin-6.0.0.tgz#98eeb1aa2e7189b6e73ec876404c5c05e51828b3"
-  integrity sha512-tM6DhoJm8jvkHLjH62r5NHKSxmtyHYWOwWTkLWEZYHbxEH0Aele2pGRZ2HSDJb8Rdb/BcYWYFiJXTzHt377fPg==
+copy-webpack-plugin@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/copy-webpack-plugin/-/copy-webpack-plugin-6.0.1.tgz#2a9718898728e916623eccf48b9dfb06089d702d"
+  integrity sha512-tcbZnGtQ70b4vtYGUNg8uUYri/80H1On3AC+wPsVOKSj7xbDinYuxAZPAeI3/3hxjjuwoGTHN5BeSksQ4kGUTw==
   dependencies:
     cacache "^15.0.3"
+    fast-glob "^3.2.2"
     find-cache-dir "^3.3.1"
     glob-parent "^5.1.1"
     globby "^11.0.0"
@@ -2008,7 +2009,7 @@ fast-deep-equal@^3.1.1:
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.1.tgz#545145077c501491e33b15ec408c294376e94ae4"
   integrity sha512-8UEa58QDLauDNfpbrX55Q9jrGHThw2ZMdOky5Gl1CDtVeJDPVrG4Jxx1N8jw2gkWaff5UUuX1KJd+9zGe2B+ZA==
 
-fast-glob@^3.1.1:
+fast-glob@^3.1.1, fast-glob@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.2.2.tgz#ade1a9d91148965d4bf7c51f72e1ca662d32e63d"
   integrity sha512-UDV82o4uQyljznxwMxyVRJgZZt3O5wENYojjzbaGEGZgeOxkLFf+V4cnUD+krzb2F72E18RhamkMZ7AdeggF7A==
