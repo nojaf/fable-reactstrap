@@ -10,7 +10,7 @@
     "fable-compiler": "2.6.0",
     "fable-loader": "2.1.9",
     "file-loader": "6.0.0",
-    "gh-pages": "^2.0.1",
+    "gh-pages": "^3.0.0",
     "html-webpack-plugin": "4.2.2",
     "copy-webpack-plugin": "6.0.1",
     "mini-css-extract-plugin": "^0.9.0",
