@@ -17,7 +17,7 @@ const babel = {
 
 const isProduction = process.argv.indexOf("-p") >= 0;
 console.log(
-    "Bundling for " + (isProduction ? "production" : "development") + "..."
+  "Bundling for " + (isProduction ? "production" : "development") + "..."
 );
 
 module.exports = {
@@ -64,17 +64,17 @@ module.exports = {
       chunks: "all"
     }
   },
-  plugins: isProduction?  [
-    new CopyWebpackPlugin([{ from: resolve("./documentation/public") }]),
+  plugins: isProduction ? [
+    new CopyWebpackPlugin({ patterns: [{ from: resolve("./documentation/public") }] }),
     new MiniCssExtractPlugin({ filename: "style.css" }),
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: "./documentation/public/index.html"
     })
   ] : [
-    new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: "./documentation/public/index.html"
-    })
-  ]
+      new HtmlWebpackPlugin({
+        filename: "index.html",
+        template: "./documentation/public/index.html"
+      })
+    ]
 };
