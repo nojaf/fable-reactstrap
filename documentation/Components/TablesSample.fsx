@@ -10,45 +10,36 @@ open Reactstrap
 let private tablesSample =
     FunctionComponent.Of<obj>
         ((fun _ ->
-            Table.table [ ]
-                [ thead [ ]
-                    [ tr [ ]
-                        [ th [ ]
-                            [ str "#" ]
-                          th [ ]
-                            [ str "First Name" ]
-                          th [ ]
-                            [ str "Last Name" ]
-                          th [ ]
-                            [ str "Username" ] ] ]
-                  tbody [ ]
-                    [ tr [ ]
-                        [ th [ HTMLAttr.Scope "row" ]
-                            [ str "1" ]
-                          td [ ]
-                            [ str "Mark" ]
-                          td [ ]
-                            [ str "Otto" ]
-                          td [ ]
-                            [ str "@mdo" ] ]
-                      tr [ ]
-                        [ th [ HTMLAttr.Scope "row" ]
-                            [ str "2" ]
-                          td [ ]
-                            [ str "Jacob" ]
-                          td [ ]
-                            [ str "Thornton" ]
-                          td [ ]
-                            [ str "@fat" ] ]
-                      tr [ ]
-                        [ th [ HTMLAttr.Scope "row" ]
-                            [ str "3" ]
-                          td [ ]
-                            [ str "Larry" ]
-                          td [ ]
-                            [ str "the Bird" ]
-                          td [ ]
-                            [ str "@twitter" ] ] ] ]
-        ), "TablesSample")
+            Table.table [] [
+                thead [] [
+                    tr [] [
+                        th [] [ str "#" ]
+                        th [] [ str "First Name" ]
+                        th [] [ str "Last Name" ]
+                        th [] [ str "Username" ]
+                    ]
+                ]
+                tbody [] [
+                    tr [] [
+                        th [ HTMLAttr.Scope "row" ] [ str "1" ]
+                        td [] [ str "Mark" ]
+                        td [] [ str "Otto" ]
+                        td [] [ str "@mdo" ]
+                    ]
+                    tr [] [
+                        th [ HTMLAttr.Scope "row" ] [ str "2" ]
+                        td [] [ str "Jacob" ]
+                        td [] [ str "Thornton" ]
+                        td [] [ str "@fat" ]
+                    ]
+                    tr [] [
+                        th [ HTMLAttr.Scope "row" ] [ str "3" ]
+                        td [] [ str "Larry" ]
+                        td [] [ str "the Bird" ]
+                        td [] [ str "@twitter" ]
+                    ]
+                ]
+            ]),
+         "TablesSample")
 
 exportDefault tablesSample

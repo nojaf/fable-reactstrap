@@ -8,19 +8,25 @@ open Fable.React
 open Reactstrap
 
 let private listGroupSample =
-    FunctionComponent.Of<obj>((fun _ ->
-        ListGroup.listGroup [ ]
-            [ ListGroupItem.listGroupItem [ ]
-                [ str "Cras justo odio" ]
-              ListGroupItem.listGroupItem [ ]
-                [ str "Dapibus ac facilisis in" ]
-              ListGroupItem.listGroupItem [ ]
-                [ str "Morbi leo risus" ]
-              ListGroupItem.listGroupItem [ ]
-                [ str "Porta ac consectetur ac" ]
-              ListGroupItem.listGroupItem [ ]
-                [ str "Vestibulum at eros" ] ]
-        )
-        , "ListGroupSample")
+    FunctionComponent.Of<obj>
+        ((fun _ ->
+            ListGroup.listGroup [] [
+                ListGroupItem.listGroupItem [] [
+                    str "Cras justo odio"
+                ]
+                ListGroupItem.listGroupItem [] [
+                    str "Dapibus ac facilisis in"
+                ]
+                ListGroupItem.listGroupItem [] [
+                    str "Morbi leo risus"
+                ]
+                ListGroupItem.listGroupItem [] [
+                    str "Porta ac consectetur ac"
+                ]
+                ListGroupItem.listGroupItem [] [
+                    str "Vestibulum at eros"
+                ]
+            ]),
+         "ListGroupSample")
 
 exportDefault listGroupSample

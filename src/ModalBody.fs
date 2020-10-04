@@ -29,5 +29,7 @@ module ModalBody =
                 | prop -> Some prop)
             |> keyValueList CaseRules.LowerFirst
 
-        let props = JS.Constructors.Object.assign (createEmpty, customProps, typeProps)
+        let props =
+            JS.Constructors.Object.assign (createEmpty, customProps, typeProps)
+
         ofImport "ModalBody" "reactstrap" props elems

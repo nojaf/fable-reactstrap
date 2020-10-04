@@ -55,7 +55,7 @@ module Input =
         | Type of InputType
         | Custom of IHTMLProp list
 
-    let input (props: InputProps seq) : ReactElement =
+    let input (props: InputProps seq): ReactElement =
         let customProps =
             props
             |> Seq.collect (function
@@ -70,5 +70,7 @@ module Input =
                 | prop -> Some prop)
             |> keyValueList CaseRules.LowerFirst
 
-        let props = JS.Constructors.Object.assign (createEmpty, customProps, typeProps)
+        let props =
+            JS.Constructors.Object.assign (createEmpty, customProps, typeProps)
+
         ofImport "Input" "reactstrap" props []

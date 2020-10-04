@@ -11,20 +11,18 @@ open Reactstrap
 let private fadeSample =
     FunctionComponent.Of<obj>
         ((fun _ ->
-            let fadeIn = Hooks.useState(true)
-            fragment []
-                [
-                    Button.button [
-                        Button.Color Primary
-                        Button.Custom [ClassName "mb-4"; OnClick(fun _ -> fadeIn.update(not fadeIn.current) )]
-                    ] [str "Toggle Fade"]
-                    Fade.fade [
-                        Fade.In fadeIn.current
-                    ] [
-                        str "This content will fade in and out as the button is pressed"
-                      ]
+            let fadeIn = Hooks.useState (true)
+
+            fragment [] [
+                Button.button [ Button.Color Primary
+                                Button.Custom [ ClassName "mb-4"
+                                                OnClick(fun _ -> fadeIn.update (not fadeIn.current)) ] ] [
+                    str "Toggle Fade"
                 ]
-          )
-        , "FadeSample")
+                Fade.fade [ Fade.In fadeIn.current ] [
+                    str "This content will fade in and out as the button is pressed"
+                ]
+            ]),
+         "FadeSample")
 
 exportDefault fadeSample

@@ -10,8 +10,7 @@ open Reactstrap
 [<RequireQualifiedAccess>]
 module UncontrolledDropdown =
 
-    type UncontrolledProps =
-        | Custom of IHTMLProp list
+    type UncontrolledProps = Custom of IHTMLProp list
 
     let uncontrolledDropdown (props: UncontrolledProps seq) (elems: ReactElement seq): ReactElement =
         ofImport "UncontrolledDropdown" "reactstrap" (keyValueList CaseRules.LowerFirst props) elems

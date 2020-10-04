@@ -15,39 +15,37 @@ open Reactstrap
 let private modalsSample =
     FunctionComponent.Of<obj>
         ((fun _ ->
-            let showModal = Hooks.useState(false)
-            let toggle = fun _ -> showModal.update(not showModal.current)
+            let showModal = Hooks.useState (false)
 
-            div [ ]
-                [ Button.button [
-                       Button.Color Danger
-                       Button.Custom [ OnClick toggle ]
-                    ]
-                    [ str "Launch Modal" ]
+            let toggle =
+                fun _ -> showModal.update (not showModal.current)
 
-                  Modal.modal [
-                      Modal.IsOpen showModal.current
+            div [] [
+                Button.button [ Button.Color Danger
+                                Button.Custom [ OnClick toggle ] ] [
+                    str "Launch Modal"
+                ]
+
+                Modal.modal [ Modal.IsOpen showModal.current ] [
+                    ModalHeader.modalHeader [ ModalHeader.Toggle toggle ] [
+                        str "Modal title"
                     ]
-                    [ ModalHeader.modalHeader [
-                            ModalHeader.Toggle toggle
+                    ModalBody.modalBody [] [
+                        str
+                            "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    ]
+                    ModalFooter.modalFooter [] [
+                        Button.button [ Button.Color Primary
+                                        Button.Custom [ OnClick toggle ] ] [
+                            str "Do Something"
                         ]
-                        [ str "Modal title" ]
-                      ModalBody.modalBody [ ]
-                        [ str "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." ]
-                      ModalFooter.modalFooter [ ]
-                        [ Button.button [
-                              Button.Color Primary
-                              Button.Custom [ OnClick toggle ]
-                            ]
-                            [ str "Do Something" ]
-                          Button.button [
-                              Button.Color Secondary
-                              Button.Custom [ OnClick toggle ]
-                            ]
-                            [ str "Cancel" ]
+                        Button.button [ Button.Color Secondary
+                                        Button.Custom [ OnClick toggle ] ] [
+                            str "Cancel"
                         ]
                     ]
                 ]
-        ), "ModalsSample")
+            ]),
+         "ModalsSample")
 
 exportDefault modalsSample

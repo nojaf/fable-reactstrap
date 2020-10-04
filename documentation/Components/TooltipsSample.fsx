@@ -10,24 +10,29 @@ open Reactstrap
 let private tooltipsSample =
     FunctionComponent.Of<obj>
         ((fun _ ->
-        let showTooltip = Hooks.useState(false);
-        let toggleToolTip = fun _ -> showTooltip.update (not showTooltip.current)
-        fragment []
-            [
-                p [ ]
-                    [ str "Somewhere in here is a "
-                      span [
-                             Style [ CSSProp.TextDecoration "underline"; CSSProp.Color "blue" ]
-                             Href "#"
-                             Id "TooltipExample" ]
-                        [ str "tooltip" ]
-                      str "." ]
-                Tooltip.tooltip [
-                    Tooltip.Placement Right
-                    Tooltip.IsOpen showTooltip.current
-                    Tooltip.Toggle toggleToolTip
-                    Tooltip.Target !^"TooltipExample" ]
-                    [ str "Hello world!" ]
-            ]), "TooltipsSample")
+            let showTooltip = Hooks.useState (false)
+
+            let toggleToolTip =
+                fun _ -> showTooltip.update (not showTooltip.current)
+
+            fragment [] [
+                p [] [
+                    str "Somewhere in here is a "
+                    span [ Style [ CSSProp.TextDecoration "underline"
+                                   CSSProp.Color "blue" ]
+                           Href "#"
+                           Id "TooltipExample" ] [
+                        str "tooltip"
+                    ]
+                    str "."
+                ]
+                Tooltip.tooltip [ Tooltip.Placement Right
+                                  Tooltip.IsOpen showTooltip.current
+                                  Tooltip.Toggle toggleToolTip
+                                  Tooltip.Target !^ "TooltipExample" ] [
+                    str "Hello world!"
+                ]
+            ]),
+         "TooltipsSample")
 
 exportDefault tooltipsSample

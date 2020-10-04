@@ -12,6 +12,8 @@ module Form =
     let form (props: FormProps seq) (elems: ReactElement seq): ReactElement =
         let props =
             props
-            |> Seq.collect (function Custom props -> props)
+            |> Seq.collect (function
+                | Custom props -> props)
             |> keyValueList CaseRules.LowerFirst
+
         ofImport "Form" "reactstrap" props elems

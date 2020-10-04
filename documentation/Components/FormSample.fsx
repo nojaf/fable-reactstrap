@@ -12,28 +12,38 @@ open Fable.React.Props
 open Reactstrap
 open Browser.Types
 
-type FormValues =
-    { Email: string
-      Password: string }
+type FormValues = { Email: string; Password: string }
 
 let private formSample =
-    FunctionComponent.Of<obj>((fun _ ->
-        let state = Hooks.useState({ Email = ""; Password = "" })
+    FunctionComponent.Of<obj>
+        ((fun _ ->
+            let state =
+                Hooks.useState ({ Email = ""; Password = "" })
 
-        let onSubmit (ev:Event) =
-            ev.preventDefault()
-            printfn "Form values: %A" state.current
+            let onSubmit (ev: Event) =
+                ev.preventDefault ()
+                printfn "Form values: %A" state.current
 
-        Form.form [Form.Custom [OnSubmit onSubmit]] [
-            FormGroup.formGroup [] [
-                Label.label [] [str "Email"]
-                Input.input [Input.Type Input.Email; Input.Custom [OnChange (fun ev -> { state.current with Email = ev.Value } |> state.update )]]
-            ]
-            FormGroup.formGroup [] [
-                Label.label [] [str "Password"]
-                Input.input [Input.Type Input.Password ;Input.Custom [OnChange (fun ev -> { state.current with Password = ev.Value } |> state.update )]]
-            ]
-            Button.button [Button.Color Common.Primary] [str "Submit"]
-        ]), "FormSample")
+            Form.form [ Form.Custom [ OnSubmit onSubmit ] ] [
+                FormGroup.formGroup [] [
+                    Label.label [] [ str "Email" ]
+                    Input.input [ Input.Type Input.Email
+                                  Input.Custom [ OnChange(fun ev ->
+                                                     { state.current with Email = ev.Value }
+                                                     |> state.update) ] ]
+                ]
+                FormGroup.formGroup [] [
+                    Label.label [] [ str "Password" ]
+                    Input.input [ Input.Type Input.Password
+                                  Input.Custom [ OnChange(fun ev ->
+                                                     { state.current with
+                                                           Password = ev.Value }
+                                                     |> state.update) ] ]
+                ]
+                Button.button [ Button.Color Common.Primary ] [
+                    str "Submit"
+                ]
+            ]),
+         "FormSample")
 
 exportDefault formSample

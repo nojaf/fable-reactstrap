@@ -8,9 +8,7 @@ open Fable.React
 [<RequireQualifiedAccess>]
 module Fade =
 
-    type TimeoutEx =
-        { enter: int
-          exit: int }
+    type TimeoutEx = { enter: int; exit: int }
 
     type FadeProps =
         | In of bool
@@ -31,7 +29,6 @@ module Fade =
 
     let fade (props: FadeProps seq) (elems: ReactElement seq): ReactElement =
         let fadeProps =
-            props
-            |> keyValueList CaseRules.LowerFirst
+            props |> keyValueList CaseRules.LowerFirst
 
-        ofImport "Fade" "reactstrap" fadeProps  elems
+        ofImport "Fade" "reactstrap" fadeProps elems

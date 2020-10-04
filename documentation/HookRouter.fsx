@@ -21,19 +21,28 @@ let setLinkProps: AProps -> AProps = import "setLinkProps" "hookrouter"
 let confirmNavigation: unit -> unit = import "confirmNavigation" "hookrouter"
 let resetPath: unit -> unit = import "resetPath" "hookrouter"
 let stopInterception: unit -> unit = import "stopInterception" "hookrouter"
+
 let useControlledInterceptor: unit -> (InterceptedPath * obj * obj * obj) =
     import "useControlledInterceptor" "hookrouter"
+
 let interceptRoute: string * string -> ResizeArray<string> = import "interceptRoute" "hookrouter"
 let get: float -> obj option = import "get" "hookrouter"
 let remove: float -> unit = import "remove" "hookrouter"
 // let useInterceptor: handlerFn: (ResizeArray<obj option> -> obj option) -> (unit -> obj) = import "useInterceptor" "hookrouter"
 let setobj: obj * bool -> unit = import "setobj" "hookrouter"
 let getobj: unit -> obj = import "getobj" "hookrouter"
-let queryStringToObject: string -> obj = import "queryStringToObject" "hookrouter"
-let objectToQueryString: obj -> string = import "objectToQueryString" "hookrouter"
+
+let queryStringToObject: string -> obj =
+    import "queryStringToObject" "hookrouter"
+
+let objectToQueryString: obj -> string =
+    import "objectToQueryString" "hookrouter"
+
 let useobj: unit -> (obj * obj) = import "useobj" "hookrouter"
+
 let useRedirect (fromURL: string) (toURL: string) (queryParams: obj option) (replace: bool option): unit =
     import "useRedirect" "hookrouter"
+
 let setBasepath: string -> unit = import "setBasepath" "hookrouter"
 let getBasepath: unit -> string = import "getBasepath" "hookrouter"
 let resolvePath: string -> string = import "resolvePath" "hookrouter"
