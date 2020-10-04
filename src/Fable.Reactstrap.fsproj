@@ -92,6 +92,7 @@
         <Compile Include="ToastBody.fs" />
         <Compile Include="ToastHeader.fs" />
         <Compile Include="Tooltip.fs" />
+        <Compile Include="UncontrolledDropdown.fs" />
     </ItemGroup>
     <PropertyGroup>
         <NpmDependencies>
