@@ -28,5 +28,7 @@ module ModalHeader =
                 | prop -> Some prop)
             |> keyValueList CaseRules.LowerFirst
 
-        let props = JS.Constructors.Object.assign (createEmpty, customProps, typeProps)
+        let props =
+            JS.Constructors.Object.assign (createEmpty, customProps, typeProps)
+
         ofImport "ModalHeader" "reactstrap" props elems

@@ -13,82 +13,68 @@ open Reactstrap
 let private inputGroupSample =
     FunctionComponent.Of<obj>
         ((fun _ ->
-            fragment []
-                [
-                    InputGroup.inputGroup [] [
-                        InputGroupAddon.inputGroupAddon [
-                            InputGroupAddon.AddonType Prepend
-                        ] [ str "@"]
-                        Input.input [ Input.Custom [ HTMLAttr.Placeholder "username" ] ]
+            fragment [] [
+                InputGroup.inputGroup [] [
+                    InputGroupAddon.inputGroupAddon [ InputGroupAddon.AddonType Prepend ] [
+                        str "@"
+                    ]
+                    Input.input [ Input.Custom [ HTMLAttr.Placeholder "username" ] ]
+                ]
+                br []
+                InputGroup.inputGroup [] [
+                    InputGroupAddon.inputGroupAddon [ InputGroupAddon.AddonType Prepend ] [
+                        InputGroupText.inputGroupText [] [
+                            Input.input [ Input.Addon true
+                                          Input.Type Input.Checkbox ]
                         ]
-                    br []
-                    InputGroup.inputGroup [] [
-                        InputGroupAddon.inputGroupAddon [
-                            InputGroupAddon.AddonType Prepend
-                        ] [
-                            InputGroupText.inputGroupText [] [
-                                Input.input [ Input.Addon true; Input.Type Input.Checkbox ]
-                            ]
+                    ]
+                    Input.input [ Input.Custom [ HTMLAttr.Placeholder "Check it out" ] ]
+                ]
+                br []
+                InputGroup.inputGroup [] [
+                    Input.input [ Input.Custom [ HTMLAttr.Placeholder "username" ] ]
+                    InputGroupAddon.inputGroupAddon [ InputGroupAddon.AddonType Append ] [
+                        InputGroupText.inputGroupText [] [
+                            str "@example.com"
                         ]
-                        Input.input [ Input.Custom [ HTMLAttr.Placeholder "Check it out" ]]
-                      ]
-                    br []
-                    InputGroup.inputGroup [] [
-                        Input.input [ Input.Custom [ HTMLAttr.Placeholder "username" ]]
-                        InputGroupAddon.inputGroupAddon [
-                            InputGroupAddon.AddonType Append
-                        ] [
-                            InputGroupText.inputGroupText [] [
-                                str "@example.com"
-                            ]
-                        ]
-                      ]
-                    br []
-                    InputGroup.inputGroup [] [
-                        InputGroupAddon.inputGroupAddon [
-                            InputGroupAddon.AddonType Prepend
-                        ] [
-                            InputGroupText.inputGroupText [] [
-                                str "$"
-                            ]
-                            InputGroupText.inputGroupText [] [
-                                str "$"
-                            ]
-                        ]
-                        Input.input [ Input.Custom [ HTMLAttr.Placeholder "Dolla dolla billz yo!" ]]
-                        InputGroupAddon.inputGroupAddon [
-                            InputGroupAddon.AddonType Append
-                        ] [
-                            InputGroupText.inputGroupText [] [
-                                str "$"
-                            ]
-                            InputGroupText.inputGroupText [] [
-                                str "$"
-                            ]
-                        ]
-                      ]
-                    br []
-                    InputGroup.inputGroup [] [
-                        InputGroupAddon.inputGroupAddon [
-                            InputGroupAddon.AddonType Prepend
-                        ] [
+                    ]
+                ]
+                br []
+                InputGroup.inputGroup [] [
+                    InputGroupAddon.inputGroupAddon [ InputGroupAddon.AddonType Prepend ] [
+                        InputGroupText.inputGroupText [] [
                             str "$"
                         ]
-                        Input.input [
-                            Input.Custom [ HTMLAttr.Placeholder "Amount" ]
-                            Input.Type Input.Number
-                            Input.Min 0
-                            Input.Max 100
-                          ]
-                        InputGroupAddon.inputGroupAddon [
-                            InputGroupAddon.AddonType Prepend
-                        ] [
-                            str ".00"
+                        InputGroupText.inputGroupText [] [
+                            str "$"
                         ]
-                      ]
-                    br []
-                ])
+                    ]
+                    Input.input [ Input.Custom [ HTMLAttr.Placeholder "Dolla dolla billz yo!" ] ]
+                    InputGroupAddon.inputGroupAddon [ InputGroupAddon.AddonType Append ] [
+                        InputGroupText.inputGroupText [] [
+                            str "$"
+                        ]
+                        InputGroupText.inputGroupText [] [
+                            str "$"
+                        ]
+                    ]
+                ]
+                br []
+                InputGroup.inputGroup [] [
+                    InputGroupAddon.inputGroupAddon [ InputGroupAddon.AddonType Prepend ] [
+                        str "$"
+                    ]
+                    Input.input [ Input.Custom [ HTMLAttr.Placeholder "Amount" ]
+                                  Input.Type Input.Number
+                                  Input.Min 0
+                                  Input.Max 100 ]
+                    InputGroupAddon.inputGroupAddon [ InputGroupAddon.AddonType Prepend ] [
+                        str ".00"
+                    ]
+                ]
+                br []
+            ]),
 
-        , "InputGroupSample")
+         "InputGroupSample")
 
 exportDefault inputGroupSample

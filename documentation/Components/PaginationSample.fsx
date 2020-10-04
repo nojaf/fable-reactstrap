@@ -14,52 +14,51 @@ let a = Pagination.pagination
 let private paginationSample =
     FunctionComponent.Of<obj>
         ((fun _ ->
-        fragment []
-            [
-                Pagination.pagination []
-                    [ PaginationItem.paginationItem [ ]
-                        [ PaginationLink.paginationLink
-                            [
-                                PaginationLink.First true
-                                PaginationLink.Custom [ Href "#" ]
-                            ]
-                            [ ] ]
-                      PaginationItem.paginationItem [ ]
-                        [ PaginationLink.paginationLink
-                            [
-                               PaginationLink.Previous true
-                               PaginationLink.Custom [ Href "#" ]
-                            ]
-                            [ ] ]
-                      PaginationItem.paginationItem [ ]
-                        [ PaginationLink.paginationLink [ PaginationLink.Custom [Href "#" ]]
-                            [ str "1" ] ]
-                      PaginationItem.paginationItem [ ]
-                        [ PaginationLink.paginationLink [ PaginationLink.Custom [Href "#" ]]
-                            [ str "2" ] ]
-                      PaginationItem.paginationItem [ ]
-                        [ PaginationLink.paginationLink [ PaginationLink.Custom [Href "#" ]]
-                            [ str "3" ] ]
-                      PaginationItem.paginationItem [ ]
-                        [ PaginationLink.paginationLink [ PaginationLink.Custom [Href "#" ]]
-                            [ str "4" ] ]
-                      PaginationItem.paginationItem [ ]
-                        [ PaginationLink.paginationLink [ PaginationLink.Custom [Href "#" ] ]
-                            [ str "5" ] ]
-                      PaginationItem.paginationItem [ ]
-                        [ PaginationLink.paginationLink
-                            [
-                                PaginationLink.Next true
-                                PaginationLink.Custom [ Href "#" ]
-                            ]
-                            [ ] ]
-                      PaginationItem.paginationItem [ ]
-                        [ PaginationLink.paginationLink
-                            [
-                                PaginationLink.Last true
-                                PaginationLink.Custom [ Href "#" ]
-                            ]
-                            [ ] ] ]
-            ]), "PaginationSample")
+            fragment [] [
+                Pagination.pagination [] [
+                    PaginationItem.paginationItem [] [
+                        PaginationLink.paginationLink [ PaginationLink.First true
+                                                        PaginationLink.Custom [ Href "#" ] ] []
+                    ]
+                    PaginationItem.paginationItem [] [
+                        PaginationLink.paginationLink [ PaginationLink.Previous true
+                                                        PaginationLink.Custom [ Href "#" ] ] []
+                    ]
+                    PaginationItem.paginationItem [] [
+                        PaginationLink.paginationLink [ PaginationLink.Custom [ Href "#" ] ] [
+                            str "1"
+                        ]
+                    ]
+                    PaginationItem.paginationItem [] [
+                        PaginationLink.paginationLink [ PaginationLink.Custom [ Href "#" ] ] [
+                            str "2"
+                        ]
+                    ]
+                    PaginationItem.paginationItem [] [
+                        PaginationLink.paginationLink [ PaginationLink.Custom [ Href "#" ] ] [
+                            str "3"
+                        ]
+                    ]
+                    PaginationItem.paginationItem [] [
+                        PaginationLink.paginationLink [ PaginationLink.Custom [ Href "#" ] ] [
+                            str "4"
+                        ]
+                    ]
+                    PaginationItem.paginationItem [] [
+                        PaginationLink.paginationLink [ PaginationLink.Custom [ Href "#" ] ] [
+                            str "5"
+                        ]
+                    ]
+                    PaginationItem.paginationItem [] [
+                        PaginationLink.paginationLink [ PaginationLink.Next true
+                                                        PaginationLink.Custom [ Href "#" ] ] []
+                    ]
+                    PaginationItem.paginationItem [] [
+                        PaginationLink.paginationLink [ PaginationLink.Last true
+                                                        PaginationLink.Custom [ Href "#" ] ] []
+                    ]
+                ]
+            ]),
+         "PaginationSample")
 
 exportDefault paginationSample

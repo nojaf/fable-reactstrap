@@ -1,3 +1,8 @@
+### 0.5.0
+
+* Add support for UncontrolledDropdown
+* Update dependencies
+
 ### 0.4.1
 
 * Update dependencies

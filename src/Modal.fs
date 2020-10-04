@@ -40,15 +40,18 @@ module Modal =
 
     let modal (props: ModalProps seq) (elems: ReactElement seq): ReactElement =
         let modalProps =
-            if Seq.isEmpty props then createObj []
+            if Seq.isEmpty props then
+                createObj []
             else
                 props
                 |> Seq.map (fun prop ->
                     match prop with
                     | BackdropTransition fade ->
-                        createObj [ "backdropTransition" ==> keyValueList CaseRules.LowerFirst fade ]
+                        createObj [ "backdropTransition"
+                                    ==> keyValueList CaseRules.LowerFirst fade ]
                     | ModalTransition fade ->
-                        createObj [ "modalTransition" ==> keyValueList CaseRules.LowerFirst fade ]
+                        createObj [ "modalTransition"
+                                    ==> keyValueList CaseRules.LowerFirst fade ]
                     | prop -> keyValueList CaseRules.LowerFirst (Seq.singleton prop))
                 |> Seq.reduce (fun a b -> Fable.Core.JS.Constructors.Object.assign (a, b))
 

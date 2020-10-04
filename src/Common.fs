@@ -18,7 +18,7 @@ module Common =
 
     [<AllowNullLiteral>]
     type CSSModule =
-        [<Emit"$0[$1]{{=$2}}">]
+        [<Emit "$0[$1]{{=$2}}">]
         abstract Item: className:string -> string with get, set
 
     [<RequireQualifiedAccess>]
@@ -75,8 +75,6 @@ module Common =
         | [<CompiledName("left-start")>] LeftStart
         | [<CompiledName("left-end")>] LeftEnd
 
-    type DelayEx =
-        { show: int
-          hide: int }
+    type DelayEx = { show: int; hide: int }
 
     type Delay = U2<int, DelayEx>

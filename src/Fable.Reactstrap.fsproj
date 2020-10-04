@@ -7,7 +7,7 @@
         <RepositoryUrl>https://github.com/nojaf/fable-reactstrap</RepositoryUrl>
         <PackageTags>fable;elm;fsharp;react</PackageTags>
         <Authors>Florian Verdonck</Authors>
-        <Version>0.4.1</Version>
+        <Version>0.5.0</Version>
     </PropertyGroup>
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
@@ -92,6 +92,7 @@
         <Compile Include="ToastBody.fs" />
         <Compile Include="ToastHeader.fs" />
         <Compile Include="Tooltip.fs" />
+        <Compile Include="UncontrolledDropdown.fs" />
     </ItemGroup>
     <PropertyGroup>
         <NpmDependencies>

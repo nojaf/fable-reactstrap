@@ -12,36 +12,49 @@ open Reactstrap
 let private navsSample =
     FunctionComponent.Of<obj>
         ((fun _ ->
-        fragment []
-            [
-                  p [ ]
-                    [ str "List Based" ]
-                  Nav.nav [ ]
-                    [ NavItem.navItem [ ]
-                        [ NavLink.navLink [ NavLink.Custom [ Href "#" ]]
-                            [ str "Link" ] ]
-                      NavItem.navItem [ ]
-                        [ NavLink.navLink  [  NavLink.Custom [ Href "#" ] ]
-                            [ str "Link" ] ]
-                      NavItem.navItem [ ]
-                        [ NavLink.navLink  [  NavLink.Custom [ Href "#" ] ]
-                            [ str "Another Link" ] ]
-                      NavItem.navItem [ ]
-                        [ NavLink.navLink  [  NavLink.Custom [ Href "#" ]; NavLink.Custom [Disabled true]]
-                            [ str "Disabled Link" ] ] ]
-                  hr [ ]
-                  p [ ]
-                    [ str "Link Based" ]
-                  Nav.nav [ ]
-                    [ NavLink.navLink [  NavLink.Custom [Href "#" ]]
-                        [ str "Link" ]
-                      NavLink.navLink [  NavLink.Custom [Href "#" ]]
-                        [ str "Link" ]
-                      NavLink.navLink [  NavLink.Custom [Href "#" ]]
-                        [ str "Another Link" ]
-                      NavLink.navLink [  NavLink.Custom [Href "#" ]; NavLink.Custom [Disabled true] ]
-                        [ str "Disabled Link" ] ]
-
-            ]), "NavsSample")
+            fragment [] [
+                p [] [ str "List Based" ]
+                Nav.nav [] [
+                    NavItem.navItem [] [
+                        NavLink.navLink [ NavLink.Custom [ Href "#" ] ] [
+                            str "Link"
+                        ]
+                    ]
+                    NavItem.navItem [] [
+                        NavLink.navLink [ NavLink.Custom [ Href "#" ] ] [
+                            str "Link"
+                        ]
+                    ]
+                    NavItem.navItem [] [
+                        NavLink.navLink [ NavLink.Custom [ Href "#" ] ] [
+                            str "Another Link"
+                        ]
+                    ]
+                    NavItem.navItem [] [
+                        NavLink.navLink [ NavLink.Custom [ Href "#" ]
+                                          NavLink.Custom [ Disabled true ] ] [
+                            str "Disabled Link"
+                        ]
+                    ]
+                ]
+                hr []
+                p [] [ str "Link Based" ]
+                Nav.nav [] [
+                    NavLink.navLink [ NavLink.Custom [ Href "#" ] ] [
+                        str "Link"
+                    ]
+                    NavLink.navLink [ NavLink.Custom [ Href "#" ] ] [
+                        str "Link"
+                    ]
+                    NavLink.navLink [ NavLink.Custom [ Href "#" ] ] [
+                        str "Another Link"
+                    ]
+                    NavLink.navLink [ NavLink.Custom [ Href "#" ]
+                                      NavLink.Custom [ Disabled true ] ] [
+                        str "Disabled Link"
+                    ]
+                ]
+            ]),
+         "NavsSample")
 
 exportDefault navsSample

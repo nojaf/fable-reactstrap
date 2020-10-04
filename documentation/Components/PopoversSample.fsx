@@ -13,21 +13,29 @@ open Reactstrap
 let private popoversSample =
     FunctionComponent.Of<obj>
         ((fun _ ->
-        let showPopover = Hooks.useState(false)
-        let toggleShowPopover = fun _ -> showPopover.update(not showPopover.current)
-        fragment []
-            [
-            Button.button [ Button.Custom [Id "Popover1"; Type "button" ] ]
-                [ str "Launch Popover" ]
-            Popover.popover
-                [ Popover.Placement Bottom
-                  Popover.IsOpen showPopover.current
-                  Popover.Target !^"Popover1"
-                  Popover.Toggle toggleShowPopover ]
-                [ PopoverHeader.popoverHeader [ ]
-                    [ str "Popover Title" ]
-                  PopoverBody.popoverBody [ ]
-                    [ str "Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum." ] ]
-            ]), "PopoversSample")
+            let showPopover = Hooks.useState (false)
+
+            let toggleShowPopover =
+                fun _ -> showPopover.update (not showPopover.current)
+
+            fragment [] [
+                Button.button [ Button.Custom [ Id "Popover1"
+                                                Type "button" ] ] [
+                    str "Launch Popover"
+                ]
+                Popover.popover [ Popover.Placement Bottom
+                                  Popover.IsOpen showPopover.current
+                                  Popover.Target !^ "Popover1"
+                                  Popover.Toggle toggleShowPopover ] [
+                    PopoverHeader.popoverHeader [] [
+                        str "Popover Title"
+                    ]
+                    PopoverBody.popoverBody [] [
+                        str
+                            "Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum."
+                    ]
+                ]
+            ]),
+         "PopoversSample")
 
 exportDefault popoversSample
