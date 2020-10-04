@@ -26,7 +26,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack -p",
-    "postinstall": "dotnet tool restore && dotnet paket restore && paket generate-load-scripts -f netstandard2.0 -t fsx",
+    "postinstall": "dotnet tool restore && dotnet paket restore && dotnet paket generate-load-scripts -f netstandard2.0 -t fsx",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d docs"
   },
